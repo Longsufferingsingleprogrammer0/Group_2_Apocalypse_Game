@@ -62,8 +62,7 @@ public class test_player_script : MonoBehaviour
     //handles key input and moving the player around
     private bool playerMovementHandler2D()
     {
-        //did movement occur
-        bool changedPos = false;
+        
 
         //only check for keys if we can move
         if (movementEnabled)
@@ -97,7 +96,7 @@ public class test_player_script : MonoBehaviour
             if ((toMoveX!=0)||(toMoveY!=0))
             {
                 //set that we moved
-                changedPos = true;
+                
                 
                 //i did a lot of research, and this is what the internet said for the style i wanted
                 //this makes the movment consistant, which is what i wanted
@@ -112,11 +111,13 @@ public class test_player_script : MonoBehaviour
                     
                 //actually do the moving
                 spriteTransform.Translate(spriteMovement);
+
+                return true;
             }
 
         }
         
-        return changedPos;
+        return false;
     }
 
     // Update is called once per frame
