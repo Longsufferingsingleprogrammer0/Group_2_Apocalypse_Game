@@ -16,10 +16,8 @@ public class GameManager : MonoBehaviour
 
 
     //getter for the instance, needed for singletons
-    public static GameManager Instance()
-    {
-        return instance;
-    }
+    public static GameManager Instance => instance;
+    
 
 
     //is the level running, used to prevent anything form happening durring loading and level init
