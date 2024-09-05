@@ -65,7 +65,7 @@ public class test_player_script : MonoBehaviour
     //handles key input and moving the player around
     private bool playerMovementHandler2D()
     {
-        
+        //my tutor helped out and helped me fix this as well
 
         //only check for keys if we can move
         if (movementEnabled)
@@ -102,11 +102,13 @@ public class test_player_script : MonoBehaviour
                 //i did a lot of research, and this is what the internet said for the style i wanted
                 //this makes the movment consistant, which is what i wanted
                 //to clairify, the internet gave the general math outline and told me the unity stuff i needed to use, i did the coding
-
+                //my tutor then fixed my code
 
                 //create a vector for our movement and adjust it to make sure its the same distance, even when moving horizontally
                 Vector3 spriteMovement = new Vector3(toMoveX, toMoveY, 0f).normalized * movementSpeed * Time.deltaTime;
 
+
+                //flip test sprite, will need to be replaced with anim swap
                 if (toMoveX < 0)
                 {
                     transform.localScale = new Vector3(-1,1,1);
@@ -129,7 +131,7 @@ public class test_player_script : MonoBehaviour
     }
 
 
-
+    //called at a set rate
     private void FixedUpdate()
     {
         //movement handling is functioned out for clairity
