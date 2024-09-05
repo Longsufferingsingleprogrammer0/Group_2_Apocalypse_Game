@@ -11,8 +11,15 @@ set up GitHub repo for project
 get correct gitignore files
 
 
+art asset notes:
+everything is in tiles of 32 by 32.
+player is 32 by 40
+wide shelves are 64 by 48
+small shelves are 32 by 48
+collectables are 8 by 8
 
-
+for pixel perfect
+https://unity.com/blog/games/2d-pixel-perfect-how-to-set-up-your-unity-project-for-retro-8-bits-games
 
 gameplay:
 go around a map collecting items, and fighting enemies. items and enemies randomly placed in map, grid based map, 
