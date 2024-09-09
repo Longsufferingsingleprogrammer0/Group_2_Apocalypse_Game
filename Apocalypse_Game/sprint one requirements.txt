@@ -1,0 +1,1 @@
+ get some sort of basic test map with placeholder sprites, no animations, some test objects, and test map generation
