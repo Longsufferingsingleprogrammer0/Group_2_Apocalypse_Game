@@ -25,6 +25,7 @@ https://drive.google.com/drive/folders/1PJbs1h3qq_98WOu5YP-s71tGe47XkjEK?usp=sha
 
 for pixel perfect
 https://unity.com/blog/games/2d-pixel-perfect-how-to-set-up-your-unity-project-for-retro-8-bits-games
+https://docs.unity3d.com/Packages/com.unity.2d.pixel-perfect@3.0/manual/index.html
 
 gameplay:
 go around a map collecting items, and fighting enemies. items and enemies randomly placed in map, grid based map, 
