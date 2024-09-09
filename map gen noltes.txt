@@ -1,0 +1,17 @@
+for each of the colored blocks, place in a random form of the block type
+
+get list of cords for each types
+
+come up with rand range of items for each types
+
+spwan that many of each type in random pos
+
+dont worry about item spawn yet
+
+debris should always be spawned, but random types of each size
+
+player spawns in the same position each time
+
+for now, no animations
+
+
