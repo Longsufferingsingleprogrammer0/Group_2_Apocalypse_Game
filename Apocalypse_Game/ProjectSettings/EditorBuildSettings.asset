@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/logo screen.unity
     guid: a6f667cb2feed6c469f1165968a33778
   - enabled: 1
+    path: Assets/Scenes/title screen.unity
+    guid: d4c8955d077c36247b3a5e43f6095207
+  - enabled: 1
     path: Assets/Scenes/experiment scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

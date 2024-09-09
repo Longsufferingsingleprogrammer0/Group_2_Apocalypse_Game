@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 569301472}
   - component: {fileID: 569301475}
   m_Layer: 0
-  m_Name: scene switcher
+  m_Name: logo animation manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
