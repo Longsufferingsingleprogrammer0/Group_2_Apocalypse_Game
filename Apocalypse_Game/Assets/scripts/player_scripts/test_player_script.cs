@@ -107,7 +107,7 @@ public class test_player_script : MonoBehaviour
                 //create a vector for our movement and adjust it to make sure its the same distance, even when moving horizontally
                 Vector3 spriteMovement = new Vector3(toMoveX, toMoveY, 0f).normalized * movementSpeed * Time.deltaTime;
 
-
+                /*
                 //flip test sprite, will need to be replaced with anim swap
                 if (toMoveX < 0)
                 {
@@ -116,7 +116,7 @@ public class test_player_script : MonoBehaviour
                 {
                     transform.localScale = new Vector3(1,1,1);
                 }
-
+                */
 
                 //actually do the moving
                 SpritePhysics.MovePosition(spriteMovement+transform.position);
