@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Furnature_Setpeice : MonoBehaviour
 {
@@ -40,7 +41,15 @@ public class Furnature_Setpeice : MonoBehaviour
     }
 
 
+    public Vector2 getPosition()
+    {
+        return new Vector2(transform.position.x,transform.position.y);
+    }
 
+    public void setPosition(float x, float y)
+    {
+        transform.position = new Vector3(x,y,transform.position.z);
+    }
 
     public void setTexture(int textureIndex)
     {
