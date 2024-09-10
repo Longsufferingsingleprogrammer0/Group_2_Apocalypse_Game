@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1507904089469330421}
   m_Layer: 0
   m_Name: Freezer_Long_Right
-  m_TagString: Untagged
+  m_TagString: furniture set peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
