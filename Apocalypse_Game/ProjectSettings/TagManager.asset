@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - game_master
+  - background map
+  - transition manager
+  - wait screen
   layers:
   - Default
   - TransparentFX
