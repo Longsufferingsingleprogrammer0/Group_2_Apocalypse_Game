@@ -8,6 +8,8 @@ TagManager:
   - background map
   - transition manager
   - wait screen
+  - furniture set peice
+  - passive set peice
   layers:
   - Default
   - TransparentFX
