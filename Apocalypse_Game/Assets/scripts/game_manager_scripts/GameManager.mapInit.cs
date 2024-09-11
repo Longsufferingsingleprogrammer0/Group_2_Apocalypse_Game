@@ -38,7 +38,25 @@ public partial class GameManager : MonoBehaviour
     private IEnumerator placeSetpeiceSet(SetpeiceObjectSpawnTable spawnTable) 
     {
 
-        return null;
+        int counter = 0;
+        GameObject[] varients = spawnTable.getActorPrefabVariants();
+        
+
+
+        for (int setpeice = 0; setpeice < spawnTable.getSpawnPositionCount(); setpeice++)
+        {
+
+            spawnSetPeice(spawnTable.GetSetpeiceSpawnPosition(setpeice), varients);
+
+            if (counter >= maxSetpeicesSpawnedPerFrame)
+            {
+                yield return null;
+            }
+            else
+            {
+                counter++;
+            }
+        }
     }
 
 
@@ -46,13 +64,21 @@ public partial class GameManager : MonoBehaviour
     {
         int number= Random.Range(spawnTable.getMinimumSpawnNumber(), spawnTable.getMaximumSpawnNumber()+1);
         int counter = 0;
-        
+        GameObject[] varients = spawnTable.getActorPrefabVariants();
 
-        for(int setpeice=0; setpeice<number; setpeice++)
+        int 
+
+        for (int setpeice=0; setpeice<number; setpeice++)
         {
-            List<int> takenIndexes= new List<int>();
+            
 
+            int chosenIndex=Random.Range(0, openIndexes.Count);
 
+            SetpeiceSpawnPosition toBePlaced = openIndexes[chosenIndex];
+
+            openIndexes.RemoveAt(chosenIndex);
+
+            spawnSetPeice(toBePlaced,varients);
 
             if (counter >= maxSetpeicesSpawnedPerFrame)
             {

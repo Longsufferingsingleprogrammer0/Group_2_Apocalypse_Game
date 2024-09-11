@@ -69,6 +69,12 @@ public class SetpeiceObjectSpawnTable
     #endregion
 
 
+    public SetpeiceSpawnPosition GetSetpeiceSpawnPosition(int position)
+    {
+        return possibleSpawnPositions[position].clone();
+    }
+
+
     #region cloneGetters
     //getter for actor prefab variants
     public GameObject[] getActorPrefabVariants() 
