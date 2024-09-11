@@ -32,8 +32,14 @@ public partial class GameManager : MonoBehaviour
 
     private void spawnSetPeice(SetpeiceSpawnPosition spawnPosition, GameObject[] varientTable)
     {
+        if((varientTable==null)||(varientTable.Length == 0))
+        {
+            throw new System.Exception("setpeice to spawn has an empty varient table");
+        }
 
-
+        Vector3 spawnpos = new Vector3(spawnPosition.getPosition().x, spawnPosition.getPosition().y,0f);
+        Instantiate(varientTable[spawnPosition.getPrefabVariant()], spawnpos,new Quaternion(0f,0f,0f,0f));
+        
 
 
     }
@@ -53,6 +59,7 @@ public partial class GameManager : MonoBehaviour
 
             if (counter >= maxSetpeicesSpawnedPerFrame)
             {
+                counter = 0;
                 yield return null;
             }
             else
@@ -74,8 +81,10 @@ public partial class GameManager : MonoBehaviour
         for (int setpeice=0; setpeice<number; setpeice++)
         {
             
-
             int chosenIndex=Random.Range(0, openIndexes.Count);
+            Debug.Log(openIndexes.Count.ToString());
+            Debug.Log(chosenIndex.ToString());
+
 
             SetpeiceSpawnPosition toBePlaced = openIndexes[chosenIndex];
 
@@ -85,6 +94,7 @@ public partial class GameManager : MonoBehaviour
 
             if (counter >= maxSetpeicesSpawnedPerFrame)
             {
+                counter = 0;
                 yield return null;
             }
             else
@@ -103,13 +113,32 @@ public partial class GameManager : MonoBehaviour
         for(int setPeiceType=0; setPeiceType<mapData.getSpawnTableArrayLength(); setPeiceType++)
         {
             SetpeiceObjectSpawnTable spawnTable = mapData.getObjectSpawnTable(setPeiceType);
+
+            if (spawnTable == null)
+            {
+                throw new System.Exception("null object spawn table error");
+            }
+            else if (spawnTable.getPossibleSpawnPositions()==null)
+            {
+                throw new System.Exception("null possible spawn position array error");
+            }else if (spawnTable.getSpawnPositionCount() == 0)
+            {
+                throw new System.Exception("empty object position array error");
+            }else if (spawnTable.getMaximumSpawnNumber() > spawnTable.getSpawnPositionCount() && spawnTable.isSpawningRandomized())
+            {
+                throw new System.Exception("maximum number of setpeices spawnable is greater than possible positions error");
+            }
+
+
+
+
             if (spawnTable.isSpawningRandomized())
             {
-                randomPlaceSetpeiceSet(spawnTable);
+                StartCoroutine(randomPlaceSetpeiceSet(spawnTable));
             }
             else
             {
-                placeSetpeiceSet(spawnTable);
+                StartCoroutine(placeSetpeiceSet(spawnTable));
             }
             yield return null;
             
@@ -124,16 +153,18 @@ public partial class GameManager : MonoBehaviour
     {
         //when adding enemies and items, put them here
         //yield return null;
-        return null;
+        yield return null;
     }
 
 
     private IEnumerator initializeMap()
     {
+        
         //set up the dynamic parts of the map
-        initializeMapSetpeices();
+        StartCoroutine(initializeMapSetpeices());
         yield return null;
-        initialzeMapActors();
+        StartCoroutine(initialzeMapActors());
+        yield return null;
         //setup done, go to confirm screen
         mapSetupStage++;
         playerSprite.GetComponent<Rigidbody2D>().position = loadingDoneScreenPos;
@@ -142,8 +173,10 @@ public partial class GameManager : MonoBehaviour
 
     private void waitScreen()
     {
+       
         if (Input.anyKeyDown)
         {
+           
             mapSetupStage++;
             playerSprite.GetComponent<Rigidbody2D>().position = playerStartPos;
             playerSprite.GetComponent<SpriteRenderer>().enabled = true;
@@ -153,13 +186,17 @@ public partial class GameManager : MonoBehaviour
 
     private void mapSetupStageManager()
     {
+        
         switch (mapSetupStage)
         {
             case 0:
+         
                 break;
             case 1:
+            
                 break;
             case 2:
+              
                 waitScreen();
                 break;
             default:
@@ -173,12 +210,14 @@ public partial class GameManager : MonoBehaviour
     {
         playerSprite = GameObject.FindWithTag(playerTag);
         playerSprite.GetComponent<Rigidbody2D>().position = loadingScreenPos;
-        initializeMap();
+        StartCoroutine(initializeMap());
+        
     }
 
     // Update is called once per frame
     void MapInitUpdate()
     {
         mapSetupStageManager();
+        
     }
 }
