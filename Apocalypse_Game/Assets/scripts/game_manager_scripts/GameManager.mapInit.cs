@@ -13,17 +13,17 @@ public partial class GameManager : MonoBehaviour
     [SerializeField] private LevelSpawnData mapData;
 
     //position of the loading screen
-    [SerializeField] private float loadingScreenX;
-    [SerializeField] private float loadingScreenY;
+    [SerializeField] private Vector2 loadingScreenPos;
+    [SerializeField] private Vector2 loadingDoneScreenPos;
 
-    [SerializeField] private string playerTag;
+    [SerializeField] private string playerSpriteTag;
 
     private GameObject playerSprite;
 
 
 
 
-
+    /*
     private IEnumerator initializeMap()
     {
         
@@ -32,13 +32,13 @@ public partial class GameManager : MonoBehaviour
         mapSetupDone = 1;
         return null;
     }
-
+    */
 
 
     // Start is called before the first frame update
     void MapInitStart()
     {
-        playerSprite = GameObject.FindWithTag(playerTag);
+        //playerSprite = GameObject.FindWithTag(playerSprite);
     }
 
     // Update is called once per frame
