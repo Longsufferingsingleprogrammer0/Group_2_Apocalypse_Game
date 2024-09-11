@@ -18,12 +18,15 @@ public partial class GameManager : MonoBehaviour
 
     [SerializeField] private string playerSpriteTag;
 
+    //temporary variable until we figure things out
+    [SerializeField] private Vector2 playerStartPos;
+
     private GameObject playerSprite;
 
 
 
 
-    /*
+    
     private IEnumerator initializeMap()
     {
         
@@ -32,7 +35,7 @@ public partial class GameManager : MonoBehaviour
         mapSetupDone = 1;
         return null;
     }
-    */
+    
 
 
     // Start is called before the first frame update
