@@ -59,7 +59,10 @@ public class Player : MonoBehaviour
     }
 
 
-
+    public void setPlayerMovementEnabled(bool enabled)
+    {
+        movementEnabled = enabled;
+    }
 
 
     //handles key input and moving the player around

@@ -13,26 +13,4 @@ MonoBehaviour:
   m_Name: test_level_2_data
   m_EditorClassIdentifier: 
   LevelName: Test Level 2
-  spawnData:
-  - actorType: Cash_Register
-    ActorPrefabVariants:
-    - {fileID: 5923407194622783732, guid: 39cf3f67d6541504480582ceaa800bd9, type: 3}
-    - {fileID: 9155814669608554222, guid: dbc98508c4dfd5a459af289cbdab3f89, type: 3}
-    - {fileID: 3818754284609036903, guid: a194d2b875c8643478a597a27f8f8b1e, type: 3}
-    - {fileID: 3217500910561792812, guid: a708633d28e1c524dbba64711bc64aa7, type: 3}
-    randomizedSpawning: 1
-    minimumSpawnNumber: 3
-    maximumSpawnNumber: 6
-    possibleSpawnPositions:
-    - position: {x: -3.55, y: -5.95}
-      prefabVariant: 0
-    - position: {x: 2.45, y: -3.95}
-      prefabVariant: 0
-    - position: {x: 0, y: -3.95}
-      prefabVariant: 3
-    - position: {x: -1, y: -3.95}
-      prefabVariant: 1
-    - position: {x: 0, y: 0}
-      prefabVariant: 1
-    - position: {x: 0, y: 0}
-      prefabVariant: 1
+  setPeiceSpawnList: []

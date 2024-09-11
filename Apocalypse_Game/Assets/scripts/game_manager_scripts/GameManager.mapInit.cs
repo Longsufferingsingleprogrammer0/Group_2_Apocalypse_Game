@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.InputSystem.Android;
 
 public partial class GameManager : MonoBehaviour
 {
 
     //whether the map setup is done, an int to allow for switch case optomisation
-    private int mapSetupDone = 0;
+    private int mapSetupStage = 0;
 
     //the spawndata object for this level
     [SerializeField] private LevelSpawnData mapData;
@@ -16,7 +17,6 @@ public partial class GameManager : MonoBehaviour
     [SerializeField] private Vector2 loadingScreenPos;
     [SerializeField] private Vector2 loadingDoneScreenPos;
 
-    [SerializeField] private string playerSpriteTag;
 
     //temporary variable until we figure things out
     [SerializeField] private Vector2 playerStartPos;
@@ -24,6 +24,10 @@ public partial class GameManager : MonoBehaviour
     private GameObject playerSprite;
 
     [SerializeField] private string playerTag;
+
+    //put the variables for spawning actors here
+
+    [SerializeField] private int maxSetpeicesSpawnedPerFrame;
 
 
     private void spawnSetPeice(SetpeiceSpawnPosition spawnPosition, GameObject[] varientTable)
@@ -40,8 +44,28 @@ public partial class GameManager : MonoBehaviour
 
     private IEnumerator randomPlaceSetpeiceSet(SetpeiceObjectSpawnTable spawnTable)
     {
+        int number= Random.Range(spawnTable.getMinimumSpawnNumber(), spawnTable.getMaximumSpawnNumber()+1);
+        int counter = 0;
+        
 
-        return null;
+        for(int setpeice=0; setpeice<number; setpeice++)
+        {
+            List<int> takenIndexes= new List<int>();
+
+
+
+            if (counter >= maxSetpeicesSpawnedPerFrame)
+            {
+                yield return null;
+            }
+            else
+            {
+                counter++;
+            }
+            
+        }
+
+        
     }
 
     
@@ -49,36 +73,83 @@ public partial class GameManager : MonoBehaviour
     {
         for(int setPeiceType=0; setPeiceType<mapData.getSpawnTableArrayLength(); setPeiceType++)
         {
-
+            SetpeiceObjectSpawnTable spawnTable = mapData.getObjectSpawnTable(setPeiceType);
+            if (spawnTable.isSpawningRandomized())
+            {
+                randomPlaceSetpeiceSet(spawnTable);
+            }
+            else
+            {
+                placeSetpeiceSet(spawnTable);
+            }
+            yield return null;
+            
         }
         
 
-        mapSetupDone = 1;
-        return null;
+        this.mapSetupStage++;
+        
     }
     
     private IEnumerator initialzeMapActors()
     {
+        //when adding enemies and items, put them here
+        //yield return null;
         return null;
     }
 
 
     private IEnumerator initializeMap()
     {
-
-        return null;
+        //set up the dynamic parts of the map
+        initializeMapSetpeices();
+        yield return null;
+        initialzeMapActors();
+        //setup done, go to confirm screen
+        mapSetupStage++;
+        playerSprite.GetComponent<Rigidbody2D>().position = loadingDoneScreenPos;
     }
+
+
+    private void waitScreen()
+    {
+        if (Input.anyKeyDown)
+        {
+            mapSetupStage++;
+            playerSprite.GetComponent<Rigidbody2D>().position = playerStartPos;
+            playerSprite.GetComponent<SpriteRenderer>().enabled = true;
+            playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
+        }
+    }
+
+    private void mapSetupStageManager()
+    {
+        switch (mapSetupStage)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                waitScreen();
+                break;
+            default:
+                break;
+        }
+    }
+
 
     // Start is called before the first frame update
     void MapInitStart()
     {
         playerSprite = GameObject.FindWithTag(playerTag);
         playerSprite.GetComponent<Rigidbody2D>().position = loadingScreenPos;
+        initializeMap();
     }
 
     // Update is called once per frame
     void MapInitUpdate()
     {
-        
+        mapSetupStageManager();
     }
 }

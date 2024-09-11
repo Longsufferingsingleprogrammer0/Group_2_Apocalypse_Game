@@ -25,7 +25,7 @@ public class LevelSpawnData : ScriptableObject
         return cloneArray;
     }
 
-    public int getObjectArrayLength() {  return setPeiceSpawnList.Length; }
+    public int getSpawnTableArrayLength() {  return setPeiceSpawnList.Length; }
 
     public SetpeiceObjectSpawnTable getObjectSpawnTable(int index)
     {
