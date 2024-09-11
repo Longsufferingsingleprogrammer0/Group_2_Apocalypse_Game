@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: test level 2 data
   m_EditorClassIdentifier: 
   LevelName: Test Level 2
-  spawnData: []
+  spawnData:
+  - actorType: 
+    ActorPrefabVariants: []
+    randomizedSpawning: 0
+    minimumSpawnNumber: 0
+    maximumSpawnNumber: 0
+    possibleSpawnPositions: []
