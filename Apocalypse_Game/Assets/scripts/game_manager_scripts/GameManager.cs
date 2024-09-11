@@ -34,7 +34,13 @@ public partial class GameManager : MonoBehaviour
     }
 
 
-
+    void quitter()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
     void startAllFiles()
     {
         UIStart();
@@ -44,6 +50,7 @@ public partial class GameManager : MonoBehaviour
 
     void updateAllFiles()
     {
+        quitter();
         UIUpdate();
         MapInitUpdate();
     }
