@@ -32,7 +32,46 @@ MonoBehaviour:
       prefabVariant: 3
     - position: {x: -1, y: -3.95}
       prefabVariant: 2
-    - position: {x: 2.45, y: -3.95}
+    - position: {x: -3.45, y: -3.95}
       prefabVariant: 1
-    - position: {x: -3.55, y: -5.95}
+    - position: {x: 2.55, y: -5.95}
       prefabVariant: 1
+  - actorType: small_debris
+    ActorPrefabVariants:
+    - {fileID: 6104567475973550189, guid: 12a3a7eb7e6840449bd2eac33f11b06f, type: 3}
+    randomizedSpawning: 0
+    minimumSpawnNumber: 0
+    maximumSpawnNumber: 0
+    possibleSpawnPositions:
+    - position: {x: -5.75, y: 7.75}
+      prefabVariant: 0
+    - position: {x: -4.22, y: 7.25}
+      prefabVariant: 0
+    - position: {x: 8.28, y: 7.25}
+      prefabVariant: 0
+    - position: {x: 1.78, y: 6.25}
+      prefabVariant: 0
+    - position: {x: 3.28, y: 4.75}
+      prefabVariant: 0
+    - position: {x: -5.22, y: 1.75}
+      prefabVariant: 0
+    - position: {x: 1.78, y: 1.75}
+      prefabVariant: 0
+    - position: {x: 9.78, y: -0.25}
+      prefabVariant: 0
+    - position: {x: -4.22, y: -1.25}
+      prefabVariant: 0
+    - position: {x: 3.28, y: -5.25}
+      prefabVariant: 0
+    - position: {x: -8.72, y: -8.75}
+      prefabVariant: 0
+    - position: {x: 6.28, y: -9.75}
+      prefabVariant: 0
+    - position: {x: 8.28, y: -8.75}
+      prefabVariant: 0
+    - position: {x: 8.78, y: -9.25}
+      prefabVariant: 0
+    - position: {x: 8.28, y: -8.75}
+      prefabVariant: 0
+    - position: {x: -7.22, y: -7.74}
+      prefabVariant: 0
