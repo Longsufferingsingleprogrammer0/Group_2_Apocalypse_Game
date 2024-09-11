@@ -11,28 +11,25 @@ public class test_player_script : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D SpritePhysics;
 
-
-
-
     //never give serialized values a default value, it breaks things
 
 #region movementVariables:
     //distance moved per second
     [SerializeField] private float movementSpeed;
-    
 
 #endregion
 
 
-
-
 #region modeVariables:
-    //enable movement of sprite at startup
-            
+    //enable movement of sprite at startup    
     [SerializeField] private bool movementEnabledAtStartup;
-
-    //enbables and disables movement
+    
+    //whether the sprite is visible at startup
+    [SerializeField] private bool spriteRendererEnabledAtStartup;
+    
+    //enables and disables movement
     private bool movementEnabled;
+    
 #endregion
 
 #endregion
@@ -55,6 +52,9 @@ public class test_player_script : MonoBehaviour
 
         //init movement enableing
         movementEnabled = movementEnabledAtStartup;
+        //init render enabling at at startup
+        spriteRenderer.enabled = spriteRendererEnabledAtStartup;
+
 
     }
 
@@ -107,16 +107,7 @@ public class test_player_script : MonoBehaviour
                 //create a vector for our movement and adjust it to make sure its the same distance, even when moving horizontally
                 Vector3 spriteMovement = new Vector3(toMoveX, toMoveY, 0f).normalized * movementSpeed * Time.deltaTime;
 
-                /*
-                //flip test sprite, will need to be replaced with anim swap
-                if (toMoveX < 0)
-                {
-                    transform.localScale = new Vector3(-1,1,1);
-                }else if (toMoveX > 0)
-                {
-                    transform.localScale = new Vector3(1,1,1);
-                }
-                */
+                //TODO: changing the sprite direction and animation 
 
                 //actually do the moving
                 SpritePhysics.MovePosition(spriteMovement+transform.position);

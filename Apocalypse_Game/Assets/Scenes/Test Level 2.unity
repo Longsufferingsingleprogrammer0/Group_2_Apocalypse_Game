@@ -1555,19 +1555,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &418353808716323893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5248609745960654688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a87b647278df9e4b91c6b46aa58841b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectableText: {fileID: 9183853535016079828}
 --- !u!114 &760900592402419192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1899,7 +1886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6274135071409278845}
   - component: {fileID: 6180210896259735963}
-  - component: {fileID: 418353808716323893}
+  - component: {fileID: 6274135071409278847}
   - component: {fileID: 6274135071409278846}
   m_Layer: 0
   m_Name: Game Master
@@ -2053,6 +2040,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6274135071409278847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5248609745960654688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a370c7777a078945b1f664bace47932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapData: {fileID: 11400000, guid: 45d52f6fa5e3b0c419d479c69adfb3b1, type: 2}
+  loadingScreenX: 0
+  loadingScreenY: 0
+  collectableText: {fileID: 9183853535016079828}
 --- !u!1 &6574612918992482163
 GameObject:
   m_ObjectHideFlags: 3
