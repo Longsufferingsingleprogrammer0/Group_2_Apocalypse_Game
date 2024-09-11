@@ -416,7 +416,7 @@ Transform:
   m_GameObject: {fileID: 134613952}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.91, y: -8.91, z: 0}
+  m_LocalPosition: {x: -65, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -435,7 +435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 4
-  movementEnabledAtStartup: 1
+  movementEnabledAtStartup: 0
+  spriteRendererEnabledAtStartup: 0
 --- !u!50 &134613956
 Rigidbody2D:
   serializedVersion: 4
@@ -960,7 +961,7 @@ Transform:
   m_GameObject: {fileID: 1496618366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.91, y: -8.91, z: -10}
+  m_LocalPosition: {x: -65, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1680,7 +1681,7 @@ Transform:
   m_GameObject: {fileID: 320909458269953155}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.91, y: -8.91, z: -10}
+  m_LocalPosition: {x: -65, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2055,6 +2056,7 @@ MonoBehaviour:
   mapData: {fileID: 11400000, guid: 45d52f6fa5e3b0c419d479c69adfb3b1, type: 2}
   loadingScreenX: 0
   loadingScreenY: 0
+  playerTag: Player
   collectableText: {fileID: 9183853535016079828}
 --- !u!1 &6574612918992482163
 GameObject:

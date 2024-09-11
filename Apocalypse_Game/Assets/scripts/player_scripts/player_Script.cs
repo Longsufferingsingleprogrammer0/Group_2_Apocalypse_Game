@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
-public class test_player_script : MonoBehaviour
+public class Player : MonoBehaviour
 {
 
 #region localVariables:
