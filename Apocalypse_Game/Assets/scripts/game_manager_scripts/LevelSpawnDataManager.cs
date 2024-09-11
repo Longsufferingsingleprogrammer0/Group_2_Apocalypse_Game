@@ -6,41 +6,45 @@ using UnityEngine;
 public class LevelSpawnData : ScriptableObject
 {
     [SerializeField]private string LevelName;
-    [SerializeField]private ObjectSpawnTable[] spawnData;
+    [SerializeField]private SetpeiceObjectSpawnTable[] setPeiceSpawnList;
     
     //getter for levelName;
     public string getLevelName() { return LevelName; }
 
 
-    public ObjectSpawnTable[] getSpawnData()
+    public SetpeiceObjectSpawnTable[] getSpawnData()
     {
         //clone array to store the data
-        ObjectSpawnTable[] cloneArray = new ObjectSpawnTable[spawnData.Length];
+        SetpeiceObjectSpawnTable[] cloneArray = new SetpeiceObjectSpawnTable[setPeiceSpawnList.Length];
 
-        for(int table=0; table < spawnData.Length; table++)
+        for(int table=0; table < setPeiceSpawnList.Length; table++)
         {
-            cloneArray[table] = spawnData[table].clone();
+            cloneArray[table] = setPeiceSpawnList[table].clone();
         }
 
         return cloneArray;
     }
 
-    public int getObjectSpawnTableLength() {  return spawnData.Length; }
+    public int getObjectArrayLength() {  return setPeiceSpawnList.Length; }
+
+    public SetpeiceObjectSpawnTable getObjectSpawnTable(int index)
+    {
+        return setPeiceSpawnList[index].clone();
+    }
    
 }
 
 [System.Serializable]
-public class ObjectSpawnTable
+public class SetpeiceObjectSpawnTable
 {
     [SerializeField] private string actorType;
     [SerializeField] private GameObject[] ActorPrefabVariants;
     [SerializeField] private bool randomizedSpawning;
     [SerializeField] private int minimumSpawnNumber;
     [SerializeField] private int maximumSpawnNumber;
+    [SerializeField] private SetpeiceSpawnPosition[] possibleSpawnPositions;
 
-    [SerializeField] private SpawnPosition[] possibleSpawnPositions;
-
-    public ObjectSpawnTable(String actorType, GameObject[] ActorPrefabVariants, bool randomizedSpawning, int minimumSpawnNumber, int maximumSpawnNumber, SpawnPosition[] possibleSpawnPositions)
+    public SetpeiceObjectSpawnTable(String actorType, GameObject[] ActorPrefabVariants, bool randomizedSpawning, int minimumSpawnNumber, int maximumSpawnNumber, SetpeiceSpawnPosition[] possibleSpawnPositions)
     {
         this.actorType = actorType;
         this.ActorPrefabVariants = ActorPrefabVariants;
@@ -85,10 +89,10 @@ public class ObjectSpawnTable
     }
 
     //getter for possible spawn positions
-    public SpawnPosition[] getPossibleSpawnPositions()
+    public SetpeiceSpawnPosition[] getPossibleSpawnPositions()
     {
         //clone array
-        SpawnPosition[] cloneArray = new SpawnPosition[possibleSpawnPositions.Length];
+        SetpeiceSpawnPosition[] cloneArray = new SetpeiceSpawnPosition[possibleSpawnPositions.Length];
 
         //loop to populate the new array
         for(int position = 0;  position < possibleSpawnPositions.Length; position++)
@@ -103,9 +107,9 @@ public class ObjectSpawnTable
 
 
     //clone function to make life easier
-    public ObjectSpawnTable clone() 
+    public SetpeiceObjectSpawnTable clone() 
     {
-        return new ObjectSpawnTable(this.getActorType(), this.getActorPrefabVariants(), this.isSpawningRandomized(), this.getMinimumSpawnNumber(), this.getMaximumSpawnNumber(),this.getPossibleSpawnPositions());
+        return new SetpeiceObjectSpawnTable(this.getActorType(), this.getActorPrefabVariants(), this.isSpawningRandomized(), this.getMinimumSpawnNumber(), this.getMaximumSpawnNumber(),this.getPossibleSpawnPositions());
     }
 
 
@@ -113,7 +117,7 @@ public class ObjectSpawnTable
 }
 
 [System.Serializable]
-public class SpawnPosition
+public class SetpeiceSpawnPosition
 {
     [SerializeField] private Vector2 position;
     [SerializeField] private int prefabVariant;
@@ -122,15 +126,15 @@ public class SpawnPosition
     public Vector2 getPosition() { return new Vector2(position.x, position.y); }
     public int getPrefabVariant() { return prefabVariant; }
 
-    public SpawnPosition(Vector2 position, int prefabVariant)
+    public SetpeiceSpawnPosition(Vector2 position, int prefabVariant)
     {
         this.position = position;
         this.prefabVariant = prefabVariant;
     }
 
     //clone function to make life easier
-    public SpawnPosition clone()
+    public SetpeiceSpawnPosition clone()
     {
-        return new SpawnPosition(this.position, this.prefabVariant);
+        return new SetpeiceSpawnPosition(this.position, this.prefabVariant);
     }
 }

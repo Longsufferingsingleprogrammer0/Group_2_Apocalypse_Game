@@ -23,25 +23,57 @@ public partial class GameManager : MonoBehaviour
 
     private GameObject playerSprite;
 
+    [SerializeField] private string playerTag;
 
 
+    private void spawnSetPeice(SetpeiceSpawnPosition spawnPosition, GameObject[] varientTable)
+    {
+
+    }
+
+    private IEnumerator placeSetpeiceSet(SetpeiceObjectSpawnTable spawnTable) 
+    {
+
+        return null;
+    }
+
+
+    private IEnumerator randomPlaceSetpeiceSet(SetpeiceObjectSpawnTable spawnTable)
+    {
+
+        return null;
+    }
 
     
-    private IEnumerator initializeMap()
+    private IEnumerator initializeMapSetpeices()
     {
-        
+        for(int setPeiceType=0; setPeiceType<mapData.getSpawnTableArrayLength(); setPeiceType++)
+        {
+
+        }
         
 
         mapSetupDone = 1;
         return null;
     }
     
+    private IEnumerator initialzeMapActors()
+    {
+        return null;
+    }
 
+
+    private IEnumerator initializeMap()
+    {
+
+        return null;
+    }
 
     // Start is called before the first frame update
     void MapInitStart()
     {
-        //playerSprite = GameObject.FindWithTag(playerSprite);
+        playerSprite = GameObject.FindWithTag(playerTag);
+        playerSprite.GetComponent<Rigidbody2D>().position = loadingScreenPos;
     }
 
     // Update is called once per frame
