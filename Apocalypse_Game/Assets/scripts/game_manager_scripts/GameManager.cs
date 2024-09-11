@@ -19,7 +19,8 @@ public partial class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //do this if you want it immortal
+            //DontDestroyOnLoad(gameObject);
 
         }
         else

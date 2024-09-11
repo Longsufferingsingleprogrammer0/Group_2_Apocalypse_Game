@@ -33,6 +33,9 @@ public partial class GameManager : MonoBehaviour
     private void spawnSetPeice(SetpeiceSpawnPosition spawnPosition, GameObject[] varientTable)
     {
 
+
+
+
     }
 
     private IEnumerator placeSetpeiceSet(SetpeiceObjectSpawnTable spawnTable) 
@@ -66,7 +69,7 @@ public partial class GameManager : MonoBehaviour
         int counter = 0;
         GameObject[] varients = spawnTable.getActorPrefabVariants();
 
-        int 
+        List<SetpeiceSpawnPosition> openIndexes = new List<SetpeiceSpawnPosition>(spawnTable.getPossibleSpawnPositions());
 
         for (int setpeice=0; setpeice<number; setpeice++)
         {
