@@ -17,7 +17,7 @@ public class LevelSpawnData : ScriptableObject
         //clone array to store the data
         ObjectSpawnTable[] cloneArray = new ObjectSpawnTable[spawnData.Length];
 
-        for(int table=0; table<spawnData.Length; table++)
+        for(int table=0; table < spawnData.Length; table++)
         {
             cloneArray[table] = spawnData[table].clone();
         }
