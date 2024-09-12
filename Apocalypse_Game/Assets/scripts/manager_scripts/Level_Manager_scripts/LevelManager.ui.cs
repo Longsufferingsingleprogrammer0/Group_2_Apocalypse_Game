@@ -42,7 +42,7 @@ public partial class LevelManager : MonoBehaviour
     void UIStart()
     {
         
-        resetCollectedItems();
+        //resetCollectedItems();
         
     }
 
