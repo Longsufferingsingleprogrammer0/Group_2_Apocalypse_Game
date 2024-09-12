@@ -42,8 +42,8 @@ MonoBehaviour:
     - {fileID: 5933738898352302458, guid: ac86b886f0812dc4a898f4df19a257c5, type: 3}
     - {fileID: 3075911262691261212, guid: 1673bd7829d1ba041876a6e627e2dfd4, type: 3}
     randomizedSpawning: 1
-    minimumSpawnNumber: 8
-    maximumSpawnNumber: 11
+    minimumSpawnNumber: 16
+    maximumSpawnNumber: 20
     possibleSpawnPositions:
     - position: {x: -2.52, y: 7.78}
       prefabVariant: 0
@@ -67,6 +67,24 @@ MonoBehaviour:
       prefabVariant: 0
     - position: {x: -2.55, y: 5.27}
       prefabVariant: 0
+    - position: {x: -6.78, y: 7.79}
+      prefabVariant: 2
+    - position: {x: -6.78, y: -0.21}
+      prefabVariant: 2
+    - position: {x: -6.78, y: -2.71}
+      prefabVariant: 2
+    - position: {x: -6.78, y: -5.21}
+      prefabVariant: 2
+    - position: {x: 5.71, y: -1.71}
+      prefabVariant: 2
+    - position: {x: 0.72, y: 5.29}
+      prefabVariant: 2
+    - position: {x: 2.22, y: 5.29}
+      prefabVariant: 2
+    - position: {x: 1.73, y: 2.78}
+      prefabVariant: 2
+    - position: {x: 1.73, y: 0.79}
+      prefabVariant: 2
   - actorType: small_debris
     ActorPrefabVariants:
     - {fileID: 6104567475973550189, guid: 12a3a7eb7e6840449bd2eac33f11b06f, type: 3}

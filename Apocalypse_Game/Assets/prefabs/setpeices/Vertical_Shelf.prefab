@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2081261398206663598}
   - component: {fileID: 7033036515466282754}
-  - component: {fileID: 3591166825700971676}
   - component: {fileID: 5499009224462367070}
+  - component: {fileID: 927911826799136793}
   m_Layer: 0
   m_Name: Vertical_Shelf
   m_TagString: furniture set peice
@@ -80,14 +80,30 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 3}
+  m_Size: {x: 0.48, y: 0.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3591166825700971676
-BoxCollider2D:
+--- !u!114 &5499009224462367070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5933738898352302458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8633bab96ed58aa4780b239840499ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textures:
+  - {fileID: 21300000, guid: 55f7c0fbaa6e8dd4aa05ebefaac8ec12, type: 3}
+  - {fileID: 21300000, guid: 6325902cdbc060644b1b99de409a7e79, type: 3}
+  setpeiceType: Vertical_Shelf
+--- !u!60 &927911826799136793
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,32 +134,22 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0009800196, y: -0.08115196}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.5, y: 3}
-    newSize: {x: 1.5, y: 3}
+    newSize: {x: 0.48, y: 0.96}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.78080916, y: 2.6764975}
-  m_EdgeRadius: 0
---- !u!114 &5499009224462367070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5933738898352302458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8633bab96ed58aa4780b239840499ccb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textures:
-  - {fileID: 21300000, guid: 55f7c0fbaa6e8dd4aa05ebefaac8ec12, type: 3}
-  - {fileID: 21300000, guid: 6325902cdbc060644b1b99de409a7e79, type: 3}
-  setpeiceType: Vertical_Shelf
+  m_Points:
+    m_Paths:
+    - - {x: -0.28583527, y: 0.6927657}
+      - {x: -0.41210747, y: -0.29081494}
+      - {x: 0.41382122, y: -0.29073003}
+      - {x: 0.28645945, y: 0.6959824}
+      - {x: 0.10148883, y: 0.9450892}
+      - {x: -0.101932764, y: 0.9443457}
+  m_UseDelaunayMesh: 0
