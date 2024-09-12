@@ -10,6 +10,7 @@ TagManager:
   - wait screen
   - furniture set peice
   - passive set peice
+  - Level_Master
   layers:
   - Default
   - TransparentFX

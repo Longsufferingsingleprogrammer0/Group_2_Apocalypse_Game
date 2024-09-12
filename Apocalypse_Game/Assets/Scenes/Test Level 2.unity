@@ -1659,8 +1659,8 @@ GameObject:
   - component: {fileID: 6274135071409278846}
   - component: {fileID: 6274135071409278847}
   m_Layer: 0
-  m_Name: Game Master
-  m_TagString: Untagged
+  m_Name: Level_Master
+  m_TagString: Level_Master
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1763,12 +1763,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2ef8e11e0f232004b8a31540545c6e06, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c78931c55cdf3384fa689dc895b5f3ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1783,7 +1783,7 @@ Transform:
   m_GameObject: {fileID: 5248609745960654688}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.16, y: 1.57, z: 0}
+  m_LocalPosition: {x: -1, y: 23.4, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1799,7 +1799,7 @@ Animator:
   m_GameObject: {fileID: 5248609745960654688}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d79522b77d810a9408e7effee7a8c17c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1e9c56ea98d491d4083888f72c5800b2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
