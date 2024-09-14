@@ -156,3 +156,36 @@ MonoBehaviour:
       prefabVariant: 0
     - position: {x: 8, y: -6.48}
       prefabVariant: 0
+  - actorType: Freezers
+    ActorPrefabVariants:
+    - {fileID: 1830506574842901633, guid: 9d24fc8c7b224a34c9918309e81ea6d3, type: 3}
+    - {fileID: 8820824111818520580, guid: 4ffbe351587a1e646bb8d21d94289868, type: 3}
+    - {fileID: 1449971814123841658, guid: dea7a3768de21644d993405f459bedf6, type: 3}
+    - {fileID: 6668348371896207852, guid: 2d497a79d5205bf4092df97696068e79, type: 3}
+    - {fileID: 566992298980350271, guid: 11a577c8aa4c4164caaf991bc406821b, type: 3}
+    randomizedSpawning: 1
+    minimumSpawnNumber: 0
+    maximumSpawnNumber: 0
+    possibleSpawnPositions:
+    - position: {x: -8.85, y: 4.76}
+      prefabVariant: 0
+    - position: {x: -8.85, y: 3.25}
+      prefabVariant: 0
+    - position: {x: -6.84, y: 4.76}
+      prefabVariant: 0
+    - position: {x: -6.84, y: 3.25}
+      prefabVariant: 0
+    - position: {x: -9.25, y: 7.48}
+      prefabVariant: 1
+    - position: {x: 9.24, y: -1.5}
+      prefabVariant: 2
+    - position: {x: 9.24, y: 1.49}
+      prefabVariant: 2
+    - position: {x: -9.21, y: -0.5}
+      prefabVariant: 3
+    - position: {x: -9.21, y: -5.5}
+      prefabVariant: 3
+    - position: {x: 9.2, y: 5.5}
+      prefabVariant: 4
+    - position: {x: 9.2, y: -5.5}
+      prefabVariant: 4
