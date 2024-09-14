@@ -1,0 +1,6 @@
+all sprites must use the settings: 
+pivot=center
+no compression
+no interpolation
+grid size=32
+positions must be snapped to grid 

@@ -29,6 +29,16 @@ public partial class LevelManager : MonoBehaviour
 
     [SerializeField] private int maxSetpeicesSpawnedPerFrame;
 
+    private List<GameObject> Setpeices;
+
+    private List<GameObject> Items;
+
+    private List<GameObject> Collectables;
+
+    private List<GameObject> Enemies;
+
+    
+
 
     private void spawnSetPeice(SetpeiceSpawnPosition spawnPosition, GameObject[] varientTable)
     {
@@ -38,8 +48,8 @@ public partial class LevelManager : MonoBehaviour
         }
 
         Vector3 spawnpos = new Vector3(spawnPosition.getPosition().x, spawnPosition.getPosition().y,0f);
-        Instantiate(varientTable[spawnPosition.getPrefabVariant()], spawnpos,new Quaternion(0f,0f,0f,0f));
-        
+        GameObject newPeice = Instantiate(varientTable[spawnPosition.getPrefabVariant()], spawnpos,new Quaternion(0f,0f,0f,0f));
+        Setpeices.Add(newPeice);
 
 
     }
@@ -208,8 +218,17 @@ public partial class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void MapInitStart()
     {
+        //get the player and put them on the loading spot
         playerSprite = GameObject.FindWithTag(playerTag);
         playerSprite.GetComponent<Rigidbody2D>().position = loadingScreenPos;
+
+        //initialize our actor lists
+        Setpeices = new List<GameObject>();
+        Items = new List<GameObject>();
+        Collectables = new List<GameObject>();
+        Enemies = new List<GameObject>();
+
+        //start the initialisation process
         StartCoroutine(initializeMap());
         
     }
