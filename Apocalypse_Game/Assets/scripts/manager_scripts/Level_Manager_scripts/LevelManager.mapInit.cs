@@ -37,6 +37,7 @@ public partial class LevelManager : MonoBehaviour
 
     private List<GameObject> Enemies;
 
+    private bool[] mapGrid;
     
 
 

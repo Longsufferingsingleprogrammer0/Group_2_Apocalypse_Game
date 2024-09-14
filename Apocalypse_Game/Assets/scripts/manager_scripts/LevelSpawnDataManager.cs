@@ -28,6 +28,8 @@ public class LevelSpawnData : ScriptableObject
         return arrayCopy;
     }
 
+
+
     public GridIllegalSpawnZone getOutOfMapGridArea(int index)
     {
         return outOfMapGridAreas[index].clone();
@@ -168,13 +170,13 @@ public class SetpeiceSpawnPosition
     [SerializeField] private Vector2 position;
     [SerializeField] private int prefabVariant;
     //used for spawn collision
-    [SerializeField] private GridIllegalSpawnZone[] TakenGridSpace;
+    [SerializeField] private GridIllegalSpawnZone TakenGridSpace;
 
     //getters for the variables
     public Vector2 getPosition() { return new Vector2(position.x, position.y); }
     public int getPrefabVariant() { return prefabVariant; }
 
-    public SetpeiceSpawnPosition(Vector2 position, int prefabVariant, GridIllegalSpawnZone[] takenSpaces)
+    public SetpeiceSpawnPosition(Vector2 position, int prefabVariant, GridIllegalSpawnZone takenSpaces)
     {
         this.position = position;
         this.prefabVariant = prefabVariant;
@@ -187,16 +189,11 @@ public class SetpeiceSpawnPosition
         return new SetpeiceSpawnPosition(this.getPosition(), this.getPrefabVariant(), this.getTakenGridSpace());
     }
 
-    public GridIllegalSpawnZone[] getTakenGridSpace()
+    public GridIllegalSpawnZone getTakenGridSpace()
     {
-        GridIllegalSpawnZone[] copy = new GridIllegalSpawnZone[TakenGridSpace.Length];
+        
 
-        for (int zone = 0; zone < TakenGridSpace.Length; zone++)
-        {
-            copy[zone] = TakenGridSpace[zone].clone();
-        }
-
-        return copy;
+        return TakenGridSpace.clone();
 
     }
 }

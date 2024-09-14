@@ -26,16 +26,46 @@ MonoBehaviour:
     possibleSpawnPositions:
     - position: {x: -3.55, y: -5.95}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 2.45, y: -3.95}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 0, y: -3.95}
       prefabVariant: 3
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -1, y: -3.95}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -3.45, y: -3.95}
       prefabVariant: 1
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 2.55, y: -5.95}
       prefabVariant: 1
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
   - actorType: shelves
     ActorPrefabVariants:
     - {fileID: 5777985766444636952, guid: 778cd1dee0415d2458abe33eadb2e14c, type: 3}
@@ -47,44 +77,144 @@ MonoBehaviour:
     possibleSpawnPositions:
     - position: {x: -2.52, y: 7.78}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 1.47, y: 7.78}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 5.74, y: 6.12}
       prefabVariant: 1
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -3.25, y: 2.13}
       prefabVariant: 1
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -0.78, y: 2.13}
       prefabVariant: 1
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 5.74, y: 1.6}
       prefabVariant: 1
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -2.52, y: -1.23}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 1.46, y: -1.24}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 5.97, y: -4.22}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 5.97, y: -6.72}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -2.55, y: 5.27}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -6.78, y: 7.79}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -6.78, y: -0.21}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -6.78, y: -2.71}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -6.78, y: -5.21}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 5.71, y: -1.71}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 0.72, y: 5.29}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 2.22, y: 5.29}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 1.73, y: 2.78}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 1.73, y: 0.79}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
   - actorType: small_debris
     ActorPrefabVariants:
     - {fileID: 6104567475973550189, guid: 12a3a7eb7e6840449bd2eac33f11b06f, type: 3}
@@ -94,36 +224,116 @@ MonoBehaviour:
     possibleSpawnPositions:
     - position: {x: -5.75, y: 7.75}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -4.22, y: 7.25}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 8.28, y: 7.25}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 1.78, y: 6.25}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 3.28, y: 4.75}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -5.22, y: 1.75}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 1.78, y: 1.75}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 9.78, y: -0.25}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -4.22, y: -1.25}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 3.28, y: -5.25}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -8.72, y: -8.75}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 6.28, y: -9.75}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 8.28, y: -8.75}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 8.78, y: -9.25}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 8.28, y: -8.75}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -7.22, y: -7.74}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
   - actorType: Long_Debris
     ActorPrefabVariants:
     - {fileID: 4231985784619005008, guid: 50b7bb98ac37b9f4bba5f892b1e21149, type: 3}
@@ -133,12 +343,32 @@ MonoBehaviour:
     possibleSpawnPositions:
     - position: {x: -8, y: 7.82}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 3.5, y: 7.82}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -0.5, y: -6.69}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 1, y: -8.18}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
   - actorType: Large_debris
     ActorPrefabVariants:
     - {fileID: 7292537438396400152, guid: ac94d9ae9a1eae641b7438eb0f5585c7, type: 3}
@@ -148,14 +378,39 @@ MonoBehaviour:
     possibleSpawnPositions:
     - position: {x: -6, y: 4.02}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -7, y: -8.48}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -3, y: -8.48}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 3.5, y: -9.48}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 8, y: -6.48}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
   - actorType: Freezers
     ActorPrefabVariants:
     - {fileID: 5735982768267032965, guid: 3d585637b70020d4b8195f83fbd4641e, type: 3}
@@ -170,23 +425,82 @@ MonoBehaviour:
     possibleSpawnPositions:
     - position: {x: -8.75, y: 4.76}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -8.75, y: 3.25}
       prefabVariant: 0
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -7.15, y: 4.75}
       prefabVariant: 1
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -7.15, y: 3.25}
       prefabVariant: 1
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -9.25, y: 7.48}
       prefabVariant: 2
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 9.24, y: -1.5}
       prefabVariant: 3
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 9.24, y: 1.49}
       prefabVariant: 3
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -9.21, y: -0.5}
       prefabVariant: 4
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: -9.21, y: -5.5}
       prefabVariant: 4
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 9.2, y: 5.5}
       prefabVariant: 5
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
     - position: {x: 9.2, y: -5.5}
       prefabVariant: 5
+      TakenGridSpace:
+        TopLeftCornerGridX: 0
+        TopLeftCornerGridY: 0
+        BottomRightCornerGridX: 0
+        BottomRightCornerGridY: 0
+  GridTopLeftCorner: {x: -9.5, y: 7.5}
+  GridSizeX: 20
+  GridSizeY: 20
+  outOfMapGridAreas: []
