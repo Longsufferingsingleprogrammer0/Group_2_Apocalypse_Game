@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-
+//need to heavily modify for new map spawning system
 public partial class LevelManager : MonoBehaviour
 {
 

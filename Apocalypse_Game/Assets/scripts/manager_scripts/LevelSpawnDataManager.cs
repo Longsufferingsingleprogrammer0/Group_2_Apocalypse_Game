@@ -4,6 +4,12 @@ using Unity.Mathematics;
 using UnityEditor.UI;
 using UnityEngine;
 
+
+
+//need to heavily modify for new spawning system
+
+
+
 [CreateAssetMenu(fileName = "LevelSpawnDataManager", menuName = "SpawnDataManager", order = 1)]
 public class LevelSpawnData : ScriptableObject
 {
@@ -213,6 +219,15 @@ public class GridIllegalSpawnZone
         BottomRightCornerGridX = x2;
         BottomRightCornerGridY = y2;
     }
+
+    public GridIllegalSpawnZone(GridVector2 topLeftCorner, GridVector2 bottomRightCorner)
+    {
+        TopLeftCornerGridX = topLeftCorner.getX();
+        TopLeftCornerGridY = topLeftCorner.getY();
+        BottomRightCornerGridX = bottomRightCorner.getX();
+        BottomRightCornerGridY = bottomRightCorner.getY();
+    }
+
 
     public GridVector2 getTopLeftCorner()
     {
