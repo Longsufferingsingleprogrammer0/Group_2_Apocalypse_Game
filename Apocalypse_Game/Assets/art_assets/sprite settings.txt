@@ -1,5 +1,5 @@
 all sprites must use the settings: 
-pivot=center
+pivot=top left
 no compression
 no interpolation
 grid size=32
