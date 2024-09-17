@@ -34,6 +34,8 @@ public class Furnature_Setpeice : MonoBehaviour
         setTexture(Random.Range(0, textures.Length));
     }
 
+
+
     public GridIllegalSpawnZone[] getGridSize()
     {
         GridIllegalSpawnZone[] copy = new GridIllegalSpawnZone[gridSize.Length];
@@ -60,15 +62,31 @@ public class Furnature_Setpeice : MonoBehaviour
         return new Vector2(transform.position.x,transform.position.y);
     }
 
+    public Vector2 getGridOffset()
+    {
+        return new Vector2(GridOffset.x, GridOffset.y);
+    }
+
     public GridVector2 getGridPosition() 
     {
         return gridPosition.clone(); 
     }
 
+
     public void setPosition(float x, float y)
     {
         transform.position = new Vector3(x,y,transform.position.z);
     }
+
+
+    public void setGridPosition(Vector2 grid00Point, int x, int y)
+    {
+        float newX = grid00Point.x + x + GridOffset.x;
+        float newY = grid00Point.y + y + GridOffset.y;
+        Vector2 newPosition = new Vector2(newX, newY);
+        transform.position = newPosition;
+    }
+
 
     public void setTexture(int textureIndex)
     {
