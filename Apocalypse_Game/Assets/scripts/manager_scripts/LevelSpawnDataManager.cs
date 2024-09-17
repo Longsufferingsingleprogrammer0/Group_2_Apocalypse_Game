@@ -13,14 +13,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LevelSpawnDataManager", menuName = "SpawnDataManager", order = 1)]
 public class LevelSpawnData : ScriptableObject
 {
+    //map definition variables
     [SerializeField] private string LevelName;
-    [SerializeField] private SetpeiceObjectSpawnTable[] setPeiceSpawnList;
-    [SerializeField] private Vector2 GridTopLeftCorner;
-    [SerializeField] private int GridSizeX;
-    [SerializeField] private int GridSizeY;
+    [SerializeField] private Vector2 gridZeroPoint;
+    [SerializeField] private GridVector2 gridSize;
+    //temporary variable until we figure out how player spawning should work
+    [SerializeField] private GridVector2 playerStartPos;
     [SerializeField] private GridIllegalSpawnZone[] outOfMapGridAreas;
 
+    //the array of setpeices to spawn
+    [SerializeField] private SetpeiceObjectSpawnTable[] setPeiceSpawnList;
 
+    public Vector2 getGridZeroPoint()
+    {
+        return new Vector2(gridZeroPoint.x, gridZeroPoint.y);
+    }
 
     public GridIllegalSpawnZone[] getOutOfMapGridAreas()
     {
@@ -34,23 +41,26 @@ public class LevelSpawnData : ScriptableObject
         return arrayCopy;
     }
 
-
+    public GridVector2 getPlayerStartPos()
+    {
+        return playerStartPos.clone();
+    }
 
     public GridIllegalSpawnZone getOutOfMapGridArea(int index)
     {
         return outOfMapGridAreas[index].clone();
     }
 
+    public int getOutOfMapGridAreaListLength()
+    {
+        return outOfMapGridAreas.Length;
+    }
 
     public GridVector2 getGridSize()
     {
-        return new GridVector2(GridSizeX, GridSizeY);
+        return gridSize.clone();
     }
 
-    public Vector2 getGridTopLeftCorner()
-    {
-        return new Vector2(GridTopLeftCorner.x, GridTopLeftCorner.y);
-    }
 
 
 
@@ -251,8 +261,8 @@ public class GridIllegalSpawnZone
 [System.Serializable]
 public class GridVector2
 {
-    private int x;
-    private int y;
+    [SerializeField]private int x;
+    [SerializeField]private int y;
 
     public GridVector2(int x, int y)
     {

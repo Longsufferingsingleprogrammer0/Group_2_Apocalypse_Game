@@ -82,7 +82,7 @@ public class Furnature_Setpeice : MonoBehaviour
     public void setGridPosition(Vector2 grid00Point, int x, int y)
     {
         float newX = grid00Point.x + x + GridOffset.x;
-        float newY = grid00Point.y + y + GridOffset.y;
+        float newY = grid00Point.y + (-y) + GridOffset.y;
         Vector2 newPosition = new Vector2(newX, newY);
         transform.position = newPosition;
     }

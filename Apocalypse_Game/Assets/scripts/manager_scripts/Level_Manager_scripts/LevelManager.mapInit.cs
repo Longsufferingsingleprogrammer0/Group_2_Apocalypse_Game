@@ -17,10 +17,9 @@ public partial class LevelManager : MonoBehaviour
     [SerializeField] private Vector2 loadingScreenPos;
     [SerializeField] private Vector2 loadingDoneScreenPos;
 
-    [SerializeField] private Vector2 gridZeroPoint;
+    
 
-    //temporary variable until we figure out how player spawning should work
-    [SerializeField] private GridVector2 playerStartPos;
+   
 
     private GameObject playerSprite;
 
@@ -45,8 +44,8 @@ public partial class LevelManager : MonoBehaviour
 
     private Vector2 calculateGridGlobalPosition(int gridX,int gridY, Vector2 gridOffset)
     {
-        float globalX = gridZeroPoint.x + ((float)gridX) + gridOffset.x;
-        float globalY = gridZeroPoint.y + ((float)gridY) + gridOffset.y;
+        float globalX = mapData.getGridZeroPoint().x + ((float)gridX) + gridOffset.x;
+        float globalY = mapData.getGridZeroPoint().y + (-(float)gridY) + gridOffset.y;
 
         return new Vector2(globalX, globalY);        
 
@@ -54,15 +53,15 @@ public partial class LevelManager : MonoBehaviour
 
     private Vector2 calculateGridGlobalPosition(int gridX, int gridY)
     {
-        float globalX = gridZeroPoint.x + ((float)gridX);
-        float globalY = gridZeroPoint.y + ((float)gridY);
+        float globalX = mapData.getGridZeroPoint().x + ((float)gridX);
+        float globalY = mapData.getGridZeroPoint().y + (-(float)gridY);
 
         return new Vector2(globalX, globalY);
 
     }
 
 
-    private void addTakenSpaceToMap(GridIllegalSpawnZone[] takenSpace)
+    private void addTakenSpaceToMap(GridIllegalSpawnZone takenSpace)
     {
 
     }
@@ -197,10 +196,20 @@ public partial class LevelManager : MonoBehaviour
         
     }
     
-    private IEnumerator initialzeMapActors()
+    private IEnumerator initializeMapActors()
     {
         //when adding enemies and items, put them here
         //yield return null;
+        yield return null;
+    }
+
+
+
+    private IEnumerator initializeMapNoSpawnZones()
+    {
+        
+
+
         yield return null;
     }
 
@@ -211,7 +220,7 @@ public partial class LevelManager : MonoBehaviour
         //set up the dynamic parts of the map
         StartCoroutine(initializeMapSetpeices());
         yield return null;
-        StartCoroutine(initialzeMapActors());
+        StartCoroutine(initializeMapActors());
         yield return null;
         //setup done, go to confirm screen
         mapSetupStage++;
@@ -226,7 +235,7 @@ public partial class LevelManager : MonoBehaviour
         {
            
             mapSetupStage++;
-            playerSprite.GetComponent<Rigidbody2D>().position = calculateGridGlobalPosition(playerStartPos.getX(),playerStartPos.getX());
+            playerSprite.GetComponent<Rigidbody2D>().position = calculateGridGlobalPosition(mapData.getPlayerStartPos().getX(),mapData.getPlayerStartPos().getX());
             playerSprite.GetComponent<SpriteRenderer>().enabled = true;
             playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
         }

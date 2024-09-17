@@ -13,6 +13,30 @@ MonoBehaviour:
   m_Name: test_level_2_data
   m_EditorClassIdentifier: 
   LevelName: Test Level 2
+  gridZeroPoint: {x: 0, y: 0}
+  gridSize:
+    x: 30
+    y: 30
+  playerStartPos:
+    x: 0
+    y: 0
+  outOfMapGridAreas:
+  - TopLeftCornerGridX: 0
+    TopLeftCornerGridY: 0
+    BottomRightCornerGridX: 29
+    BottomRightCornerGridY: 5
+  - TopLeftCornerGridX: 0
+    TopLeftCornerGridY: 24
+    BottomRightCornerGridX: 29
+    BottomRightCornerGridY: 29
+  - TopLeftCornerGridX: 0
+    TopLeftCornerGridY: 6
+    BottomRightCornerGridX: 4
+    BottomRightCornerGridY: 24
+  - TopLeftCornerGridX: 25
+    TopLeftCornerGridY: 6
+    BottomRightCornerGridX: 29
+    BottomRightCornerGridY: 24
   setPeiceSpawnList:
   - actorType: cash_register
     ActorPrefabVariants:
@@ -24,18 +48,36 @@ MonoBehaviour:
     minimumSpawnNumber: 2
     maximumSpawnNumber: 6
     possibleSpawnPositions:
-    - position: {x: -3.55, y: -5.95}
+    - position:
+        x: -3
+        y: -5
       prefabVariant: 0
-    - position: {x: 2.45, y: -3.95}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 2
+        y: -3
       prefabVariant: 0
-    - position: {x: 0, y: -3.95}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 0
+        y: -3
       prefabVariant: 3
-    - position: {x: -1, y: -3.95}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -1
+        y: -3
       prefabVariant: 2
-    - position: {x: -3.45, y: -3.95}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -3
+        y: -3
       prefabVariant: 1
-    - position: {x: 2.55, y: -5.95}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 2
+        y: -5
       prefabVariant: 1
+      gridPositionOffset: {x: 0, y: 0}
   - actorType: small_debris
     ActorPrefabVariants:
     - {fileID: 6104567475973550189, guid: 12a3a7eb7e6840449bd2eac33f11b06f, type: 3}
@@ -43,38 +85,86 @@ MonoBehaviour:
     minimumSpawnNumber: 0
     maximumSpawnNumber: 0
     possibleSpawnPositions:
-    - position: {x: -5.75, y: 7.75}
+    - position:
+        x: -5
+        y: 7
       prefabVariant: 0
-    - position: {x: -4.22, y: 7.25}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -4
+        y: 7
       prefabVariant: 0
-    - position: {x: 8.28, y: 7.25}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 8
+        y: 7
       prefabVariant: 0
-    - position: {x: 1.78, y: 6.25}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 1
+        y: 6
       prefabVariant: 0
-    - position: {x: 3.28, y: 4.75}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 3
+        y: 4
       prefabVariant: 0
-    - position: {x: -5.22, y: 1.75}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -5
+        y: 1
       prefabVariant: 0
-    - position: {x: 1.78, y: 1.75}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 1
+        y: 1
       prefabVariant: 0
-    - position: {x: 9.78, y: -0.25}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 9
+        y: 0
       prefabVariant: 0
-    - position: {x: -4.22, y: -1.25}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -4
+        y: -1
       prefabVariant: 0
-    - position: {x: 3.28, y: -5.25}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 3
+        y: -5
       prefabVariant: 0
-    - position: {x: -8.72, y: -8.75}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -8
+        y: -8
       prefabVariant: 0
-    - position: {x: 6.28, y: -9.75}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 6
+        y: -9
       prefabVariant: 0
-    - position: {x: 8.28, y: -8.75}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 8
+        y: -8
       prefabVariant: 0
-    - position: {x: 8.78, y: -9.25}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 8
+        y: -9
       prefabVariant: 0
-    - position: {x: 8.28, y: -8.75}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 8
+        y: -8
       prefabVariant: 0
-    - position: {x: -7.22, y: -7.74}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -7
+        y: -7
       prefabVariant: 0
+      gridPositionOffset: {x: 0, y: 0}
   - actorType: shelves
     ActorPrefabVariants:
     - {fileID: 5777985766444636952, guid: 778cd1dee0415d2458abe33eadb2e14c, type: 3}
@@ -84,28 +174,61 @@ MonoBehaviour:
     minimumSpawnNumber: 5
     maximumSpawnNumber: 11
     possibleSpawnPositions:
-    - position: {x: -2.52, y: 7.78}
+    - position:
+        x: -2
+        y: 7
       prefabVariant: 0
-    - position: {x: 1.47, y: 7.78}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 1
+        y: 7
       prefabVariant: 0
-    - position: {x: 5.74, y: 6.12}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 5
+        y: 6
       prefabVariant: 1
-    - position: {x: -3.25, y: 2.13}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -3
+        y: 2
       prefabVariant: 1
-    - position: {x: -0.78, y: 2.13}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 0
+        y: 2
       prefabVariant: 1
-    - position: {x: 5.74, y: 1.6}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 5
+        y: 1
       prefabVariant: 1
-    - position: {x: -2.52, y: -1.23}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -2
+        y: -1
       prefabVariant: 0
-    - position: {x: 1.46, y: -1.24}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 1
+        y: -1
       prefabVariant: 0
-    - position: {x: 5.97, y: -4.22}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 5
+        y: -4
       prefabVariant: 0
-    - position: {x: 5.97, y: -6.72}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 5
+        y: -6
       prefabVariant: 0
-    - position: {x: -2.55, y: 5.27}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -2
+        y: 5
       prefabVariant: 0
+      gridPositionOffset: {x: 0, y: 0}
   - actorType: shelves
     ActorPrefabVariants:
     - {fileID: 5777985766444636952, guid: 778cd1dee0415d2458abe33eadb2e14c, type: 3}
@@ -115,25 +238,58 @@ MonoBehaviour:
     minimumSpawnNumber: 5
     maximumSpawnNumber: 11
     possibleSpawnPositions:
-    - position: {x: -2.52, y: 7.78}
+    - position:
+        x: -2
+        y: 7
       prefabVariant: 0
-    - position: {x: 1.47, y: 7.78}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 1
+        y: 7
       prefabVariant: 0
-    - position: {x: 5.74, y: 6.12}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 5
+        y: 6
       prefabVariant: 1
-    - position: {x: -3.25, y: 2.13}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -3
+        y: 2
       prefabVariant: 1
-    - position: {x: -0.78, y: 2.13}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 0
+        y: 2
       prefabVariant: 1
-    - position: {x: 5.74, y: 1.6}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 5
+        y: 1
       prefabVariant: 1
-    - position: {x: -2.52, y: -1.23}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -2
+        y: -1
       prefabVariant: 0
-    - position: {x: 1.46, y: -1.24}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 1
+        y: -1
       prefabVariant: 0
-    - position: {x: 5.97, y: -4.22}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 5
+        y: -4
       prefabVariant: 0
-    - position: {x: 5.97, y: -6.72}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 5
+        y: -6
       prefabVariant: 0
-    - position: {x: -2.55, y: 5.27}
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: -2
+        y: 5
       prefabVariant: 0
+      gridPositionOffset: {x: 0, y: 0}
