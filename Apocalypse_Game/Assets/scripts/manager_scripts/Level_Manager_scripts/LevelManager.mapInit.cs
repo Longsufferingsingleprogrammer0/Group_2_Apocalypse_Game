@@ -39,7 +39,7 @@ public partial class LevelManager : MonoBehaviour
     private List<GameObject> Enemies;
 
     //the grid used to figure out and store what parts of the map are taken or not
-    private bool[] mapGrid;
+    private bool[][] mapGrid;
     
 
     private Vector2 calculateGridGlobalPosition(int gridX,int gridY, Vector2 gridOffset)
@@ -61,8 +61,26 @@ public partial class LevelManager : MonoBehaviour
     }
 
 
-    private void addTakenSpaceToMap(GridIllegalSpawnZone takenSpace)
+    private IEnumerator addTakenSpaceToMap(GridIllegalSpawnZone takenSpace, GridVector2 objectPosition)
     {
+        //cache variables
+        int x1 = takenSpace.getTopLeftCorner().getX();
+        int x2 = takenSpace.getBottomRightCorner().getX();
+        int y1 = takenSpace.getTopLeftCorner().getY();
+        int y2 = takenSpace.getBottomRightCorner().getY();
+
+        int yDistance = (y2 - y1);
+        int xDistance = (x2 - x1);
+
+        for(int y=0; y<=yDistance; y++)
+        {
+            for(int x=0; x<=xDistance; x++)
+            {
+                //calculate the position to update
+                int selectedX = x + x1 + objectPosition.getX();
+            }
+            yield return null;
+        }
 
     }
 
@@ -214,9 +232,29 @@ public partial class LevelManager : MonoBehaviour
     }
 
 
+    private void initializeGridArray(int x, int y)
+    {
+        bool[][] yArray = new bool[y][];
+        for(int i=0; i<y; i++)
+        {
+            yArray[i] = new bool[x];
+            for(int j=0; j < yArray[i].Length; j++)
+            {
+                yArray[i][j] = false;
+            }
+        }
+        mapGrid = yArray;
+    }
+
+
     private IEnumerator initializeMap()
     {
+
         
+        initializeGridArray(mapData.getGridSize().getX(), mapData.getGridSize().getY());
+        yield return null;
+        initializeMapNoSpawnZones();
+        yield return null;
         //set up the dynamic parts of the map
         StartCoroutine(initializeMapSetpeices());
         yield return null;
