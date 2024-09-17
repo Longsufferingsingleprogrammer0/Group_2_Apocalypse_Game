@@ -13,16 +13,18 @@ public partial class LevelManager : MonoBehaviour
     //the spawndata object for this level
     [SerializeField] private LevelSpawnData mapData;
 
-    //position of the loading screen
+    //position of the loading screens
     [SerializeField] private Vector2 loadingScreenPos;
     [SerializeField] private Vector2 loadingDoneScreenPos;
 
+    [SerializeField] private Vector2 gridZeroPoint;
 
-    //temporary variable until we figure things out
-    [SerializeField] private Vector2 playerStartPos;
+    //temporary variable until we figure out how player spawning should work
+    [SerializeField] private GridVector2 playerStartPos;
 
     private GameObject playerSprite;
 
+    //the player's tag
     [SerializeField] private string playerTag;
 
     //put the variables for spawning actors here
@@ -37,19 +39,54 @@ public partial class LevelManager : MonoBehaviour
 
     private List<GameObject> Enemies;
 
+    //the grid used to figure out and store what parts of the map are taken or not
     private bool[] mapGrid;
     
+
+    private Vector2 calculateGridGlobalPosition(int gridX,int gridY, Vector2 gridOffset)
+    {
+        float globalX = gridZeroPoint.x + ((float)gridX) + gridOffset.x;
+        float globalY = gridZeroPoint.y + ((float)gridY) + gridOffset.y;
+
+        return new Vector2(globalX, globalY);        
+
+    }
+
+    private Vector2 calculateGridGlobalPosition(int gridX, int gridY)
+    {
+        float globalX = gridZeroPoint.x + ((float)gridX);
+        float globalY = gridZeroPoint.y + ((float)gridY);
+
+        return new Vector2(globalX, globalY);
+
+    }
+
+
+    private void addTakenSpaceToMap(GridIllegalSpawnZone[] takenSpace)
+    {
+
+    }
+
 
 
     private void spawnSetPeice(SetpeiceSpawnPosition spawnPosition, GameObject[] varientTable)
     {
+        //check to make sure there is something to spawn
         if((varientTable==null)||(varientTable.Length == 0))
         {
             throw new System.Exception("setpeice to spawn has an empty varient table");
         }
 
-        Vector3 spawnpos = new Vector3(spawnPosition.getPosition().x, spawnPosition.getPosition().y,0f);
-        GameObject newPeice = Instantiate(varientTable[spawnPosition.getPrefabVariant()], spawnpos,new Quaternion(0f,0f,0f,0f));
+        //convert the grid position to unity coordinates
+        Vector2 globalPosition = calculateGridGlobalPosition(spawnPosition.getPosition().getX(), spawnPosition.getPosition().getY(), spawnPosition.getGridPositionOffset());
+
+        //convert the global position vector 2 to a vector 3
+        Vector3 spawnpos = new Vector3(globalPosition.x,globalPosition.y,0f);
+
+        //spawn the set peice
+        GameObject newPeice = Instantiate(varientTable[spawnPosition.getPrefabVariant()], spawnpos, new Quaternion(0f,0f,0f,0f));
+
+        //add the setpeice to the setpeices list
         Setpeices.Add(newPeice);
 
 
@@ -189,7 +226,7 @@ public partial class LevelManager : MonoBehaviour
         {
            
             mapSetupStage++;
-            playerSprite.GetComponent<Rigidbody2D>().position = playerStartPos;
+            playerSprite.GetComponent<Rigidbody2D>().position = calculateGridGlobalPosition(playerStartPos.getX(),playerStartPos.getX());
             playerSprite.GetComponent<SpriteRenderer>().enabled = true;
             playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
         }
