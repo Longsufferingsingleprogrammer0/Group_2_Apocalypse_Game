@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Furnature_Setpeice : MonoBehaviour
+public class Setpeice_Logic : MonoBehaviour
 {
     #region variables
 

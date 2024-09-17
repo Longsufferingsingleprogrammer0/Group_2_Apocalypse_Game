@@ -13,6 +13,30 @@ MonoBehaviour:
   m_Name: Template_Level_V1_Spawn_Data
   m_EditorClassIdentifier: 
   LevelName: Template Level V1
+  gridZeroPoint: {x: 0, y: 0}
+  gridSize:
+    x: 30
+    y: 30
+  playerStartPos:
+    x: 14
+    y: 22
+  outOfMapGridAreas:
+  - TopLeftCornerGridX: 0
+    TopLeftCornerGridY: 0
+    BottomRightCornerGridX: 4
+    BottomRightCornerGridY: 29
+  - TopLeftCornerGridX: 25
+    TopLeftCornerGridY: 0
+    BottomRightCornerGridX: 29
+    BottomRightCornerGridY: 29
+  - TopLeftCornerGridX: 5
+    TopLeftCornerGridY: 0
+    BottomRightCornerGridX: 24
+    BottomRightCornerGridY: 4
+  - TopLeftCornerGridX: 5
+    TopLeftCornerGridY: 25
+    BottomRightCornerGridX: 24
+    BottomRightCornerGridY: 29
   setPeiceSpawnList:
   - actorType: cash_register
     ActorPrefabVariants:
@@ -376,10 +400,3 @@ MonoBehaviour:
         y: -5
       prefabVariant: 5
       gridPositionOffset: {x: 0, y: 0}
-  gridZeroPoint: {x: 0, y: 0}
-  GridSizeX: 20
-  GridSizeY: 20
-  outOfMapGridAreas: []
-  playerStartPos:
-    x: 14
-    y: 22
