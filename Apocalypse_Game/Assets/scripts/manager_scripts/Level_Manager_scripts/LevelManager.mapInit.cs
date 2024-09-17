@@ -68,6 +68,10 @@ public partial class LevelManager : MonoBehaviour
         int x2 = takenSpace.getBottomRightCorner().getX();
         int y1 = takenSpace.getTopLeftCorner().getY();
         int y2 = takenSpace.getBottomRightCorner().getY();
+        int mapLimitX = mapData.getGridSize().getX();
+        int mapLimitY = mapData.getGridSize().getY();
+        int objectX= objectPosition.getX();
+        int objectY= objectPosition.getY();
 
         int yDistance = (y2 - y1);
         int xDistance = (x2 - x1);
@@ -77,11 +81,48 @@ public partial class LevelManager : MonoBehaviour
             for(int x=0; x<=xDistance; x++)
             {
                 //calculate the position to update
-                int selectedX = x + x1 + objectPosition.getX();
+                int selectedX = x + x1 + objectX;
+                int selectedY = y + y1 + objectY;
+                //if we are in bounds
+                if((selectedX >= 0) && (selectedX < mapLimitX) && (selectedY>=0) && (selectedY<mapLimitY))
+                {
+                    mapGrid[selectedY][selectedX] = true;
+                }
             }
             yield return null;
         }
 
+    }
+
+    private IEnumerator addTakenSpaceToMap(GridIllegalSpawnZone takenSpace)
+    {
+        //cache variables
+        int x1 = takenSpace.getTopLeftCorner().getX();
+        int x2 = takenSpace.getBottomRightCorner().getX();
+        int y1 = takenSpace.getTopLeftCorner().getY();
+        int y2 = takenSpace.getBottomRightCorner().getY();
+        int mapLimitX = mapData.getGridSize().getX();
+        int mapLimitY = mapData.getGridSize().getY();
+
+
+        int yDistance = (y2 - y1);
+        int xDistance = (x2 - x1);
+
+        for (int y = 0; y <= yDistance; y++)
+        {
+            for (int x = 0; x <= xDistance; x++)
+            {
+                //calculate the position to update
+                int selectedX = x + x1;
+                int selectedY = y + y1;
+
+                if ((selectedX >= 0) && (selectedX < mapLimitX) && (selectedY >= 0) && (selectedY < mapLimitY))
+                {
+                    mapGrid[selectedY][selectedX] = true;
+                }
+            }
+            yield return null;
+        }
     }
 
 
@@ -225,10 +266,14 @@ public partial class LevelManager : MonoBehaviour
 
     private IEnumerator initializeMapNoSpawnZones()
     {
-        
 
+        for (int zone = 0; zone < mapData.getOutOfMapGridAreaListLength(); zone++)
+        {
 
-        yield return null;
+            StartCoroutine(addTakenSpaceToMap(mapData.getOutOfMapGridArea(zone)));
+            yield return null;
+        }
+        mapSetupStage++;
     }
 
 
@@ -244,6 +289,7 @@ public partial class LevelManager : MonoBehaviour
             }
         }
         mapGrid = yArray;
+        mapSetupStage++;
     }
 
 
@@ -253,7 +299,7 @@ public partial class LevelManager : MonoBehaviour
         
         initializeGridArray(mapData.getGridSize().getX(), mapData.getGridSize().getY());
         yield return null;
-        initializeMapNoSpawnZones();
+        StartCoroutine(initializeMapNoSpawnZones());
         yield return null;
         //set up the dynamic parts of the map
         StartCoroutine(initializeMapSetpeices());
@@ -273,7 +319,7 @@ public partial class LevelManager : MonoBehaviour
         {
            
             mapSetupStage++;
-            playerSprite.GetComponent<Rigidbody2D>().position = calculateGridGlobalPosition(mapData.getPlayerStartPos().getX(),mapData.getPlayerStartPos().getX());
+            playerSprite.GetComponent<Rigidbody2D>().position = calculateGridGlobalPosition(mapData.getPlayerStartPos().getX(),mapData.getPlayerStartPos().getY());
             playerSprite.GetComponent<SpriteRenderer>().enabled = true;
             playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
         }
@@ -291,6 +337,12 @@ public partial class LevelManager : MonoBehaviour
             
                 break;
             case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
               
                 waitScreen();
                 break;

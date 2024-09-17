@@ -18,8 +18,8 @@ MonoBehaviour:
     x: 30
     y: 30
   playerStartPos:
-    x: 0
-    y: 0
+    x: 14
+    y: 23
   outOfMapGridAreas:
   - TopLeftCornerGridX: 0
     TopLeftCornerGridY: 0
