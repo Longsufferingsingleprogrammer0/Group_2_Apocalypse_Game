@@ -173,35 +173,34 @@ public class SetpeiceObjectSpawnTable
 [System.Serializable]
 public class SetpeiceSpawnPosition
 {
-    [SerializeField] private Vector2 position;
+    [SerializeField] private GridVector2 position;
     [SerializeField] private int prefabVariant;
-    //used for spawn collision
-    [SerializeField] private GridIllegalSpawnZone TakenGridSpace;
+    [SerializeField] private Vector2 gridPositionOffset;
+    
 
     //getters for the variables
-    public Vector2 getPosition() { return new Vector2(position.x, position.y); }
+    public GridVector2 getPosition() { return position.clone(); }
+
+    public Vector2 getGridPositionOffset()
+    {
+        return new Vector2(gridPositionOffset.x, gridPositionOffset.y);
+    }
     public int getPrefabVariant() { return prefabVariant; }
 
-    public SetpeiceSpawnPosition(Vector2 position, int prefabVariant, GridIllegalSpawnZone takenSpaces)
+    public SetpeiceSpawnPosition(GridVector2 position, Vector2 gridPositionOffset, int prefabVariant)
     {
         this.position = position;
         this.prefabVariant = prefabVariant;
-        this.TakenGridSpace = takenSpaces;
+        this.gridPositionOffset = gridPositionOffset;
     }
 
     //clone function to make life easier
     public SetpeiceSpawnPosition clone()
     {
-        return new SetpeiceSpawnPosition(this.getPosition(), this.getPrefabVariant(), this.getTakenGridSpace());
+        return new SetpeiceSpawnPosition(this.getPosition(), this.getGridPositionOffset(), this.getPrefabVariant());
     }
 
-    public GridIllegalSpawnZone getTakenGridSpace()
-    {
-        
-
-        return TakenGridSpace.clone();
-
-    }
+    
 }
 
 [System.Serializable]

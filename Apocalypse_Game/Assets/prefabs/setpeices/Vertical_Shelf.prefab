@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5933738898352302458}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.31, y: -0.34, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -102,6 +102,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 55f7c0fbaa6e8dd4aa05ebefaac8ec12, type: 3}
   - {fileID: 21300000, guid: 6325902cdbc060644b1b99de409a7e79, type: 3}
   setpeiceType: Vertical_Shelf
+  GridOffset: {x: 0, y: 0}
+  gridSize:
+  - TopLeftCornerGridX: 0
+    TopLeftCornerGridY: 0
+    BottomRightCornerGridX: 1
+    BottomRightCornerGridY: 2
 --- !u!60 &927911826799136793
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +140,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1, y: -1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 1}

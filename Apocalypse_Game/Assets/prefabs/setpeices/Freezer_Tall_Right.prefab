@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1449971814123841658}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.84, y: 1.51, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.48725247, y: 0.5600362}
+  m_Offset: {x: 1.733851, y: -0.43784675}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 1}
@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.52549505, y: 0.87992764}
+  m_Size: {x: 0.5362611, y: 0.88423413}
   m_EdgeRadius: 0
 --- !u!114 &370628522849220445
 MonoBehaviour:
@@ -146,3 +146,9 @@ MonoBehaviour:
   textures:
   - {fileID: 21300000, guid: 09cbe4c736bef954787f09df7dd41050, type: 3}
   setpeiceType: Freezer_Tall_Right
+  GridOffset: {x: 0, y: 0}
+  gridSize:
+  - TopLeftCornerGridX: 1
+    TopLeftCornerGridY: 0
+    BottomRightCornerGridX: 1
+    BottomRightCornerGridY: 1
