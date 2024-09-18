@@ -132,7 +132,7 @@ public partial class LevelManager : MonoBehaviour
     {
         float globalX = mapData.getGridZeroPoint().x + gridOffset.x;
         globalX += (float)gridX;
-        float globalY = mapData.getGridZeroPoint().y + gridOffset.y;
+        float globalY = mapData.getGridZeroPoint().y - gridOffset.y;
         globalY -= (float)gridY;
 
         return new Vector2(globalX, globalY);

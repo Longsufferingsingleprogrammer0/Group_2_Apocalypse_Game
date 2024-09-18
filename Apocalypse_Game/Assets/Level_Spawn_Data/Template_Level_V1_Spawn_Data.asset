@@ -37,4 +37,73 @@ MonoBehaviour:
     TopLeftCornerGridY: 25
     BottomRightCornerGridX: 24
     BottomRightCornerGridY: 29
-  setPeiceSpawnList: []
+  setPeiceSpawnList:
+  - actorType: cash_register
+    ActorPrefabVariants:
+    - {fileID: 5923407194622783732, guid: 39cf3f67d6541504480582ceaa800bd9, type: 3}
+    - {fileID: 9155814669608554222, guid: dbc98508c4dfd5a459af289cbdab3f89, type: 3}
+    - {fileID: 3818754284609036903, guid: a194d2b875c8643478a597a27f8f8b1e, type: 3}
+    - {fileID: 3217500910561792812, guid: a708633d28e1c524dbba64711bc64aa7, type: 3}
+    randomizedSpawning: 1
+    minimumSpawnNumber: 3
+    maximumSpawnNumber: 6
+    possibleSpawnPositions:
+    - position:
+        x: 10
+        y: 18
+      prefabVariant: 1
+      gridPositionOffset: {x: 0.5, y: 0}
+    - position:
+        x: 10
+        y: 20
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.5, y: 0}
+    - position:
+        x: 14
+        y: 18
+      prefabVariant: 2
+      gridPositionOffset: {x: -0.5, y: 0}
+    - position:
+        x: 15
+        y: 18
+      prefabVariant: 3
+      gridPositionOffset: {x: -0.5, y: 0}
+    - position:
+        x: 17
+        y: 18
+      prefabVariant: 0
+      gridPositionOffset: {x: -0.5, y: 0}
+    - position:
+        x: 17
+        y: 20
+      prefabVariant: 1
+      gridPositionOffset: {x: -0.5, y: 0}
+  - actorType: debris
+    ActorPrefabVariants:
+    - {fileID: 6104567475973550189, guid: 12a3a7eb7e6840449bd2eac33f11b06f, type: 3}
+    - {fileID: 4231985784619005008, guid: 50b7bb98ac37b9f4bba5f892b1e21149, type: 3}
+    - {fileID: 7292537438396400152, guid: ac94d9ae9a1eae641b7438eb0f5585c7, type: 3}
+    randomizedSpawning: 1
+    minimumSpawnNumber: 1
+    maximumSpawnNumber: 4
+    possibleSpawnPositions:
+    - position:
+        x: 6
+        y: 7
+      prefabVariant: 1
+      gridPositionOffset: {x: 0.5, y: -0.5}
+    - position:
+        x: 18
+        y: 7
+      prefabVariant: 1
+      gridPositionOffset: {x: 0, y: -0.5}
+    - position:
+        x: 14
+        y: 21
+      prefabVariant: 1
+      gridPositionOffset: {x: 0, y: 0}
+    - position:
+        x: 16
+        y: 23
+      prefabVariant: 1
+      gridPositionOffset: {x: -0.5, y: -0.5}
