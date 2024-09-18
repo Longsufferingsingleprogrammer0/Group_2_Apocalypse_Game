@@ -1,0 +1,34 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "template map 1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "grid template tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "template map 1.tmx": {
+            "scale": 1.3141666666666665,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 479.77171845275853,
+                "y": 776.5377298668359
+            }
+        }
+    },
+    "map.height": 30,
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "template map 1.tmx"
+    ],
+    "project": "template map 1.tiled-project",
+    "recentFiles": [
+        "template map 1.tmx",
+        "grid template tiles.tsx"
+    ]
+}
