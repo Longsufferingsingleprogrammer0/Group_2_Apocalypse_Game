@@ -186,7 +186,7 @@ public class SetpeiceSpawnPosition
     [SerializeField] private GridVector2 position;
     [SerializeField] private int prefabVariant;
     [SerializeField] private Vector2 gridPositionOffset;
-    
+    [SerializeField] private bool adjustIllegalSpanZoneForOffset;
 
     //getters for the variables
     public GridVector2 getPosition() { return position.clone(); }
@@ -197,17 +197,25 @@ public class SetpeiceSpawnPosition
     }
     public int getPrefabVariant() { return prefabVariant; }
 
-    public SetpeiceSpawnPosition(GridVector2 position, Vector2 gridPositionOffset, int prefabVariant)
+    public bool getAdjustIllegalSpawnZoneForOffset()
+    {
+        return adjustIllegalSpanZoneForOffset;
+    }
+
+    public SetpeiceSpawnPosition(GridVector2 position, Vector2 gridPositionOffset, int prefabVariant, bool adjustIllegalSpanZoneForOffset)
     {
         this.position = position;
         this.prefabVariant = prefabVariant;
         this.gridPositionOffset = gridPositionOffset;
+        this.adjustIllegalSpanZoneForOffset = adjustIllegalSpanZoneForOffset;
     }
+
+
 
     //clone function to make life easier
     public SetpeiceSpawnPosition clone()
     {
-        return new SetpeiceSpawnPosition(this.getPosition(), this.getGridPositionOffset(), this.getPrefabVariant());
+        return new SetpeiceSpawnPosition(this.getPosition(), this.getGridPositionOffset(), this.getPrefabVariant(),adjustIllegalSpanZoneForOffset);
     }
 
     
