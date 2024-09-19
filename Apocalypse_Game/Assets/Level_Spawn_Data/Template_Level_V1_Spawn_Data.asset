@@ -78,14 +78,13 @@ MonoBehaviour:
         y: 20
       prefabVariant: 1
       gridPositionOffset: {x: -0.5, y: 0}
-  - actorType: debris
+  - actorType: non-coliding debris
     ActorPrefabVariants:
     - {fileID: 6104567475973550189, guid: 12a3a7eb7e6840449bd2eac33f11b06f, type: 3}
     - {fileID: 4231985784619005008, guid: 50b7bb98ac37b9f4bba5f892b1e21149, type: 3}
-    - {fileID: 7292537438396400152, guid: ac94d9ae9a1eae641b7438eb0f5585c7, type: 3}
     randomizedSpawning: 1
-    minimumSpawnNumber: 1
-    maximumSpawnNumber: 4
+    minimumSpawnNumber: 14
+    maximumSpawnNumber: 18
     possibleSpawnPositions:
     - position:
         x: 6
@@ -107,3 +106,80 @@ MonoBehaviour:
         y: 23
       prefabVariant: 1
       gridPositionOffset: {x: -0.5, y: -0.5}
+    - position:
+        x: 9
+        y: 7
+      prefabVariant: 0
+      gridPositionOffset: {x: -0.25, y: -0.25}
+    - position:
+        x: 10
+        y: 7
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.25, y: 0.25}
+    - position:
+        x: 23
+        y: 7
+      prefabVariant: 0
+      gridPositionOffset: {x: -0.25, y: 0.25}
+    - position:
+        x: 16
+        y: 8
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.25, y: 0.25}
+    - position:
+        x: 18
+        y: 10
+      prefabVariant: 0
+      gridPositionOffset: {x: -0.25, y: -0.25}
+    - position:
+        x: 9
+        y: 13
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.25, y: -0.25}
+    - position:
+        x: 16
+        y: 13
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.25, y: -0.25}
+    - position:
+        x: 24
+        y: 15
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.25, y: -0.25}
+    - position:
+        x: 10
+        y: 16
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.25, y: -0.25}
+    - position:
+        x: 7
+        y: 22
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.25, y: 0.25}
+    - position:
+        x: 6
+        y: 23
+      prefabVariant: 0
+      gridPositionOffset: {x: -0.25, y: 0.25}
+    - position:
+        x: 23
+        y: 23
+      prefabVariant: 0
+      gridPositionOffset: {x: -0.25, y: 0.25}
+    - position:
+        x: 23
+        y: 24
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.25, y: -0.25}
+    - position:
+        x: 21
+        y: 24
+      prefabVariant: 0
+      gridPositionOffset: {x: -0.25, y: 0.25}
+  - actorType: large debris
+    ActorPrefabVariants:
+    - {fileID: 7292537438396400152, guid: ac94d9ae9a1eae641b7438eb0f5585c7, type: 3}
+    randomizedSpawning: 0
+    minimumSpawnNumber: 0
+    maximumSpawnNumber: 0
+    possibleSpawnPositions: []
