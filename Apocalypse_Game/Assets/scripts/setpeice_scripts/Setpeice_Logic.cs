@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 public class Setpeice_Logic : MonoBehaviour
 {
@@ -22,12 +21,19 @@ public class Setpeice_Logic : MonoBehaviour
     [SerializeField] private GridVector2 gridPosition;
     [SerializeField] private Vector2 GridOffset;
     [SerializeField] private GridIllegalSpawnZone[] gridSize;
+
+    [SerializeField]private int element;
+
+    public int ElementIndex
+    {
+        get => element;
+    }
+    public void setElelment(int element)
+    {
+        this.element = element;
+    }
     
-
-
-
-
-
+    public int getElement() { return element; }
 
     public void setRandomTexture()
     {

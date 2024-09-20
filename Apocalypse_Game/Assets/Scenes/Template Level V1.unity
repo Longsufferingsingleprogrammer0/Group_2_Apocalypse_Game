@@ -1457,7 +1457,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: c707490aa4e46f6469d3d43d39b720ad, type: 2}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: noSpawnDebug
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: debugTileObject

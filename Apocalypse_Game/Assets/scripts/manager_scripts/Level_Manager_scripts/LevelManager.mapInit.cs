@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 //need to heavily modify for new map spawning system
 public partial class LevelManager : MonoBehaviour
@@ -167,7 +167,7 @@ public partial class LevelManager : MonoBehaviour
 
 
 
-    private IEnumerator spawnSetPeice(SetpeiceSpawnPosition spawnPosition, GameObject[] varientTable)
+    private IEnumerator spawnSetPeice(SetpeiceSpawnPosition spawnPosition, GameObject[] varientTable, int element)
     {
         //check to make sure there is something to spawn
         if((varientTable==null)||(varientTable.Length == 0))
@@ -186,7 +186,7 @@ public partial class LevelManager : MonoBehaviour
         //spawn the set peice
         GameObject newPeice = Instantiate(varientTable[spawnPosition.getPrefabVariant()], spawnpos, new Quaternion(0f,0f,0f,0f));
 
-        
+        newPeice.GetComponent<Setpeice_Logic>().setElelment(element);
 
         //add the setpeice to the setpeices list
         Setpeices.Add(newPeice);
@@ -267,11 +267,11 @@ public partial class LevelManager : MonoBehaviour
 
 
     
-    private void debugNoSpawnZoneMaskGenerator()
+    private IEnumerator debugNoSpawnZoneMaskGenerator()
     {
         for(int y = 0; y < mapGrid.Length; y++)
         {
-
+            int counter = 0;
             for(int x = 0; x < mapGrid[y].Length; x++)
             {
                 if (mapGrid[y][x])
@@ -279,11 +279,15 @@ public partial class LevelManager : MonoBehaviour
                     Vector2 spawnPoint = calculateGridGlobalPosition(x, y);
                     Vector3 spawnPoint3D = new Vector3(spawnPoint.x, spawnPoint.y, 0f);
                     Instantiate(debugTileObject, spawnPoint3D, new Quaternion(0f, 0f, 0f, 0f));
-                    
+                    if (counter > maxSetpeicesSpawnedPerFrame)
+                    {
+                        counter = 0;
+                        yield return null;
+                    }
                 }
             }
 
-
+            yield return null;
         }
     }
 
@@ -299,7 +303,7 @@ public partial class LevelManager : MonoBehaviour
         for (int setpeice = 0; setpeice < spawnTable.getSpawnPositionCount(); setpeice++)
         {
 
-            yield return StartCoroutine(spawnSetPeice(spawnTable.GetSetpeiceSpawnPosition(setpeice), varients));
+            yield return StartCoroutine(spawnSetPeice(spawnTable.GetSetpeiceSpawnPosition(setpeice), varients, setpeice));
 
             if (counter >= maxSetpeicesSpawnedPerFrame)
             {
@@ -333,7 +337,7 @@ public partial class LevelManager : MonoBehaviour
 
             openIndexes.RemoveAt(chosenIndex);
 
-            yield return StartCoroutine(spawnSetPeice(toBePlaced, varients));
+            yield return StartCoroutine(spawnSetPeice(toBePlaced, varients,chosenIndex));
 
             if (counter >= maxSetpeicesSpawnedPerFrame)
             {
@@ -463,34 +467,35 @@ public partial class LevelManager : MonoBehaviour
         }
     }
 
+    private IEnumerator debugOpps()
+    {
+        yield return StartCoroutine(debugNoSpawnZoneMaskGenerator());
+        yield return null;
+        mapSetupStage++;
+    }
+
     private void mapSetupStageManager()
     {
         
         switch (mapSetupStage)
         {
-            case 0:
-         
-                break;
-            case 1:
-            
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
             case 4:
                 if (noSpawnDebug)
                 {
-                    debugNoSpawnZoneMaskGenerator();
+                    StartCoroutine(debugOpps());
+                    mapSetupStage++;
                 }
-                mapSetupStage++;
-                break;
-            case 5:
+                else
+                {
+                    mapSetupStage += 2;
+                }
                 
+                break;
+
+            case 6:
                 waitScreen();
                 break;
+
             default:
                 break;
         }
