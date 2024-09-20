@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 60c5f0679e985c8419f71449ef8f975a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -146,6 +146,9 @@ MonoBehaviour:
   textures:
   - {fileID: 21300000, guid: 60c5f0679e985c8419f71449ef8f975a, type: 3}
   setpeiceType: Cashier_Long_Right
+  gridPosition:
+    x: 0
+    y: 0
   GridOffset: {x: 0, y: 0}
   gridSize:
   - TopLeftCornerGridX: 0

@@ -53,31 +53,43 @@ MonoBehaviour:
         y: 18
       prefabVariant: 1
       gridPositionOffset: {x: 0.5, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 10
         y: 20
       prefabVariant: 0
       gridPositionOffset: {x: 0.5, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 14
         y: 18
       prefabVariant: 2
       gridPositionOffset: {x: -0.5, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 15
         y: 18
       prefabVariant: 3
       gridPositionOffset: {x: -0.5, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 17
         y: 18
       prefabVariant: 0
       gridPositionOffset: {x: -0.5, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 17
         y: 20
       prefabVariant: 1
       gridPositionOffset: {x: -0.5, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
   - actorType: non-coliding debris
     ActorPrefabVariants:
     - {fileID: 6104567475973550189, guid: 12a3a7eb7e6840449bd2eac33f11b06f, type: 3}
@@ -91,95 +103,166 @@ MonoBehaviour:
         y: 7
       prefabVariant: 1
       gridPositionOffset: {x: 0.5, y: -0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 18
         y: 7
       prefabVariant: 1
       gridPositionOffset: {x: 0, y: -0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 14
         y: 21
       prefabVariant: 1
       gridPositionOffset: {x: 0, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 16
         y: 23
       prefabVariant: 1
       gridPositionOffset: {x: -0.5, y: -0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 9
         y: 7
       prefabVariant: 0
       gridPositionOffset: {x: -0.25, y: -0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 10
         y: 7
       prefabVariant: 0
       gridPositionOffset: {x: 0.25, y: 0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 23
         y: 7
       prefabVariant: 0
       gridPositionOffset: {x: -0.25, y: 0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 16
         y: 8
       prefabVariant: 0
       gridPositionOffset: {x: 0.25, y: 0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 18
         y: 10
       prefabVariant: 0
       gridPositionOffset: {x: -0.25, y: -0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 9
         y: 13
       prefabVariant: 0
       gridPositionOffset: {x: 0.25, y: -0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 16
         y: 13
       prefabVariant: 0
       gridPositionOffset: {x: 0.25, y: -0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 24
         y: 15
       prefabVariant: 0
       gridPositionOffset: {x: 0.25, y: -0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 10
         y: 16
       prefabVariant: 0
       gridPositionOffset: {x: 0.25, y: -0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 7
         y: 22
       prefabVariant: 0
       gridPositionOffset: {x: 0.25, y: 0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 6
         y: 23
       prefabVariant: 0
       gridPositionOffset: {x: -0.25, y: 0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 23
         y: 23
       prefabVariant: 0
       gridPositionOffset: {x: -0.25, y: 0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 23
         y: 24
       prefabVariant: 0
       gridPositionOffset: {x: 0.25, y: -0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 21
         y: 24
       prefabVariant: 0
       gridPositionOffset: {x: -0.25, y: 0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0
   - actorType: large debris
     ActorPrefabVariants:
     - {fileID: 7292537438396400152, guid: ac94d9ae9a1eae641b7438eb0f5585c7, type: 3}
     randomizedSpawning: 0
-    minimumSpawnNumber: 0
-    maximumSpawnNumber: 0
-    possibleSpawnPositions: []
+    minimumSpawnNumber: 2
+    maximumSpawnNumber: 4
+    possibleSpawnPositions:
+    - position:
+        x: 8
+        y: 10
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.5, y: 0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 1
+    - position:
+        x: 22
+        y: 21
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.5, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
+    - position:
+        x: 7
+        y: 23
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.5, y: -0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
+    - position:
+        x: 11
+        y: 23
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.5, y: -0.25}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
+    - position:
+        x: 18
+        y: 24
+      prefabVariant: 0
+      gridPositionOffset: {x: 0, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 0

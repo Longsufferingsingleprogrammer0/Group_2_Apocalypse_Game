@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.Android;
 
 
 
@@ -186,7 +187,8 @@ public class SetpeiceSpawnPosition
     [SerializeField] private GridVector2 position;
     [SerializeField] private int prefabVariant;
     [SerializeField] private Vector2 gridPositionOffset;
-    [SerializeField] private bool adjustIllegalSpanZoneForOffset;
+    [SerializeField] private bool horizontalOffsetNoSpawnZoneCompensation;
+    [SerializeField] private bool verticalOffsetNoSpawnZoneCompensation;
 
     //getters for the variables
     public GridVector2 getPosition() { return position.clone(); }
@@ -197,25 +199,34 @@ public class SetpeiceSpawnPosition
     }
     public int getPrefabVariant() { return prefabVariant; }
 
-    public bool getAdjustIllegalSpawnZoneForOffset()
-    {
-        return adjustIllegalSpanZoneForOffset;
-    }
+    
 
-    public SetpeiceSpawnPosition(GridVector2 position, Vector2 gridPositionOffset, int prefabVariant, bool adjustIllegalSpanZoneForOffset)
+    public SetpeiceSpawnPosition(GridVector2 position, Vector2 gridPositionOffset, int prefabVariant, bool horizontalOffsetNoSpawnCompensation, bool verticalOffsetNoSpawnCompensation)
     {
         this.position = position;
         this.prefabVariant = prefabVariant;
         this.gridPositionOffset = gridPositionOffset;
-        this.adjustIllegalSpanZoneForOffset = adjustIllegalSpanZoneForOffset;
+        this.horizontalOffsetNoSpawnZoneCompensation = horizontalOffsetNoSpawnCompensation;
+        this.verticalOffsetNoSpawnZoneCompensation= verticalOffsetNoSpawnCompensation;
     }
 
+
+
+    public bool getHorizontalOffsetNoSpawnCompensation()
+    {
+        return horizontalOffsetNoSpawnZoneCompensation;
+    }
+
+    public bool getVerticalOffsetNoSpawnCompensation()
+    {
+        return verticalOffsetNoSpawnZoneCompensation;
+    }
 
 
     //clone function to make life easier
     public SetpeiceSpawnPosition clone()
     {
-        return new SetpeiceSpawnPosition(this.getPosition(), this.getGridPositionOffset(), this.getPrefabVariant(),adjustIllegalSpanZoneForOffset);
+        return new SetpeiceSpawnPosition(this.getPosition(), this.getGridPositionOffset(), this.getPrefabVariant(),this.getHorizontalOffsetNoSpawnCompensation(), this.getVerticalOffsetNoSpawnCompensation());
     }
 
     

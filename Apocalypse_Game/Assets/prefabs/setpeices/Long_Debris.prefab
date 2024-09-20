@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: fece42aa49dede348b98d0536a111670, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,6 +101,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fece42aa49dede348b98d0536a111670, type: 3}
   - {fileID: 21300000, guid: 384caf333d9c0d34596e8041cb525dae, type: 3}
   setpeiceType: Long_Debris
+  gridPosition:
+    x: 0
+    y: 0
   GridOffset: {x: 0, y: 0}
   gridSize:
   - TopLeftCornerGridX: 0

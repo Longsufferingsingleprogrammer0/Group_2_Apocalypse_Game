@@ -18,9 +18,10 @@ public partial class LevelManager : MonoBehaviour
     [SerializeField] private Vector2 loadingScreenPos;
     [SerializeField] private Vector2 loadingDoneScreenPos;
 
-    
+    //debug variables
+    [SerializeField] private GameObject debugTileObject;
+    [SerializeField] private bool noSpawnDebug;
 
-   
 
     private GameObject playerSprite;
 
@@ -42,7 +43,7 @@ public partial class LevelManager : MonoBehaviour
     //the grid used to figure out and store what parts of the map are taken or not
     private bool[][] mapGrid;
     
-
+    
 
 
     private IEnumerator addTakenSpaceToMap(GridIllegalSpawnZone[] takenSpace, GridVector2 objectPosition)
@@ -103,7 +104,14 @@ public partial class LevelManager : MonoBehaviour
         int mapLimitX = mapData.getGridSize().getX();
         int mapLimitY = mapData.getGridSize().getY();
 
-
+        if (x2 < x1)
+        {
+            throw new System.Exception("illegal spawn zone error, corners in incorrect x order (x2 must be greater than or equal to x1)");
+        }
+        else if (y2 < y1)
+        {
+            throw new System.Exception("illegal spawn zone error, corners in incorrect y order (y2 must be greater than or equal to y1)");
+        }
         int yDistance = (y2 - y1);
         int xDistance = (x2 - x1);
 
@@ -173,7 +181,7 @@ public partial class LevelManager : MonoBehaviour
         //convert the global position vector 2 to a vector 3
         Vector3 spawnpos = new Vector3(globalPosition.x,globalPosition.y,0f);
 
-        Debug.Log(spawnpos.ToString());
+        
 
         //spawn the set peice
         GameObject newPeice = Instantiate(varientTable[spawnPosition.getPrefabVariant()], spawnpos, new Quaternion(0f,0f,0f,0f));
@@ -182,96 +190,102 @@ public partial class LevelManager : MonoBehaviour
 
         //add the setpeice to the setpeices list
         Setpeices.Add(newPeice);
+        
+
+        yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), spawnPosition.getPosition()));
         yield return null;
 
-        StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(),spawnPosition.getPosition()));
 
-        
+        //account for offsets (not at all efficent, but i dont want to waste time on that
 
-        //account for offsets
-        
+        int angleOffset = 0;
 
-        if(spawnPosition.getAdjustIllegalSpawnZoneForOffset()) { 
-
-            GridVector2 gridspawn = spawnPosition.getPosition();
-            Vector2 offset = spawnPosition.getGridPositionOffset();
-            bool third = false;
-
-            if (Mathf.CeilToInt(Mathf.Abs(offset.x)) + Mathf.CeilToInt(Mathf.Abs(offset.y)) > 1)
+        if (spawnPosition.getVerticalOffsetNoSpawnCompensation())
+        {
+            if(spawnPosition.getGridPositionOffset().y > 0f)
             {
-                third = true;
-            }
-            yield return null;
-            //are we offset left or right
-            switch (Mathf.CeilToInt(offset.x)+2)
+                angleOffset += 1;
+                yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX(), spawnPosition.getPosition().getY() + 1)));
+            }else if (spawnPosition.getGridPositionOffset().y < 0f)
             {
-                case 1:
-                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(gridspawn.getX() - 1, gridspawn.getY())));
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(gridspawn.getX() + 1, gridspawn.getY())));
-                    break;
-
+                angleOffset += 2;
+                yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX(), spawnPosition.getPosition().getY() - 1)));
             }
 
             yield return null;
-            switch (Mathf.CeilToInt(offset.y) + 2)
-            {
-                case 1:
-                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(gridspawn.getX(), gridspawn.getY()-1)));
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(gridspawn.getX(), gridspawn.getY()+1)));
-                    break;
+        }
 
+
+
+        if (spawnPosition.getHorizontalOffsetNoSpawnCompensation())
+        {
+            if(spawnPosition.getGridPositionOffset().x > 0f)
+            {
+                angleOffset += 10;
+                yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() + 1, spawnPosition.getPosition().getY()))); 
+            }else if(spawnPosition.getGridPositionOffset().x < 0f)
+            {
+                angleOffset += 20;
+                yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() - 1, spawnPosition.getPosition().getY())));
             }
+
             yield return null;
+        }
 
-                //if we have two offsets
-            if (third)
+
+
+        if (spawnPosition.getHorizontalOffsetNoSpawnCompensation() && spawnPosition.getVerticalOffsetNoSpawnCompensation())
+        {
+            switch (angleOffset)
             {
-                int intXOffset = Mathf.FloorToInt(offset.x);
-                int intYOffset = Mathf.FloorToInt(offset.y);
+                case 11:
+                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() + 1, spawnPosition.getPosition().getY() + 1)));
+                    break;
 
-                if (intXOffset > 0)
-                {
-                    switch (intYOffset + 1)
-                    {
-                        case 0:
-                            StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(gridspawn.getX() + 1, gridspawn.getY() - 1)));
-                            break;
-                        case 2:
-                            StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(gridspawn.getX() + 1, gridspawn.getY() + 1)));
-                            break;
-                    }
-                }
-                else
-                {
-                    switch (intYOffset + 1)
-                    {
-                        case 0:
-                            StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(gridspawn.getX() - 1, gridspawn.getY() - 1)));
-                            break;
-                        case 2:
-                            StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(gridspawn.getX() - 1, gridspawn.getY() + 1)));
-                            break;
-                    }
-                }
+                case 12:
+                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() + 1, spawnPosition.getPosition().getY() - 1)));
+                    break;
 
+                case 21:
+                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() - 1, spawnPosition.getPosition().getY() + 1)));
+                    break;
+
+                case 22:
+                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Logic>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() - 1, spawnPosition.getPosition().getY() - 1)));
+                    break;
+                default:
+                    break;
             }
+
+
             
         }
+        
 
     }
 
 
 
     
+    private void debugNoSpawnZoneMaskGenerator()
+    {
+        for(int y = 0; y < mapGrid.Length; y++)
+        {
 
+            for(int x = 0; x < mapGrid[y].Length; x++)
+            {
+                if (mapGrid[y][x])
+                {
+                    Vector2 spawnPoint = calculateGridGlobalPosition(x, y);
+                    Vector3 spawnPoint3D = new Vector3(spawnPoint.x, spawnPoint.y, 0f);
+                    Instantiate(debugTileObject, spawnPoint3D, new Quaternion(0f, 0f, 0f, 0f));
+                    
+                }
+            }
+
+
+        }
+    }
 
 
     private IEnumerator placeSetpeiceSet(SetpeiceObjectSpawnTable spawnTable) 
@@ -285,7 +299,7 @@ public partial class LevelManager : MonoBehaviour
         for (int setpeice = 0; setpeice < spawnTable.getSpawnPositionCount(); setpeice++)
         {
 
-            StartCoroutine(spawnSetPeice(spawnTable.GetSetpeiceSpawnPosition(setpeice), varients));
+            yield return StartCoroutine(spawnSetPeice(spawnTable.GetSetpeiceSpawnPosition(setpeice), varients));
 
             if (counter >= maxSetpeicesSpawnedPerFrame)
             {
@@ -319,7 +333,7 @@ public partial class LevelManager : MonoBehaviour
 
             openIndexes.RemoveAt(chosenIndex);
 
-            StartCoroutine(spawnSetPeice(toBePlaced,varients));
+            yield return StartCoroutine(spawnSetPeice(toBePlaced, varients));
 
             if (counter >= maxSetpeicesSpawnedPerFrame)
             {
@@ -363,11 +377,11 @@ public partial class LevelManager : MonoBehaviour
 
             if (spawnTable.isSpawningRandomized())
             {
-                StartCoroutine(randomPlaceSetpeiceSet(spawnTable));
+                yield return StartCoroutine(randomPlaceSetpeiceSet(spawnTable));
             }
             else
             {
-                StartCoroutine(placeSetpeiceSet(spawnTable));
+                yield return StartCoroutine(placeSetpeiceSet(spawnTable));
             }
             yield return null;
             
@@ -393,7 +407,7 @@ public partial class LevelManager : MonoBehaviour
             for (int zone = 0; zone < mapData.getOutOfMapGridAreaListLength(); zone++)
             {
 
-                StartCoroutine(addTakenSpaceToMap(mapData.getOutOfMapGridArea(zone)));
+                yield return StartCoroutine(addTakenSpaceToMap(mapData.getOutOfMapGridArea(zone)));
                 yield return null;
             }
         }
@@ -423,12 +437,12 @@ public partial class LevelManager : MonoBehaviour
         
         initializeGridArray(mapData.getGridSize().getX(), mapData.getGridSize().getY());
         yield return null;
-        StartCoroutine(initializeMapNoSpawnZones());
+        yield return StartCoroutine(initializeMapNoSpawnZones());
         yield return null;
         //set up the dynamic parts of the map
-        StartCoroutine(initializeMapSetpeices());
+        yield return StartCoroutine(initializeMapSetpeices());
         yield return null;
-        StartCoroutine(initializeMapActors());
+        yield return StartCoroutine(initializeMapActors());
         yield return null;
         //setup done, go to confirm screen
         mapSetupStage++;
@@ -467,7 +481,14 @@ public partial class LevelManager : MonoBehaviour
 
                 break;
             case 4:
-              
+                if (noSpawnDebug)
+                {
+                    debugNoSpawnZoneMaskGenerator();
+                }
+                mapSetupStage++;
+                break;
+            case 5:
+                
                 waitScreen();
                 break;
             default:
@@ -491,6 +512,8 @@ public partial class LevelManager : MonoBehaviour
 
         //start the initialisation process
         StartCoroutine(initializeMap());
+
+        
         
     }
 

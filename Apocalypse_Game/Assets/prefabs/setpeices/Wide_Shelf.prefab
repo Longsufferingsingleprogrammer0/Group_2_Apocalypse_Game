@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 5c73215c694de504ab72817dfecae8c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -148,6 +148,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7c2ddc8032433c14588b0aa35f29ad54, type: 3}
   - {fileID: 21300000, guid: 7d22cb4364d8f1b49b18fea9f7c92a67, type: 3}
   setpeiceType: wide_shelf
+  gridPosition:
+    x: 0
+    y: 0
   GridOffset: {x: 0, y: 0}
   gridSize:
   - TopLeftCornerGridX: 0
