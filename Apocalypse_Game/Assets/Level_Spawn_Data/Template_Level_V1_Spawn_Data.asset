@@ -249,14 +249,14 @@ MonoBehaviour:
         x: 7
         y: 23
       prefabVariant: 0
-      gridPositionOffset: {x: 0.5, y: -0.25}
+      gridPositionOffset: {x: 0.5, y: -0.1}
       horizontalOffsetNoSpawnZoneCompensation: 1
       verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 11
         y: 23
       prefabVariant: 0
-      gridPositionOffset: {x: 0.5, y: -0.25}
+      gridPositionOffset: {x: 0.5, y: -0.1}
       horizontalOffsetNoSpawnZoneCompensation: 1
       verticalOffsetNoSpawnZoneCompensation: 0
     - position:

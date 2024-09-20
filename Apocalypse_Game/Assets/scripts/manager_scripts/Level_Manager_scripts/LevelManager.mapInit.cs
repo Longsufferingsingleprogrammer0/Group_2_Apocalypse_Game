@@ -513,7 +513,7 @@ public partial class LevelManager : MonoBehaviour
         //start the initialisation process
         StartCoroutine(initializeMap());
 
-        
+        //coroutines will not wait for each other unless you chain yeild returns
         
     }
 
