@@ -1,26 +1,24 @@
-
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
 public class Player : MonoBehaviour
 {
 
-#region localVariables:
+    #region localVariables:
     //the compoents we need
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D SpritePhysics;
-
+    private Animator spriteAnimator;
     //never give serialized values a default value, it breaks things
 
-#region movementVariables:
+    #region movementVariables:
     //distance moved per second
     [SerializeField] private float movementSpeed;
 
-#endregion
+    #endregion
 
 
-#region modeVariables:
+    #region modeVariables:
     //enable movement of sprite at startup    
     [SerializeField] private bool movementEnabledAtStartup;
     
@@ -29,10 +27,15 @@ public class Player : MonoBehaviour
     
     //enables and disables movement
     private bool movementEnabled;
-    
-#endregion
 
-#endregion
+    #endregion
+
+    #region animationVariables:
+    [SerializeField] private Sprite[] idleSprites;
+    private int direction;
+    #endregion
+
+    #endregion
 
 
 
@@ -50,18 +53,72 @@ public class Player : MonoBehaviour
         
         SpritePhysics = GetComponent<Rigidbody2D>();
 
+        spriteAnimator = GetComponent<Animator>();
         //init movement enableing
         movementEnabled = movementEnabledAtStartup;
         //init render enabling at at startup
         spriteRenderer.enabled = spriteRendererEnabledAtStartup;
 
-
+        spriteAnimator.enabled = false;
+        direction = 1;
     }
 
 
     public void setPlayerMovementEnabled(bool enabled)
     {
         movementEnabled = enabled;
+    }
+
+
+    private void playerAnimationHandler(int toMoveX, int toMoveY)
+    {
+        if ((toMoveX != 0) || (toMoveY != 0))
+        {
+            if (!spriteAnimator.enabled)
+            {
+                spriteAnimator.enabled = true;
+            }
+            if (toMoveY == 0)
+            {
+                switch (toMoveX + 1)
+                {
+                    case (0):
+                        direction = 2;
+                        break;
+                    case (2):
+                        direction = 4;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                switch (toMoveY + 1)
+                {
+                    case (0):
+                        direction = 1;
+                        break;
+                    case (2):
+                        direction = 2;
+                        break;
+                    default:
+                        break;
+                }
+                if (spriteAnimator.GetInteger(0) != direction)
+                {
+                    spriteAnimator.SetInteger(0, direction);
+                }
+                
+            }
+
+        }
+        else if (spriteAnimator.enabled)
+        {
+            spriteAnimator.enabled = false;
+            spriteAnimator.SetInteger(0, 0);
+            
+        }
     }
 
 
@@ -97,8 +154,10 @@ public class Player : MonoBehaviour
             {
                 toMoveX += distance;
             }
-            
 
+
+            playerAnimationHandler(toMoveX, toMoveY);
+            
             //if we need to move
             if ((toMoveX!=0)||(toMoveY!=0))
             {              
