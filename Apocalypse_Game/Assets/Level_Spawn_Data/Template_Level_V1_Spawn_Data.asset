@@ -415,3 +415,104 @@ MonoBehaviour:
       gridPositionOffset: {x: 0.5, y: -0.5}
       horizontalOffsetNoSpawnZoneCompensation: 0
       verticalOffsetNoSpawnZoneCompensation: 0
+  - actorType: large freezers
+    ActorPrefabVariants:
+    - {fileID: 6668348371896207852, guid: 2d497a79d5205bf4092df97696068e79, type: 3}
+    - {fileID: 566992298980350271, guid: 11a577c8aa4c4164caaf991bc406821b, type: 3}
+    randomizedSpawning: 1
+    minimumSpawnNumber: 2
+    maximumSpawnNumber: 4
+    possibleSpawnPositions:
+    - position:
+        x: 5
+        y: 13
+      prefabVariant: 0
+      gridPositionOffset: {x: 0, y: 0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 1
+    - position:
+        x: 5
+        y: 18
+      prefabVariant: 0
+      gridPositionOffset: {x: 0, y: 0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 1
+    - position:
+        x: 23
+        y: 7
+      prefabVariant: 1
+      gridPositionOffset: {x: 0, y: 0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 1
+    - position:
+        x: 23
+        y: 18
+      prefabVariant: 1
+      gridPositionOffset: {x: 0, y: 0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 1
+  - actorType: small freezers
+    ActorPrefabVariants:
+    - {fileID: 5735982768267032965, guid: 3d585637b70020d4b8195f83fbd4641e, type: 3}
+    - {fileID: 3482072848386240791, guid: a0e002251ae06bd438329c32828a0047, type: 3}
+    randomizedSpawning: 1
+    minimumSpawnNumber: 0
+    maximumSpawnNumber: 4
+    possibleSpawnPositions:
+    - position:
+        x: 5
+        y: 9
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.5, y: 0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 1
+    - position:
+        x: 7
+        y: 9
+      prefabVariant: 1
+      gridPositionOffset: {x: 0.5, y: 0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 1
+    - position:
+        x: 5
+        y: 11
+      prefabVariant: 0
+      gridPositionOffset: {x: 0.5, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
+    - position:
+        x: 7
+        y: 11
+      prefabVariant: 1
+      gridPositionOffset: {x: 0.5, y: 0}
+      horizontalOffsetNoSpawnZoneCompensation: 1
+      verticalOffsetNoSpawnZoneCompensation: 0
+  - actorType: tall freezers
+    ActorPrefabVariants:
+    - {fileID: 8820824111818520580, guid: 4ffbe351587a1e646bb8d21d94289868, type: 3}
+    - {fileID: 1449971814123841658, guid: dea7a3768de21644d993405f459bedf6, type: 3}
+    randomizedSpawning: 1
+    minimumSpawnNumber: 1
+    maximumSpawnNumber: 3
+    possibleSpawnPositions:
+    - position:
+        x: 5
+        y: 6
+      prefabVariant: 0
+      gridPositionOffset: {x: 0, y: 0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 1
+    - position:
+        x: 23
+        y: 12
+      prefabVariant: 1
+      gridPositionOffset: {x: 0, y: 0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 1
+    - position:
+        x: 23
+        y: 15
+      prefabVariant: 1
+      gridPositionOffset: {x: 0, y: 0.5}
+      horizontalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 1

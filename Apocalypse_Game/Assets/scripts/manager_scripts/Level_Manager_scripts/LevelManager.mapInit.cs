@@ -19,8 +19,8 @@ public partial class LevelManager : MonoBehaviour
     [SerializeField] private Vector2 loadingDoneScreenPos;
 
     //debug variables
-    [SerializeField] private GameObject debugTileObject;
-    [SerializeField] private bool noSpawnDebug;
+    [SerializeField] private GameObject takenTileObject;
+    [SerializeField] private bool showTakenTiles;
 
 
     private GameObject playerSprite;
@@ -278,7 +278,7 @@ public partial class LevelManager : MonoBehaviour
                 {
                     Vector2 spawnPoint = calculateGridGlobalPosition(x, y);
                     Vector3 spawnPoint3D = new Vector3(spawnPoint.x, spawnPoint.y, 0f);
-                    Instantiate(debugTileObject, spawnPoint3D, new Quaternion(0f, 0f, 0f, 0f));
+                    Instantiate(takenTileObject, spawnPoint3D, new Quaternion(0f, 0f, 0f, 0f));
                     if (counter > maxSetpeicesSpawnedPerFrame)
                     {
                         counter = 0;
@@ -480,7 +480,7 @@ public partial class LevelManager : MonoBehaviour
         switch (mapSetupStage)
         {
             case 4:
-                if (noSpawnDebug)
+                if (showTakenTiles)
                 {
                     StartCoroutine(debugOpps());
                     mapSetupStage++;

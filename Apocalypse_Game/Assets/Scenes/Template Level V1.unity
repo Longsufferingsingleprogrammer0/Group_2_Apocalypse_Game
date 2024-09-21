@@ -248,7 +248,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e91c91fe4b519764e997eb8ace9a1d80, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f8bdcf1f268e4f479f358548f6b4cad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1460,7 +1460,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: showTakenTiles
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: debugTileObject
+      value: 
+      objectReference: {fileID: 2866186390818997725, guid: b0f0047410d85944fbbcd180f2c2c4e8, type: 3}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: takenTileObject
       value: 
       objectReference: {fileID: 2866186390818997725, guid: b0f0047410d85944fbbcd180f2c2c4e8, type: 3}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
