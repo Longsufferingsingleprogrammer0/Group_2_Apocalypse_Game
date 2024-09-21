@@ -31,7 +31,9 @@ public class Player : MonoBehaviour
     #endregion
 
     #region animationVariables:
+    [SerializeField] private string animationControlParamater;
     [SerializeField] private Sprite[] idleSprites;
+    
     private int direction;
     #endregion
 
@@ -78,15 +80,16 @@ public class Player : MonoBehaviour
             {
                 spriteAnimator.enabled = true;
             }
+            int newDirection = 0;
             if (toMoveY == 0)
             {
                 switch (toMoveX + 1)
                 {
                     case (0):
-                        direction = 2;
+                        newDirection = 2;
                         break;
                     case (2):
-                        direction = 4;
+                        newDirection = 4;
                         break;
                     default:
                         break;
@@ -97,26 +100,33 @@ public class Player : MonoBehaviour
                 switch (toMoveY + 1)
                 {
                     case (0):
-                        direction = 1;
+                        newDirection = 3;
                         break;
                     case (2):
-                        direction = 2;
+                        newDirection = 1;
                         break;
                     default:
                         break;
                 }
-                if (spriteAnimator.GetInteger(0) != direction)
-                {
-                    spriteAnimator.SetInteger(0, direction);
-                }
                 
+                
+            }
+            if (newDirection != direction)
+            {
+                direction = newDirection;
+                spriteRenderer.sprite = idleSprites[direction - 1];
+            }
+            if (spriteAnimator.GetInteger(animationControlParamater) != direction)
+            {
+                spriteAnimator.SetInteger(animationControlParamater, direction);
             }
 
         }
         else if (spriteAnimator.enabled)
         {
+            spriteRenderer.sprite = idleSprites[direction - 1];
             spriteAnimator.enabled = false;
-            spriteAnimator.SetInteger(0, 0);
+            spriteAnimator.SetInteger(animationControlParamater, 0);
             
         }
     }
