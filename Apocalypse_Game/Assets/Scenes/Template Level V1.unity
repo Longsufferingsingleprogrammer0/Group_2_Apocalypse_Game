@@ -383,9 +383,9 @@ MonoBehaviour:
   spriteRendererEnabledAtStartup: 0
   animationControlParamater: direction
   idleSprites:
-  - {fileID: 21300000, guid: d75adfaf7001eae45a32d289f19bdff3, type: 3}
-  - {fileID: 21300000, guid: 46d6a035e8056014c9c3e55f795038ba, type: 3}
   - {fileID: 21300000, guid: d1d299cb078c0b3458ec4fe163f4f149, type: 3}
+  - {fileID: 21300000, guid: 46d6a035e8056014c9c3e55f795038ba, type: 3}
+  - {fileID: 21300000, guid: d75adfaf7001eae45a32d289f19bdff3, type: 3}
   - {fileID: 21300000, guid: 5eea560bd30b6764495ac7710e0fdd3c, type: 3}
 --- !u!50 &134613956
 Rigidbody2D:
