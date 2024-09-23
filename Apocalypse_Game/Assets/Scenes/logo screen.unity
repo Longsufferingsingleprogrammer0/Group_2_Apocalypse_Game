@@ -389,7 +389,7 @@ MonoBehaviour:
   fadeInTimeSeconds: 1
   holdTimeSeconds: 2
   fadeOutTimeSeconds: 1
-  SceneToSwitchTo: Template Level V1
+  SceneToSwitchTo: title screen
 --- !u!212 &569301473
 SpriteRenderer:
   m_ObjectHideFlags: 0
