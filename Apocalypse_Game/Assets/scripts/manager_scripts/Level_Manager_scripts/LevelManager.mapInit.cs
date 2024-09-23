@@ -464,6 +464,7 @@ public partial class LevelManager : MonoBehaviour
             playerSprite.GetComponent<Rigidbody2D>().position = calculateGridGlobalPosition(mapData.getPlayerStartPos().getX(),mapData.getPlayerStartPos().getY());
             playerSprite.GetComponent<SpriteRenderer>().enabled = true;
             playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
+            startMusic();
         }
     }
 

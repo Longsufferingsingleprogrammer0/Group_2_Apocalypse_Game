@@ -41,21 +41,31 @@ public partial class LevelManager : MonoBehaviour
             Application.Quit();
         }
     }
-    void startAllFiles()
+    private void startAllFiles()
     {
         UIStart();
         MapInitStart();
+        startManagerAudio();
     }
 
 
-    void updateAllFiles()
+    private void updateAllFiles()
     {
         quitter();
         UIUpdate();
         MapInitUpdate();
+        audioManagerUpdate();
     }
 
+    private void fixUpdateAllFiles()
+    {
 
+    }
+
+    void FixedUpdate()
+    {
+        fixUpdateAllFiles();
+    }
     // Start is called before the first frame update
     void Start()
     {
