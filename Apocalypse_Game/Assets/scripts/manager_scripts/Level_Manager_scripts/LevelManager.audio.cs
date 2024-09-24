@@ -7,6 +7,7 @@ public partial class LevelManager : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource menuSound;
 
     private void audioSourcePresenceCheck()
     {

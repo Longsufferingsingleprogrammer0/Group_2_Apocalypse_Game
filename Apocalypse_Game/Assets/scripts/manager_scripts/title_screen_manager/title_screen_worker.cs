@@ -10,6 +10,7 @@ public class title_screen_worker : MonoBehaviour
     [SerializeField] private string gameStartScene;
     [SerializeField] private GameObject fader;
     [SerializeField] private AudioSource musicPlayer;
+    [SerializeField] private AudioSource buttonSound;
     [SerializeField] private float fadeTime;
     [SerializeField] private GameObject startButton;
     private transitionFaderScript faderController;
@@ -22,6 +23,7 @@ public class title_screen_worker : MonoBehaviour
     {
         if (InputEnable) 
         {
+            buttonSound.Play();
             state++;
         }
         
@@ -72,7 +74,7 @@ public class title_screen_worker : MonoBehaviour
                 {
                     faderController.skipTransition();
                     musicController.skipTransition();
-
+                    buttonSound.Stop();
                 }
                 if (faderController.isFadeFinished() && musicController.isFadeFinished())
                 {

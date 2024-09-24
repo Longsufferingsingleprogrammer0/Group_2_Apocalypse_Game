@@ -72,6 +72,7 @@ public partial class LevelManager : MonoBehaviour
             case 5:
                 if(Input.anyKeyDown)
                 {
+                    menuSound.Play();
                     uiStage++;
                 }
                 break;
