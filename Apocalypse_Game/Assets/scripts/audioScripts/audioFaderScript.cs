@@ -1,10 +1,8 @@
-
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class fader_script : MonoBehaviour
+public class audioFaderScript : MonoBehaviour
 {
     #region timerVariables
     //how long we have waited
@@ -13,23 +11,23 @@ public class fader_script : MonoBehaviour
     private float timer;
     #endregion
 
-    //if the user skips the animation
+    //if the user skips the volume lerp
     private bool skip;
 
-    //what stage of the animation we are on
+    //our mode
     private int mode;
 
     //just premaking a variable for later
-    private float newAlpha;
+    private float newVolume;
 
-    //sprite renderer and logo sprite
    
-    private SpriteRenderer faderRenderer;
+
+    private AudioSource audioPlayer;
 
     #region controlVariables
-    
+
     private float fadeInTimeSeconds;
-    
+
 
     private float fadeOutTimeSeconds;
     #endregion
@@ -38,10 +36,33 @@ public class fader_script : MonoBehaviour
 
     [SerializeField] private bool startingState;
 
+    
+
+    public void setVolume(float volume)
+    {
+        audioPlayer.volume = volume;
+    }
+
+    public void startPlayback()
+    {
+        audioPlayer.Play();
+    }
+
+    public void stopPlayback() 
+    { 
+        audioPlayer.Stop();
+    }
+
+    public void setLooping(bool looping)
+    {
+        audioPlayer.loop=looping;
+    }
+
+
 
     private void resetVariables()
     {
-        newAlpha = 0f;
+        newVolume = 0f;
         mode = 0;
         finishedTransition = true;
         elsapsed = 0;
@@ -56,13 +77,13 @@ public class fader_script : MonoBehaviour
 
     public void setStatefadedIn()
     {
-        faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, 0f);
+        audioPlayer.volume = 1f;
         resetVariables();
     }
 
     public void setStateFadedOut()
     {
-        faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, 1f);
+        audioPlayer.volume=0f;
         resetVariables();
     }
 
@@ -71,10 +92,10 @@ public class fader_script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        faderRenderer = GetComponent<SpriteRenderer>();
+
+        audioPlayer = GetComponent<AudioSource>();
         resetVariables();
-        if(startingState)
+        if (startingState)
         {
             setStatefadedIn();
         }
@@ -83,7 +104,7 @@ public class fader_script : MonoBehaviour
             setStateFadedOut();
         }
 
-        
+
     }
 
     public void skipTransition()
@@ -92,7 +113,7 @@ public class fader_script : MonoBehaviour
         {
             skip = true;
         }
-        
+
     }
 
     public void fadeIn(float duration)
@@ -101,7 +122,7 @@ public class fader_script : MonoBehaviour
         timer = duration;
         mode = 1;
         finishedTransition = false;
-        
+
 
     }
 
@@ -124,13 +145,13 @@ public class fader_script : MonoBehaviour
         if (elsapsed >= timer)
         {
             //reset and next stage
-            resetVariables(); 
-            faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, 0f);
+            resetVariables();
+            audioPlayer.volume = 1f;
         }
         else
         {
-            newAlpha = Mathf.Lerp(1f, 0f, elsapsed / timer);
-            faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, newAlpha);
+            newVolume = Mathf.Lerp(0f, 1f, elsapsed / timer);
+            audioPlayer.volume = newVolume;
         }
     }
 
@@ -146,12 +167,12 @@ public class fader_script : MonoBehaviour
         {
             //reset and next stage
             resetVariables();
-            faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, 1f);
+            audioPlayer.volume = 0f;
         }
         else
         {
-            newAlpha = Mathf.Lerp(0f, 1f, elsapsed / timer);
-            faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, newAlpha);
+            newVolume = Mathf.Lerp(1f, 0f, elsapsed / timer);
+            audioPlayer.volume = newVolume;
         }
     }
 
@@ -167,7 +188,7 @@ public class fader_script : MonoBehaviour
                 fadeOutWorker();
                 break;
             default:
-                throw new System.Exception("fade worker set to undefined mode of:"+mode.ToString()+" must be 0-2 inclusive");
+                throw new System.Exception("fade worker set to undefined mode of:" + mode.ToString() + " must be 0-2 inclusive");
 
         }
     }
@@ -178,18 +199,18 @@ public class fader_script : MonoBehaviour
         switch (mode)
         {
             case 0:
-                
+
                 break;
             default:
                 fadeWorker();
                 break;
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
