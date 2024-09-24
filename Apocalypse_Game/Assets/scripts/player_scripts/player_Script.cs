@@ -36,7 +36,10 @@ public class Player : MonoBehaviour
     
     private int direction;
     #endregion
-
+    #region audioVariables;
+    [SerializeField] private AudioSource footsteps;
+    private bool playingWalkingSound;
+    #endregion
     #endregion
 
 
@@ -72,9 +75,27 @@ public class Player : MonoBehaviour
     }
 
 
-    private void playerAnimationHandler(int toMoveX, int toMoveY)
+    private void playerAudioHandler(bool moving)
     {
-        if ((toMoveX != 0) || (toMoveY != 0))
+        if (moving != playingWalkingSound)
+        {
+            if (moving)
+            {
+                footsteps.Play();
+                playingWalkingSound = true;
+            }
+            else
+            {
+                footsteps.Stop();
+                playingWalkingSound = false;
+            }
+        }
+
+    }
+
+    private void playerAnimationHandler(int toMoveX, int toMoveY, bool moving)
+    {
+        if (moving)
         {
             if (!spriteAnimator.enabled)
             {
@@ -165,11 +186,11 @@ public class Player : MonoBehaviour
                 toMoveX += distance;
             }
 
-
-            playerAnimationHandler(toMoveX, toMoveY);
-            
+            bool moving = (toMoveX != 0) || (toMoveY != 0);
+            playerAnimationHandler(toMoveX, toMoveY,moving);
+            playerAudioHandler(moving);
             //if we need to move
-            if ((toMoveX!=0)||(toMoveY!=0))
+            if (moving)
             {              
                 //i did a lot of research, and this is what the internet said for the style i wanted
                 //this makes the movment consistant, which is what i wanted
