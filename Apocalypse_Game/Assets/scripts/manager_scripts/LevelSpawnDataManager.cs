@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -24,6 +25,8 @@ public class LevelSpawnData : ScriptableObject
 
     //the array of setpeices to spawn
     [SerializeField] private SetpeiceObjectSpawnTable[] setPeiceSpawnList;
+    [SerializeField] private EnemySpawnEntry[] enemySpawnTable;
+    [SerializeField] private ItemSpawnEntry[] itemSpawnTable;
 
     public Vector2 getGridZeroPoint()
     {
@@ -61,11 +64,40 @@ public class LevelSpawnData : ScriptableObject
     {
         return gridSize.clone();
     }
+    public ItemSpawnEntry getItemSpawnEntry(int index)
+    {
+        return itemSpawnTable[index].clone();
+    }
 
+    public int getItemSpawnTableLength() { return itemSpawnTable.Length; }
 
+    public ItemSpawnEntry[] getItemSpawnTable()
+    {
+        ItemSpawnEntry[] tableCopy = new ItemSpawnEntry[enemySpawnTable.Length];
 
+        for (int i = 0; i < tableCopy.Length; i++)
+        {
+            tableCopy[i] = itemSpawnTable[i];
+        }
+        return tableCopy;
+    }
+    public EnemySpawnEntry getEnemySpawnEntry(int index)
+    {
+        return enemySpawnTable[index].clone();
+    }
 
+    public int getEnemySpawnTableLength() { return enemySpawnTable.Length; }
 
+    public EnemySpawnEntry[] getEnemySpawnTable()
+    {
+        EnemySpawnEntry[] tableCopy = new EnemySpawnEntry[enemySpawnTable.Length];
+
+        for (int i = 0; i < tableCopy.Length; i++)
+        {
+            tableCopy[i] = enemySpawnTable[i];
+        }
+        return tableCopy;
+    }
     
     //getter for levelName;
     public string getLevelName() { return LevelName; }
@@ -92,6 +124,97 @@ public class LevelSpawnData : ScriptableObject
     }
    
 }
+
+
+[System.Serializable]
+public class EnemySpawnEntry
+{
+    [SerializeField] private string enemyName;
+    [SerializeField] private GameObject enemyType;
+    [SerializeField] private bool isRandomizedNumber;
+    [SerializeField] private int spawnCountMin;
+    [SerializeField] private int spawnCountMax;
+
+    public EnemySpawnEntry(string enemyName, GameObject enemyType, bool isRandomizedNumber, int spawncountMin, int spawnCountMax)
+    {
+        this.enemyType = enemyType;
+        this.enemyName = enemyName;
+        this.isRandomizedNumber = isRandomizedNumber;
+        this.spawnCountMin = spawncountMin;
+        this.spawnCountMax = spawnCountMax;
+    }
+
+    public string getEnemyName()
+    {
+        return enemyName;
+    }
+
+    public GameObject getEnemyType()
+    {
+        return enemyType;
+    }
+
+    public bool getIsSpawnCountRandomized()
+    {
+        return isRandomizedNumber;
+    }
+
+    public int getSpawnCountMax() { return spawnCountMax; }
+
+    public int getSpawnCountMin() { return spawnCountMin; }
+
+
+    public EnemySpawnEntry clone()
+    {
+        return new EnemySpawnEntry(enemyName,enemyType, isRandomizedNumber, spawnCountMin, spawnCountMax);
+    }
+}
+
+
+[System.Serializable]
+public class ItemSpawnEntry
+{
+    [SerializeField] private string itemName;
+    [SerializeField] private GameObject itemType;
+    [SerializeField] private bool isRandomizedNumber;
+    [SerializeField] private int spawnCountMin;
+    [SerializeField] private int spawnCountMax;
+
+    public ItemSpawnEntry(string itemName, GameObject itemType, bool isRandomizedNumber, int spawncountMin, int spawnCountMax)
+    {
+        this.itemType = itemType;
+        this.itemName = itemName;
+        this.isRandomizedNumber = isRandomizedNumber;
+        this.spawnCountMin = spawncountMin;
+        this.spawnCountMax = spawnCountMax;
+    }
+
+    public string getItemName()
+    {
+        return itemName;
+    }
+
+    public GameObject getItemType()
+    {
+        return itemType;
+    }
+
+    public bool getIsSpawnCountRandomized()
+    {
+        return isRandomizedNumber;
+    }
+
+    public int getSpawnCountMax() { return spawnCountMax; }
+
+    public int getSpawnCountMin() { return spawnCountMin; }
+
+
+    public ItemSpawnEntry clone()
+    {
+        return new ItemSpawnEntry(itemName, itemType, isRandomizedNumber, spawnCountMin, spawnCountMax);
+    }
+}
+
 
 [System.Serializable]
 public class SetpeiceObjectSpawnTable

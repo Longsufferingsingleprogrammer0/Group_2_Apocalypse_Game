@@ -14,7 +14,7 @@ public class BaseItemCollectable : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            LevelManager.Instance.incrimentCollectedItems();
+            
         }
     }
 

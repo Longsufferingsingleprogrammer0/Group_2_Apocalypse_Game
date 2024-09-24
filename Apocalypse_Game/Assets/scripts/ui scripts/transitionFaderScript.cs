@@ -36,8 +36,13 @@ public class transitionFaderScript : MonoBehaviour
     #endregion
 
     private bool finishedTransition;
-
+    private bool fadeTransitionPause;
+    private int transitionStage;
     [SerializeField] private bool startingState;
+
+    private float fadeIntime;
+    private float pauseTime;
+    private float fadeOutTime;
 
 
     private void resetVariables()
@@ -48,14 +53,23 @@ public class transitionFaderScript : MonoBehaviour
         elsapsed = 0;
         timer = 0;
         skip = false;
+        fadeTransitionPause = false;
+        transitionStage = 0;
+        fadeIntime = 0;
+        pauseTime = 0;
+        fadeOutTime = 0;
     }
 
+    public bool isFadeTransitionInPause()
+    {
+        return fadeTransitionPause;
+    }
     public bool isFadeFinished()
     {
         return finishedTransition;
     }
 
-    public void setStatefadedIn()
+    public void setStateFadedIn()
     {
         faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, 0f);
         resetVariables();
@@ -67,7 +81,93 @@ public class transitionFaderScript : MonoBehaviour
         resetVariables();
     }
 
+    public void fadeTransition(float fadeOutDurration, float pauseDurration, float fadeInDurration)
+    {
+        setStateFadedIn();
+        resetVariables();
+        finishedTransition = false;
+        fadeTransitionPause = false;
+        fadeIntime = fadeInDurration;
+        pauseTime = pauseDurration;
+        fadeOutTime = fadeOutDurration;
+        timer=fadeOutTime;
+        mode = 3;
+    }
 
+
+
+    private void fadeTransitionWorker()
+    {
+
+        switch (transitionStage)
+        {
+            case 0:
+                elsapsed += Time.fixedDeltaTime;
+                if (skip)
+                {
+                    elsapsed = timer;
+                }
+
+                if (elsapsed >= timer)
+                {
+                    //reset and next stage
+                    timer = pauseTime;
+                    faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, 1f);
+                    elsapsed = 0f;
+                    transitionStage++;
+                    fadeTransitionPause=true;
+                }
+                else
+                {
+                    newAlpha = Mathf.Lerp(0f, 1f, elsapsed / timer);
+                    faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, newAlpha);
+                }
+                break;
+
+
+            case 1:
+                elsapsed += Time.fixedDeltaTime;
+                if (skip)
+                {
+                    elsapsed = timer;
+                }
+
+                if (elsapsed >= timer)
+                {
+                    //reset and next stage
+                    timer = fadeIntime;
+                    fadeTransitionPause = false;
+                    transitionStage++;
+                    elsapsed = 0f;
+                }
+                
+                break;
+
+            case 2:
+                elsapsed += Time.fixedDeltaTime;
+                if (skip)
+                {
+                    elsapsed = timer;
+                }
+
+                if (elsapsed >= timer)
+                {
+                    //reset and next stage
+                    
+                    faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, 0f);
+                    transitionStage++;
+                    elsapsed = 0f;
+                    resetVariables();
+                }
+                else
+                {
+                    newAlpha = Mathf.Lerp(1f, 0f, elsapsed / timer);
+                    faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, newAlpha);
+                }
+                break;
+        }   
+        
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -77,7 +177,7 @@ public class transitionFaderScript : MonoBehaviour
         resetVariables();
         if(startingState)
         {
-            setStatefadedIn();
+            setStateFadedIn();
         }
         else
         {
@@ -98,20 +198,26 @@ public class transitionFaderScript : MonoBehaviour
 
     public void fadeIn(float duration)
     {
+        setStateFadedOut();
         resetVariables();
         timer = duration;
-        mode = 1;
         finishedTransition = false;
+        mode = 1;
+        
+        
         
 
     }
 
     public void fadeOut(float duration)
     {
+        setStateFadedIn();
         resetVariables();
         timer = duration;
-        mode = 2;
         finishedTransition = false;
+        mode = 2;
+        
+        
     }
 
     private void fadeInWorker()
@@ -166,6 +272,9 @@ public class transitionFaderScript : MonoBehaviour
                 break;
             case 2:
                 fadeOutWorker();
+                break;
+            case 3:
+                fadeTransitionWorker();
                 break;
             default:
                 throw new System.Exception("fade worker set to undefined mode of:"+mode.ToString()+" must be 0-2 inclusive");

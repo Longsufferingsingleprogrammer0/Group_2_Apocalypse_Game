@@ -450,23 +450,11 @@ public partial class LevelManager : MonoBehaviour
         yield return null;
         //setup done, go to confirm screen
         mapSetupStage++;
-        playerSprite.GetComponent<Rigidbody2D>().position = loadingDoneScreenPos;
+        
     }
 
 
-    private void waitScreen()
-    {
-       
-        if (Input.anyKeyDown)
-        {
-           
-            mapSetupStage++;
-            playerSprite.GetComponent<Rigidbody2D>().position = calculateGridGlobalPosition(mapData.getPlayerStartPos().getX(),mapData.getPlayerStartPos().getY());
-            playerSprite.GetComponent<SpriteRenderer>().enabled = true;
-            playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
-            startMusic();
-        }
-    }
+
 
     private IEnumerator debugOpps()
     {
@@ -474,6 +462,9 @@ public partial class LevelManager : MonoBehaviour
         yield return null;
         mapSetupStage++;
     }
+
+
+    private bool mapSetupDone = false;
 
     private void mapSetupStageManager()
     {
@@ -492,9 +483,9 @@ public partial class LevelManager : MonoBehaviour
                 }
                 
                 break;
-
             case 6:
-                waitScreen();
+                mapSetupDone = true;
+                mapSetupStage++;
                 break;
 
             default:
