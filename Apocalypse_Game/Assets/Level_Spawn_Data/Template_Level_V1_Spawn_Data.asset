@@ -516,3 +516,25 @@ MonoBehaviour:
       gridPositionOffset: {x: 0, y: 0.5}
       horizontalOffsetNoSpawnZoneCompensation: 0
       verticalOffsetNoSpawnZoneCompensation: 1
+  enemySpawnTable:
+  - enemyName: 
+    enemyType: {fileID: 0}
+    isRandomizedNumber: 0
+    spawnCountMin: 0
+    spawnCountMax: 0
+  - enemyName: 
+    enemyType: {fileID: 0}
+    isRandomizedNumber: 0
+    spawnCountMin: 0
+    spawnCountMax: 0
+  itemSpawnTable:
+  - itemName: 
+    itemType: {fileID: 0}
+    isRandomizedNumber: 0
+    spawnCountMin: 0
+    spawnCountMax: 0
+  - itemName: 
+    itemType: {fileID: 0}
+    isRandomizedNumber: 0
+    spawnCountMin: 0
+    spawnCountMax: 0

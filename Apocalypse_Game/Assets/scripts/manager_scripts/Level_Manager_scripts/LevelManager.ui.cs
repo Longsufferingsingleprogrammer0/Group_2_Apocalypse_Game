@@ -91,13 +91,18 @@ public partial class LevelManager : MonoBehaviour
                 }
                 break;
             case 8:
-                playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
+               
                 mapSetupStage = 0;
                 uimode++;
                 break;
 
 
         }
+    }
+
+    private void startGamePlayMode()
+    {
+        playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
     }
 
     private void uiGameplayMode()
@@ -124,9 +129,12 @@ public partial class LevelManager : MonoBehaviour
                 uiLoadingMode();
                 break;
             case 1:
-                uiGameplayMode();
+                startGamePlayMode();
                 break;
             case 2:
+                uiGameplayMode();
+                break;
+            case 3:
                 break;
             default:
                 throw new System.Exception("ui mode is set to invalid value of "+uimode.ToString()+" must be within 0 to 2 inclusive");
