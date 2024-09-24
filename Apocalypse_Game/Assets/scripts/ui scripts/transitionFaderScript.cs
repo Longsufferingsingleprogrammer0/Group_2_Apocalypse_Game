@@ -1,10 +1,11 @@
 
 
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
-public class fader_script : MonoBehaviour
+public class transitionFaderScript : MonoBehaviour
 {
     #region timerVariables
     //how long we have waited
@@ -24,7 +25,7 @@ public class fader_script : MonoBehaviour
 
     //sprite renderer and logo sprite
    
-    private SpriteRenderer faderRenderer;
+    private Image faderRenderer;
 
     #region controlVariables
     
@@ -72,7 +73,7 @@ public class fader_script : MonoBehaviour
     void Start()
     {
         
-        faderRenderer = GetComponent<SpriteRenderer>();
+        faderRenderer = GetComponent<Image>();
         resetVariables();
         if(startingState)
         {

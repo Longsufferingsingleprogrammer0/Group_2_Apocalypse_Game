@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class title_screen_worker : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class title_screen_worker : MonoBehaviour
     [SerializeField] private GameObject fader;
     [SerializeField] private AudioSource musicPlayer;
     [SerializeField] private float fadeTime;
-    private fader_script faderController;
+    [SerializeField] private GameObject startButton;
+    private transitionFaderScript faderController;
     private audioFaderScript musicController;
     private bool InputEnable;
 
@@ -29,8 +31,9 @@ public class title_screen_worker : MonoBehaviour
     {
         state = 0;
         InputEnable = false;
-        faderController = fader.GetComponent<fader_script>();
+        faderController = fader.GetComponent<transitionFaderScript>();
         musicController = musicPlayer.GetComponent<audioFaderScript>();
+        startButton.GetComponent<Button>().enabled = false;
         faderController.fadeIn(fadeTime);
         musicController.fadeIn(fadeTime);
     }
@@ -49,15 +52,35 @@ public class title_screen_worker : MonoBehaviour
                 }
                 if (faderController.isFadeFinished() && musicController.isFadeFinished())
                 {
-                    InputEnable= true;
                     state++;
+                    InputEnable = true;
+                    startButton.GetComponent<Button>().enabled = true;
+                    
                 }
                 break;
             case 1:
                 break;
             case 2:
+                startButton.GetComponent<Button>().enabled = false;
+                InputEnable = false;
+                faderController.fadeOut(fadeTime);
+                musicController.fadeOut(fadeTime);
+                state++;
                 break;
             case 3:
+                if (Input.anyKeyDown)
+                {
+                    faderController.skipTransition();
+                    musicController.skipTransition();
+
+                }
+                if (faderController.isFadeFinished() && musicController.isFadeFinished())
+                {
+                    state++;
+
+                }
+                break;
+            case 4:
                 SceneManager.LoadScene(gameStartScene);
                 break;
         }
