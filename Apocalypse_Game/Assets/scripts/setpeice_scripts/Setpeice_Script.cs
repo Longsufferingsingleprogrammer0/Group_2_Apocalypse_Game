@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-public class Setpeice_Logic : MonoBehaviour
+public class Setpeice_Script : MonoBehaviour
 {
     #region variables
 
@@ -22,7 +22,7 @@ public class Setpeice_Logic : MonoBehaviour
     [SerializeField] private Vector2 GridOffset;
     [SerializeField] private GridIllegalSpawnZone[] gridSize;
 
-    [SerializeField]private int element;
+    [SerializeField] private int element;
 
     public int ElementIndex
     {
@@ -32,7 +32,7 @@ public class Setpeice_Logic : MonoBehaviour
     {
         this.element = element;
     }
-    
+
     public int getElement() { return element; }
 
     public void setRandomTexture()
@@ -45,13 +45,14 @@ public class Setpeice_Logic : MonoBehaviour
     public GridIllegalSpawnZone[] getGridSize()
     {
         GridIllegalSpawnZone[] copy = new GridIllegalSpawnZone[gridSize.Length];
-        for(int box = 0; box<gridSize.Length; box++)
+        for (int box = 0; box < gridSize.Length; box++)
         {
             GridVector2 bottomRightCorner = gridSize[box].getBottomRightCorner();
             GridVector2 topLeftCorner = gridSize[box].getTopLeftCorner();
             bottomRightCorner = new GridVector2(bottomRightCorner.getX() + gridPosition.getX(), bottomRightCorner.getY() + gridPosition.getY());
             topLeftCorner = new GridVector2(topLeftCorner.getX() + gridPosition.getX(), topLeftCorner.getY() + gridPosition.getY());
-            copy[box]=new GridIllegalSpawnZone(topLeftCorner, bottomRightCorner);
+            copy[box] = new GridIllegalSpawnZone(topLeftCorner, bottomRightCorner);
+
         }
         return copy;
     }
@@ -65,7 +66,7 @@ public class Setpeice_Logic : MonoBehaviour
 
     public Vector2 getPosition()
     {
-        return new Vector2(transform.position.x,transform.position.y);
+        return new Vector2(transform.position.x, transform.position.y);
     }
 
     public Vector2 getGridOffset()
@@ -73,22 +74,29 @@ public class Setpeice_Logic : MonoBehaviour
         return new Vector2(GridOffset.x, GridOffset.y);
     }
 
-    public GridVector2 getGridPosition() 
+    public GridVector2 getGridPosition()
     {
-        return gridPosition.clone(); 
+        return gridPosition.clone();
     }
 
 
     public void setPosition(float x, float y)
     {
-        transform.position = new Vector3(x,y,transform.position.z);
+        transform.position = new Vector3(x, y, transform.position.z);
     }
 
-
-    public void setGridPosition(Vector2 grid00Point, int x, int y)
+    public void setGridOffset(Vector2 offset)
     {
-        float newX = grid00Point.x + x + GridOffset.x;
-        float newY = grid00Point.y + (-y) + GridOffset.y;
+        transform.Translate(new Vector3(-GridOffset.x, GridOffset.y, 0f));
+        GridOffset = new Vector2(offset.x, offset.y);
+        transform.Translate(new Vector3(offset.x, -offset.y, 0f));
+
+    }
+    public void setGridPosition(Vector2 gridZeroZeroPoint, int x, int y)
+    {
+        float newX = gridZeroZeroPoint.x + x + GridOffset.x;
+        float newY = gridZeroZeroPoint.y + (-y) + GridOffset.y;
+        gridPosition = new GridVector2(x, y);
         Vector2 newPosition = new Vector2(newX, newY);
         transform.position = newPosition;
     }
