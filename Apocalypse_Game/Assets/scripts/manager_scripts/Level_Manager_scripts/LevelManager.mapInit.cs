@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 
@@ -43,8 +44,8 @@ public partial class LevelManager : MonoBehaviour
     //the grid used to figure out and store what parts of the map are taken or not
     private bool[][] mapGrid;
 
-
-
+    private int currentItem;
+    private int currentEnemy;
 
     private IEnumerator addTakenSpaceToMap(GridIllegalSpawnZone[] takenSpace, GridVector2 objectPosition)
     {
@@ -251,19 +252,19 @@ public partial class LevelManager : MonoBehaviour
             switch (angleOffset)
             {
                 case 11:
-                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() + 1, spawnPosition.getPosition().getY() + 1)));
+                    yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() + 1, spawnPosition.getPosition().getY() + 1)));
                     break;
 
                 case 12:
-                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() + 1, spawnPosition.getPosition().getY() - 1)));
+                    yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() + 1, spawnPosition.getPosition().getY() - 1)));
                     break;
 
                 case 21:
-                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() - 1, spawnPosition.getPosition().getY() + 1)));
+                    yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() - 1, spawnPosition.getPosition().getY() + 1)));
                     break;
 
                 case 22:
-                    StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() - 1, spawnPosition.getPosition().getY() - 1)));
+                    yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() - 1, spawnPosition.getPosition().getY() - 1)));
                     break;
                 default:
                     break;
@@ -279,7 +280,7 @@ public partial class LevelManager : MonoBehaviour
 
 
     
-    private IEnumerator debugNoSpawnZoneMaskGenerator()
+    private void debugNoSpawnZoneMaskGenerator()
     {
         for(int y = 0; y < mapGrid.Length; y++)
         {
@@ -294,12 +295,12 @@ public partial class LevelManager : MonoBehaviour
                     if (counter > maxSetpeicesSpawnedPerFrame)
                     {
                         counter = 0;
-                        yield return null;
+                        
                     }
                 }
             }
 
-            yield return null;
+            
         }
     }
 
@@ -408,11 +409,236 @@ public partial class LevelManager : MonoBehaviour
         
     }
     
+
+    private bool checkSpawnPositionSafety(GridIllegalSpawnZone spawnZone, int x, int y)
+    {
+        if (spawnZone == null)
+        {
+            throw new System.Exception("spawn position safety check error! spawnzone is null!");
+        }
+
+        for(int testx=x+spawnZone.getTopLeftCorner().getX(); testx<=spawnZone.getBottomRightCorner().getX()+x; testx++)
+        {
+            for(int testy=y+spawnZone.getTopLeftCorner().getY(); testy<=spawnZone.getBottomRightCorner().getY()+y; testy++)
+            {
+                if (testx<0 || testy<0 || testy > (mapGrid.Length-1)|| testx > (mapGrid[testy].Length - 1))
+                {
+                    return false;
+                }
+                if (mapGrid[testy][testx])
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private IEnumerator spawnCollectableItem(GameObject Item)
+    {
+        Collectable_Item_Script itemController=Item.GetComponent<Collectable_Item_Script>();
+        if(itemController == null)
+        {
+            throw new System.Exception("collectable item spawn error, collectable item has no script!");
+        }
+        GridVector2 prospectiveSpawnPostion=null;
+        bool success = false;
+        while (!success)
+        {
+            prospectiveSpawnPostion = new GridVector2(Random.Range(0, mapData.getGridSize().getX() - 1), Random.Range(0, mapData.getGridSize().getY() - 1));
+
+            bool allPass = true;
+            for(int zone=0; zone< itemController.getGridSize().Length; zone++)
+            {
+                if (!checkSpawnPositionSafety(itemController.getGridSize()[zone], prospectiveSpawnPostion.getX(), prospectiveSpawnPostion.getY())){
+                    allPass = false;
+                }
+                yield return null;
+            }
+            if (allPass)
+            {
+
+                success = true;
+
+            }
+            yield return null;
+        }
+        if (success)
+        {
+            GridVector2 spawnPosition = prospectiveSpawnPostion;
+            Vector2 globalPosition = calculateGridGlobalPosition(spawnPosition.getX(), spawnPosition.getY());
+
+            //convert the global position vector 2 to a vector 3
+            Vector3 spawnpos = new Vector3(globalPosition.x, globalPosition.y, 0f);
+
+
+
+            //spawn the set peice
+            GameObject newPeice = Instantiate(Item, spawnpos, new Quaternion(0f, 0f, 0f, 0f));
+
+            Items.Add(newPeice);
+            Collectable_Item_Script newPeiceController = newPeice.GetComponent<Collectable_Item_Script>();
+
+            if (newPeiceController == null)
+            {
+                Debug.Log(Item.name);
+
+                throw new System.Exception("newPeice has no controller");
+            }
+            
+
+            newPeiceController.setGridPosition(mapData.getGridZeroPoint(), spawnPosition.getX(), spawnPosition.getY());
+            yield return StartCoroutine(addTakenSpaceToMap(newPeiceController.getGridSize(), spawnPosition));
+            newPeiceController.setElelment(currentItem);
+            currentItem++;
+        }
+        
+    }
+
+    private IEnumerator spawnCollectableItemSet(int count, GameObject type)
+    {
+        for(int item=0; item<count; item++)
+        {
+            yield return StartCoroutine(spawnCollectableItem(type));
+            
+        }
+    }
+
+    private IEnumerator initializeCollectableItems()
+    {
+        if (mapData.getItemSpawnTable() == null)
+        {
+            throw new System.Exception("item spawn table error, the table is null!");
+        }
+        for(int item = 0; item<mapData.getItemSpawnTableLength(); item++)
+        {
+            
+            ItemSpawnEntry entry=mapData.getItemSpawnEntry(item);
+            if (entry.getIsSpawnCountRandomized())
+            {
+                yield return StartCoroutine(spawnCollectableItemSet(Random.Range(entry.getSpawnCountMin(),entry.getSpawnCountMax()),entry.getItemType()));
+            }
+            else
+            {
+                yield return StartCoroutine(spawnCollectableItemSet(entry.getSpawnCountMax(), entry.getItemType()));
+            }
+
+        }
+        
+
+
+        yield return null;
+    }
+
+    private IEnumerator spawnEnemy(GameObject Item)
+    {
+        Enemy_Script enemyController = Item.GetComponent<Enemy_Script>();
+        if (enemyController == null)
+        {
+            throw new System.Exception("collectable item spawn error, collectable item has no script!");
+        }
+        GridVector2 prospectiveSpawnPostion = null;
+        bool success = false;
+        while (!success)
+        {
+            prospectiveSpawnPostion = new GridVector2(Random.Range(0, mapData.getGridSize().getX() - 1), Random.Range(0, mapData.getGridSize().getY() - 1));
+
+            bool allPass = true;
+            for (int zone = 0; zone < enemyController.getGridSize().Length; zone++)
+            {
+                if (!checkSpawnPositionSafety(enemyController.getGridSize()[zone], prospectiveSpawnPostion.getX(), prospectiveSpawnPostion.getY()))
+                {
+                    allPass = false;
+                }
+                yield return null;
+            }
+            if (allPass)
+            {
+
+                success = true;
+
+            }
+            yield return null;
+        }
+        if (success)
+        {
+            GridVector2 spawnPosition = prospectiveSpawnPostion;
+            Vector2 globalPosition = calculateGridGlobalPosition(spawnPosition.getX(), spawnPosition.getY());
+
+            //convert the global position vector 2 to a vector 3
+            Vector3 spawnpos = new Vector3(globalPosition.x, globalPosition.y, 0f);
+
+
+
+            //spawn the set peice
+            GameObject newPeice = Instantiate(Item, spawnpos, new Quaternion(0f, 0f, 0f, 0f));
+
+            
+
+            Items.Add(newPeice);
+            Enemy_Script newPeiceController = newPeice.GetComponent<Enemy_Script>();
+
+            if (newPeiceController == null)
+            {
+                Debug.Log(Item.name);
+
+                throw new System.Exception("newPeice has no controller");
+            }
+
+
+            
+            
+
+
+            newPeiceController.setGridPosition(mapData.getGridZeroPoint(), spawnPosition.getX(), spawnPosition.getY());
+            yield return StartCoroutine(addTakenSpaceToMap(newPeiceController.getGridSize(), spawnPosition));
+            newPeiceController.setElelment(currentEnemy);
+            currentEnemy++;
+        }
+
+    }
+
+    private IEnumerator spawnEnemySet(int count, GameObject type)
+    {
+        for (int enemy = 0; enemy < count; enemy++)
+        {
+            yield return StartCoroutine(spawnEnemy(type));
+
+        }
+    }
+
+    private IEnumerator initializeEnemies()
+    {
+        if (mapData.getEnemySpawnTable() == null)
+        {
+            throw new System.Exception("item spawn table error, the table is null!");
+        }
+        for (int enemy = 0; enemy < mapData.getEnemySpawnTableLength(); enemy++)
+        {
+
+            EnemySpawnEntry entry = mapData.getEnemySpawnEntry(enemy);
+            if (entry.getIsSpawnCountRandomized())
+            {
+                yield return StartCoroutine(spawnEnemySet(Random.Range(entry.getSpawnCountMin(), entry.getSpawnCountMax()), entry.getEnemyType()));
+            }
+            else
+            {
+                yield return StartCoroutine(spawnEnemySet(entry.getSpawnCountMax(), entry.getEnemyType()));
+            }
+
+        }
+
+
+
+        yield return null;
+    }
+
     private IEnumerator initializeMapActors()
     {
         //when adding enemies and items, put them here
         //yield return null;
-        yield return null;
+        yield return StartCoroutine(initializeCollectableItems());
+        yield return StartCoroutine(initializeEnemies());
     }
 
 
@@ -468,10 +694,10 @@ public partial class LevelManager : MonoBehaviour
 
 
 
-    private IEnumerator debugOpps()
+    private void debugOpps()
     {
-        yield return StartCoroutine(debugNoSpawnZoneMaskGenerator());
-        yield return null;
+       debugNoSpawnZoneMaskGenerator();
+       
         mapSetupStage++;
     }
 
@@ -486,7 +712,7 @@ public partial class LevelManager : MonoBehaviour
             case 4:
                 if (showTakenTiles)
                 {
-                    StartCoroutine(debugOpps());
+                    debugOpps();
                     mapSetupStage++;
                 }
                 else

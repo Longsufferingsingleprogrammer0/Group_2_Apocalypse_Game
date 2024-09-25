@@ -37,7 +37,10 @@ public class Collectable_Item_Script : MonoBehaviour
     public int getElement() { return element; }
 
 
-
+    public string getName()
+    {
+        return itemName;
+    }
     public GridIllegalSpawnZone[] getGridSize()
     {
         GridIllegalSpawnZone[] copy = new GridIllegalSpawnZone[gridSize.Length];

@@ -46,6 +46,11 @@ public class Enemy_Script : MonoBehaviour
         this.element = element;
     }
 
+    public string getName()
+    {
+        return enemyName;
+    }
+
     public int getElement() { return element; }
 
 
