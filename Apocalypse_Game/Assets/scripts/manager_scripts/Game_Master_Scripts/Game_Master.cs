@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class GameManager : MonoBehaviour
+public partial class Game_Master : MonoBehaviour
 {
 
     //singleton variable 
-    private static GameManager instance;
+    private static Game_Master instance;
 
 
     //getter for the instance, needed for singletons
-    public static GameManager Instance => instance;
+    public static Game_Master Instance => instance;
 
 
     void Awake()
@@ -34,24 +34,27 @@ public partial class GameManager : MonoBehaviour
     }
 
 
-    void quitter()
+    private void quitter()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
     }
-    void startAllFiles()
+    private void startAllFiles()
     {
-
- 
+        
+        StartGameLogic();
+        startScoreKeeping();
     }
 
 
-    void updateAllFiles()
+    private void updateAllFiles()
     {
         quitter();
-
+        UpdateGameLogic();
+        UpdateScoreKeeping();
+        
     }
 
 

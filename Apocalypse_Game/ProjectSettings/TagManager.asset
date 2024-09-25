@@ -11,6 +11,7 @@ TagManager:
   - furniture set peice
   - passive set peice
   - Level_Master
+  - collectable item
   layers:
   - Default
   - TransparentFX
