@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-public class Setpeice_Script : MonoBehaviour
+public class Setpeice_Logic : MonoBehaviour
 {
     #region variables
 
@@ -40,7 +40,7 @@ public class Setpeice_Script : MonoBehaviour
         setTexture(Random.Range(0, textures.Length));
     }
 
-    
+
 
     public GridIllegalSpawnZone[] getGridSize()
     {
@@ -52,7 +52,6 @@ public class Setpeice_Script : MonoBehaviour
             bottomRightCorner = new GridVector2(bottomRightCorner.getX() + gridPosition.getX(), bottomRightCorner.getY() + gridPosition.getY());
             topLeftCorner = new GridVector2(topLeftCorner.getX() + gridPosition.getX(), topLeftCorner.getY() + gridPosition.getY());
             copy[box]=new GridIllegalSpawnZone(topLeftCorner, bottomRightCorner);
-            
         }
         return copy;
     }
@@ -85,18 +84,11 @@ public class Setpeice_Script : MonoBehaviour
         transform.position = new Vector3(x,y,transform.position.z);
     }
 
-    public void setGridOffset(Vector2 offset)
+
+    public void setGridPosition(Vector2 grid00Point, int x, int y)
     {
-        transform.Translate(new Vector3(-GridOffset.x, GridOffset.y, 0f));
-        GridOffset=new Vector2(offset.x,offset.y);
-        transform.Translate(new Vector3(offset.x, -offset.y, 0f));
-        
-    }
-    public void setGridPosition(Vector2 gridZeroZeroPoint, int x, int y)
-    {
-        float newX = gridZeroZeroPoint.x + x + GridOffset.x;
-        float newY = gridZeroZeroPoint.y + (-y) + GridOffset.y;
-        gridPosition = new GridVector2(x, y);
+        float newX = grid00Point.x + x + GridOffset.x;
+        float newY = grid00Point.y + (-y) + GridOffset.y;
         Vector2 newPosition = new Vector2(newX, newY);
         transform.position = newPosition;
     }
