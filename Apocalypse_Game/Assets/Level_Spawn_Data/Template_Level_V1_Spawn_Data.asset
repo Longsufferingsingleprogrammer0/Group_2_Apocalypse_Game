@@ -517,24 +517,24 @@ MonoBehaviour:
       horizontalOffsetNoSpawnZoneCompensation: 0
       verticalOffsetNoSpawnZoneCompensation: 1
   enemySpawnTable:
-  - enemyName: 
-    enemyType: {fileID: 0}
+  - enemyName: treant
+    enemyType: {fileID: 4316504435785411467, guid: c9ea979fe69b73447a5b3031b2a03f06, type: 3}
     isRandomizedNumber: 0
-    spawnCountMin: 0
-    spawnCountMax: 0
-  - enemyName: 
-    enemyType: {fileID: 0}
+    spawnCountMin: 3
+    spawnCountMax: 7
+  - enemyName: zombie
+    enemyType: {fileID: 4843106062107257806, guid: 677f5fcf329ee804aa1b23d26c3f3416, type: 3}
     isRandomizedNumber: 0
-    spawnCountMin: 0
-    spawnCountMax: 0
+    spawnCountMin: 5
+    spawnCountMax: 10
   itemSpawnTable:
-  - itemName: 
-    itemType: {fileID: 0}
+  - itemName: water
+    itemType: {fileID: 6734178306062341267, guid: bb02dacd1561b264b8b1e6aeae9e501b, type: 3}
     isRandomizedNumber: 0
-    spawnCountMin: 0
-    spawnCountMax: 0
-  - itemName: 
-    itemType: {fileID: 0}
+    spawnCountMin: 5
+    spawnCountMax: 10
+  - itemName: food
+    itemType: {fileID: 6465751064229994741, guid: 716dfdf6e803b5d4280a8769fd296b85, type: 3}
     isRandomizedNumber: 0
-    spawnCountMin: 0
-    spawnCountMax: 0
+    spawnCountMin: 5
+    spawnCountMax: 10

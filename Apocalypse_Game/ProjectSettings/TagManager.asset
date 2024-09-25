@@ -12,6 +12,7 @@ TagManager:
   - passive set peice
   - Level_Master
   - collectable item
+  - enemy
   layers:
   - Default
   - TransparentFX

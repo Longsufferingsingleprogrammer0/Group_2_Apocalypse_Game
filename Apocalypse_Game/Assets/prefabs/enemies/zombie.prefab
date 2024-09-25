@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3818754284609036903
+--- !u!1 &4843106062107257806
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7556037153504864344}
-  - component: {fileID: 3419478668585053800}
-  - component: {fileID: 6170037110330625931}
-  - component: {fileID: 5199892865718695553}
+  - component: {fileID: 4075932567977618173}
+  - component: {fileID: 4097797008491134885}
+  - component: {fileID: 3499808361502720580}
+  - component: {fileID: 3692497401025125255}
+  - component: {fileID: 3206924069158777413}
   m_Layer: 0
-  m_Name: Cashier_Long_Left
-  m_TagString: furniture set peice
+  m_Name: zombie
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7556037153504864344
+--- !u!4 &4075932567977618173
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3818754284609036903}
+  m_GameObject: {fileID: 4843106062107257806}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.4601765, y: -5.4864645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3419478668585053800
+--- !u!212 &4097797008491134885
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3818754284609036903}
+  m_GameObject: {fileID: 4843106062107257806}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 1070caec992583945aba644bfa53e2bd, type: 3}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: f6d1fd2ff28c13f41bdb771591620cc3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,13 +87,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6170037110330625931
-BoxCollider2D:
+--- !u!114 &3499808361502720580
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3818754284609036903}
+  m_GameObject: {fileID: 4843106062107257806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafee739a5e6a4649a9a1e80bcc7f60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: zombie
+  enemyID: 0
+  element: 0
+  gridStartingPosition:
+    x: 0
+    y: 0
+  gridSize:
+  - TopLeftCornerGridX: 0
+    TopLeftCornerGridY: 0
+    BottomRightCornerGridX: 0
+    BottomRightCornerGridY: 1
+  randomizedHealth: 1
+  maxhealth: 5
+  minhealth: 3
+  speed: 4
+  randomizedAttackPoints: 1
+  maxAttack: 3
+  minAttack: 1
+--- !u!70 &3692497401025125255
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4843106062107257806}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -118,36 +149,33 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: -0.5}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 1}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.81579757, y: 0.9682402}
-  m_EdgeRadius: 0
---- !u!114 &5199892865718695553
-MonoBehaviour:
+  m_Offset: {x: 0.50403476, y: -1.3616242}
+  m_Size: {x: 0.6933265, y: 1.2767515}
+  m_Direction: 0
+--- !u!50 &3206924069158777413
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3818754284609036903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0140d55f5e7a24e4688f49ddc0850e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textures: []
-  setpeiceType: 
-  gridPosition:
-    x: 0
-    y: 0
-  GridOffset: {x: 0, y: 0}
-  gridSize: []
-  element: 0
+  m_GameObject: {fileID: 4843106062107257806}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

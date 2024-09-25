@@ -92,10 +92,10 @@ public class Setpeice_Script : MonoBehaviour
         transform.Translate(new Vector3(offset.x, -offset.y, 0f));
         
     }
-    public void setGridPosition(Vector2 grid00Point, int x, int y)
+    public void setGridPosition(Vector2 gridZeroZeroPoint, int x, int y)
     {
-        float newX = grid00Point.x + x + GridOffset.x;
-        float newY = grid00Point.y + (-y) + GridOffset.y;
+        float newX = gridZeroZeroPoint.x + x + GridOffset.x;
+        float newY = gridZeroZeroPoint.y + (-y) + GridOffset.y;
         gridPosition = new GridVector2(x, y);
         Vector2 newPosition = new Vector2(newX, newY);
         transform.position = newPosition;

@@ -1,6 +1,6 @@
+
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 
@@ -42,8 +42,8 @@ public partial class LevelManager : MonoBehaviour
 
     //the grid used to figure out and store what parts of the map are taken or not
     private bool[][] mapGrid;
-    
-    
+
+
 
 
     private IEnumerator addTakenSpaceToMap(GridIllegalSpawnZone[] takenSpace, GridVector2 objectPosition)
@@ -170,7 +170,7 @@ public partial class LevelManager : MonoBehaviour
     private IEnumerator spawnSetPeice(SetpeiceSpawnPosition spawnPosition, GameObject[] varientTable, int element)
     {
         //check to make sure there is something to spawn
-        if((varientTable==null)||(varientTable.Length == 0))
+        if ((varientTable == null) || (varientTable.Length == 0))
         {
             throw new System.Exception("setpeice to spawn has an empty varient table");
         }
@@ -179,20 +179,30 @@ public partial class LevelManager : MonoBehaviour
         Vector2 globalPosition = calculateGridGlobalPosition(spawnPosition.getPosition().getX(), spawnPosition.getPosition().getY(), spawnPosition.getGridPositionOffset());
 
         //convert the global position vector 2 to a vector 3
-        Vector3 spawnpos = new Vector3(globalPosition.x,globalPosition.y,0f);
+        Vector3 spawnpos = new Vector3(globalPosition.x, globalPosition.y, 0f);
 
-        
+
 
         //spawn the set peice
-        GameObject newPeice = Instantiate(varientTable[spawnPosition.getPrefabVariant()], spawnpos, new Quaternion(0f,0f,0f,0f));
+        GameObject newPeice = Instantiate(varientTable[spawnPosition.getPrefabVariant()], spawnpos, new Quaternion(0f, 0f, 0f, 0f));
 
-        newPeice.GetComponent<Setpeice_Script>().setGridPosition(mapData.getGridZeroPoint(),spawnPosition.getPosition().getX(),spawnPosition.getPosition().getY());
-        newPeice.GetComponent<Setpeice_Script>().setGridOffset(spawnPosition.getGridPositionOffset());
-        newPeice.GetComponent<Setpeice_Script>().setElelment(element);
+
+        Setpeice_Script newPeiceController = newPeice.GetComponent<Setpeice_Script>();
+
+        if (newPeiceController == null)
+        {
+            Debug.Log(varientTable[spawnPosition.getPrefabVariant()].name);
+
+            throw new System.Exception("newPeice has no controller");
+        }
+
+        newPeiceController.setGridPosition(mapData.getGridZeroPoint(), spawnPosition.getPosition().getX(), spawnPosition.getPosition().getY());
+        newPeiceController.setGridOffset(spawnPosition.getGridPositionOffset());
+        newPeiceController.setElelment(element);
 
         //add the setpeice to the setpeices list
         Setpeices.Add(newPeice);
-        
+
 
         yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), spawnPosition.getPosition()));
         yield return null;
@@ -204,11 +214,11 @@ public partial class LevelManager : MonoBehaviour
 
         if (spawnPosition.getVerticalOffsetNoSpawnCompensation())
         {
-            if(spawnPosition.getGridPositionOffset().y > 0f)
+            if (spawnPosition.getGridPositionOffset().y > 0f)
             {
                 angleOffset += 1;
                 yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX(), spawnPosition.getPosition().getY() + 1)));
-            }else if (spawnPosition.getGridPositionOffset().y < 0f)
+            } else if (spawnPosition.getGridPositionOffset().y < 0f)
             {
                 angleOffset += 2;
                 yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX(), spawnPosition.getPosition().getY() - 1)));
@@ -221,11 +231,11 @@ public partial class LevelManager : MonoBehaviour
 
         if (spawnPosition.getHorizontalOffsetNoSpawnCompensation())
         {
-            if(spawnPosition.getGridPositionOffset().x > 0f)
+            if (spawnPosition.getGridPositionOffset().x > 0f)
             {
                 angleOffset += 10;
-                yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() + 1, spawnPosition.getPosition().getY()))); 
-            }else if(spawnPosition.getGridPositionOffset().x < 0f)
+                yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() + 1, spawnPosition.getPosition().getY())));
+            } else if (spawnPosition.getGridPositionOffset().x < 0f)
             {
                 angleOffset += 20;
                 yield return StartCoroutine(addTakenSpaceToMap(newPeice.GetComponent<Setpeice_Script>().getGridSize(), new GridVector2(spawnPosition.getPosition().getX() - 1, spawnPosition.getPosition().getY())));
@@ -260,9 +270,9 @@ public partial class LevelManager : MonoBehaviour
             }
 
 
-            
+
         }
-        
+
 
     }
 
