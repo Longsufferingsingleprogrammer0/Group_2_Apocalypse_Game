@@ -323,21 +323,21 @@ MonoBehaviour:
       prefabVariant: 2
       gridPositionOffset: {x: -0.25, y: 0.5}
       horizontalOffsetNoSpawnZoneCompensation: 0
-      verticalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 1
     - position:
         x: 11
         y: 11
       prefabVariant: 2
       gridPositionOffset: {x: -0.25, y: 0.5}
       horizontalOffsetNoSpawnZoneCompensation: 0
-      verticalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 1
     - position:
         x: 13
         y: 11
       prefabVariant: 2
       gridPositionOffset: {x: 0.25, y: 0.5}
       horizontalOffsetNoSpawnZoneCompensation: 0
-      verticalOffsetNoSpawnZoneCompensation: 0
+      verticalOffsetNoSpawnZoneCompensation: 1
     - position:
         x: 16
         y: 11
@@ -406,14 +406,14 @@ MonoBehaviour:
         y: 18
       prefabVariant: 0
       gridPositionOffset: {x: 0.5, y: 0}
-      horizontalOffsetNoSpawnZoneCompensation: 0
+      horizontalOffsetNoSpawnZoneCompensation: 1
       verticalOffsetNoSpawnZoneCompensation: 0
     - position:
         x: 19
         y: 21
       prefabVariant: 0
       gridPositionOffset: {x: 0.5, y: -0.5}
-      horizontalOffsetNoSpawnZoneCompensation: 0
+      horizontalOffsetNoSpawnZoneCompensation: 1
       verticalOffsetNoSpawnZoneCompensation: 0
   - actorType: large freezers
     ActorPrefabVariants:

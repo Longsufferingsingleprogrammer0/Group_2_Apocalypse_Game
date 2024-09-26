@@ -199,6 +199,9 @@ public partial class LevelManager : MonoBehaviour
 
 
         newPeiceController.setElelment(element);
+        newPeiceController.setGridPosition(mapData.getGridZeroPoint(), spawnPosition.getPosition().getX(), spawnPosition.getPosition().getY());
+        newPeiceController.setGridOffset(spawnPosition.getGridPositionOffset());
+
 
         //add the setpeice to the setpeices list
         Setpeices.Add(newPeice);
