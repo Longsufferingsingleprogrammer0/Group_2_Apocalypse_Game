@@ -77,7 +77,8 @@ public class transitionFaderScript : MonoBehaviour
 
     public void setStateFadedOut()
     {
-        faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, 1f);
+        
+        this.faderRenderer.color = new Color(faderRenderer.color.r, faderRenderer.color.g, faderRenderer.color.b, 1f);
         resetVariables();
     }
 
@@ -173,7 +174,14 @@ public class transitionFaderScript : MonoBehaviour
     void Start()
     {
         
-        faderRenderer = GetComponent<Image>();
+        
+
+        if (faderRenderer == null)
+        {
+            Debug.LogError("Image component not found on GameObject. Please attach an Image component.");
+            return;
+        }
+
         resetVariables();
         if(startingState)
         {
@@ -187,6 +195,10 @@ public class transitionFaderScript : MonoBehaviour
         
     }
 
+    private void Awake()
+    {
+        faderRenderer = GetComponent<Image>();
+    }
     public void skipTransition()
     {
         if (mode != 0)
