@@ -155,3 +155,4 @@ MonoBehaviour:
     TopLeftCornerGridY: 0
     BottomRightCornerGridX: 1
     BottomRightCornerGridY: 3
+  element: 0

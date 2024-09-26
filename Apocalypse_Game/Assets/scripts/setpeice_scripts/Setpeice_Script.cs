@@ -49,8 +49,8 @@ public class Setpeice_Script : MonoBehaviour
         {
             GridVector2 bottomRightCorner = gridSize[box].getBottomRightCorner();
             GridVector2 topLeftCorner = gridSize[box].getTopLeftCorner();
-            bottomRightCorner = new GridVector2(bottomRightCorner.getX() + gridPosition.getX(), bottomRightCorner.getY() + gridPosition.getY());
-            topLeftCorner = new GridVector2(topLeftCorner.getX() + gridPosition.getX(), topLeftCorner.getY() + gridPosition.getY());
+            bottomRightCorner = new GridVector2(bottomRightCorner.getX(), bottomRightCorner.getY());
+            topLeftCorner = new GridVector2(topLeftCorner.getX(), topLeftCorner.getY());
             copy[box] = new GridIllegalSpawnZone(topLeftCorner, bottomRightCorner);
 
         }
@@ -95,7 +95,7 @@ public class Setpeice_Script : MonoBehaviour
     public void setGridPosition(Vector2 gridZeroZeroPoint, int x, int y)
     {
         float newX = gridZeroZeroPoint.x + x + GridOffset.x;
-        float newY = gridZeroZeroPoint.y + (-y) + GridOffset.y;
+        float newY = gridZeroZeroPoint.y + (-y) - GridOffset.y;
         gridPosition = new GridVector2(x, y);
         Vector2 newPosition = new Vector2(newX, newY);
         transform.position = newPosition;

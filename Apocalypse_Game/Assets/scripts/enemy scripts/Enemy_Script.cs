@@ -62,8 +62,8 @@ public class Enemy_Script : MonoBehaviour
         {
             GridVector2 bottomRightCorner = gridSize[box].getBottomRightCorner();
             GridVector2 topLeftCorner = gridSize[box].getTopLeftCorner();
-            bottomRightCorner = new GridVector2(bottomRightCorner.getX() + gridStartingPosition.getX(), bottomRightCorner.getY() + gridStartingPosition.getY());
-            topLeftCorner = new GridVector2(topLeftCorner.getX() + gridStartingPosition.getX(), topLeftCorner.getY() + gridStartingPosition.getY());
+            bottomRightCorner = new GridVector2(bottomRightCorner.getX(), bottomRightCorner.getY());
+            topLeftCorner = new GridVector2(topLeftCorner.getX(), topLeftCorner.getY());
             copy[box] = new GridIllegalSpawnZone(topLeftCorner, bottomRightCorner);
 
         }
