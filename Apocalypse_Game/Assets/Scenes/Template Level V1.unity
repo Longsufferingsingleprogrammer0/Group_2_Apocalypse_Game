@@ -376,7 +376,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e91c91fe4b519764e997eb8ace9a1d80, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f8bdcf1f268e4f479f358548f6b4cad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1900,7 +1900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: showTakenTiles
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: debugTileObject
