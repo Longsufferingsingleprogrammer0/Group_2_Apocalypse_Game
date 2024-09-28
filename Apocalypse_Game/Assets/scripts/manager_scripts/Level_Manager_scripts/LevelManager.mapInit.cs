@@ -490,10 +490,7 @@ public partial class LevelManager : MonoBehaviour
             
 
             newPeiceController.setGridPosition(mapData.getGridZeroPoint(), spawnPosition.getX(), spawnPosition.getY());
-            for(int zone=0; zone<newPeiceController.getGridSize().Length; zone++)
-            {
-                yield return StartCoroutine(addTakenSpaceToMap(newPeiceController.getGridSize()[zone]));
-            }
+            yield return StartCoroutine(addTakenSpaceToMap(newPeiceController.getGridSize(), spawnPosition));
             
             newPeiceController.setElelment(currentItem);
             currentItem++;
@@ -690,7 +687,7 @@ public partial class LevelManager : MonoBehaviour
         //set up the dynamic parts of the map
         yield return StartCoroutine(initializeMapSetpeices());
         yield return null;
-        //yield return StartCoroutine(initializeMapActors());
+        yield return StartCoroutine(initializeMapActors());
         yield return null;
         //setup done, go to confirm screen
         mapSetupStage++;
