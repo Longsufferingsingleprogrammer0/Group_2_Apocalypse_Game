@@ -32,7 +32,7 @@ MonoBehaviour:
   - TopLeftCornerGridX: 5
     TopLeftCornerGridY: 0
     BottomRightCornerGridX: 24
-    BottomRightCornerGridY: 5
+    BottomRightCornerGridY: 6
   - TopLeftCornerGridX: 5
     TopLeftCornerGridY: 25
     BottomRightCornerGridX: 24

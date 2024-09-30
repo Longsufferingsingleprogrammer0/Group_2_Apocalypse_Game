@@ -69,6 +69,14 @@ public class Player : MonoBehaviour
     }
 
 
+    /*
+    public Vector2 getPosition()
+    {
+        return new Vector2(transform.position.x, transform.position.y);
+    }
+    */
+
+
     public void setPlayerMovementEnabled(bool enabled)
     {
         movementEnabled = enabled;

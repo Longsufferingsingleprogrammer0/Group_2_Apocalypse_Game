@@ -34,27 +34,22 @@ public partial class LevelManager : MonoBehaviour
     }
 
 
-    void quitter()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-    }
     private void startAllFiles()
     {
         UIStart();
         MapInitStart();
         startManagerAudio();
+        GamePlayLogicStart();
     }
 
 
     private void updateAllFiles()
     {
-        quitter();
+
         UIUpdate();
         MapInitUpdate();
         audioManagerUpdate();
+        GameplayLogicUpdate();
     }
 
     private void fixUpdateAllFiles()

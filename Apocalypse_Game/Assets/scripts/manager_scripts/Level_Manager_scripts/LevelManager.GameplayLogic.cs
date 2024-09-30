@@ -1,29 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Timers;
 using UnityEngine;
 
-public partial class Game_Master : MonoBehaviour
+public partial class LevelManager : MonoBehaviour
 {
-    
 
-    [SerializeField]private float health;
+
+    [SerializeField] private float startingHealth;
+    private float health;
     private bool invincible;
 
     [SerializeField] private float InvincibilityTime;
-    private float elasped;
+    private float elapsed;
     private bool injured;
+
+
 
     private IEnumerator temporaryInvinicibilty()
     {
         invincible = true;
 
-        while (elasped < InvincibilityTime)
+        while (elapsed < InvincibilityTime)
         {
-            elasped += Time.deltaTime;
+            elapsed += Time.deltaTime;
             yield return null;
         }
-        elasped = 0f;
+        elapsed = 0f;
         invincible = false;
     }
 
@@ -36,15 +38,17 @@ public partial class Game_Master : MonoBehaviour
         }
     }
 
+
+
+
     // Start is called before the first frame update
-    private void StartGameLogic()
+    private void GamePlayLogicStart()
     {
-        invincible=false;
-        injured=false;
+        
     }
 
     // Update is called once per frame
-    private void UpdateGameLogic()
+    private void GameplayLogicUpdate()
     {
         if (injured)
         {

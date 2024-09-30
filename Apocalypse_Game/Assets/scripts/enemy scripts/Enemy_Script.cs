@@ -19,7 +19,9 @@ public class Enemy_Script : MonoBehaviour
     [SerializeField] private bool randomizedHealth;
     [SerializeField] private float maxhealth;
     [SerializeField] private float minhealth;
-    
+    private float health;
+
+
     //speed
     [SerializeField] private float speed;
 
@@ -28,14 +30,17 @@ public class Enemy_Script : MonoBehaviour
     [SerializeField] private bool randomizedAttackPoints;
     [SerializeField] private float maxAttack;
     [SerializeField] private float minAttack;
-
-
-    private float health;
+    [SerializeField] private float playerDetectionDistance;
+    
+    
 
 
     //may need later
     private SpriteRenderer spriteRenderer;
     private GameObject GameManager;
+    //private GameObject LevelManager;
+    //private GameObject player;
+    //private Player playerScript;
 
     public int ElementIndex
     {
@@ -54,6 +59,12 @@ public class Enemy_Script : MonoBehaviour
     public int getElement() { return element; }
 
 
+    /*
+    private bool canSeePlayer()
+    {
+        return (getPlayerDistance() < playerDetectionDistance);
+    }
+    */
 
     public GridIllegalSpawnZone[] getGridSize()
     {
@@ -125,21 +136,56 @@ public class Enemy_Script : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if(randomizedAttackPoints)
-            GameManager.GetComponent<Game_Master>().damagePlayer(attack());
+            
+            //LevelManager.GetComponent<LevelManager>().damagePlayer(attack());
+            
+            
             
         }
     }
 
+    /*
+    private float getPlayerDistance()
+    {
+        return Vector2.Distance(getPosition(),playerScript.getPosition());
+    }
 
+    */
 
-
+    private void Awake()
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
         GameManager = GameObject.FindWithTag("game_master");
+        //LevelManager = GameObject.FindWithTag("Level_Master");
+        //player = GameObject.FindWithTag("Player");
+        //playerScript = player.GetComponent<Player>();
+
+        if (GameManager == null)
+        {
+            throw new System.Exception("enemy reference to game manager is null");
+        }
+        /* if (LevelManager == null)
+        {
+            throw new System.Exception("enemy reference to level manager is null");
+        }
+        if (player == null)
+        {
+            //throw new System.Exception("enemy reference to player is null");
+        }
+        if (playerScript == null)
+        {
+            //throw new System.Exception("enemy reference to player script is null");
+        }
+        */
+
+
 
         if (randomizedHealth)
         {

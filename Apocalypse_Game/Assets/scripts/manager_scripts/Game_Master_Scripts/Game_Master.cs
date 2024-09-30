@@ -34,6 +34,12 @@ public partial class Game_Master : MonoBehaviour
     }
 
 
+    public void quitGame()
+    {
+        Application.Quit();
+    }
+
+
     private void quitter()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -44,7 +50,7 @@ public partial class Game_Master : MonoBehaviour
     private void startAllFiles()
     {
         
-        StartGameLogic();
+        StartGlobalGameLogic();
         startScoreKeeping();
     }
 
@@ -52,9 +58,15 @@ public partial class Game_Master : MonoBehaviour
     private void updateAllFiles()
     {
         quitter();
-        UpdateGameLogic();
+        UpdateGlobalGameLogic();
         UpdateScoreKeeping();
         
+    }
+
+    public void resetAllVariables()
+    {
+        resetScoreKeepingVariables();
+        resetGlobalGameLogicVariables();
     }
 
 
