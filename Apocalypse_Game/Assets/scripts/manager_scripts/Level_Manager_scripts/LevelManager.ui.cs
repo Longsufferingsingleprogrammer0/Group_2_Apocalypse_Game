@@ -33,6 +33,7 @@ public partial class LevelManager : MonoBehaviour
                 uiStage = 0;
                 if (paused)
                 {
+                    
                     setUiMode(5);
                 }
                 else
@@ -43,6 +44,15 @@ public partial class LevelManager : MonoBehaviour
         }
         
     }
+
+
+    private void resumeClick()
+    {
+        pauseTransition = true;
+        uiStage = 0;
+        setUiMode(5);
+    }
+
 
     private void setUIStage(int uiStage)
     {
@@ -134,6 +144,71 @@ public partial class LevelManager : MonoBehaviour
         playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
     }
 
+
+    private void fadeInPauseMenu()
+    {
+        switch (uiStage)
+        {
+            case 0:
+                pauseTransition = true;
+                pauseGamePlayLogic();
+                uiStage++;
+                break;
+            case 1:
+                faderController.fadeIn(loadingFadeTime / 2);
+                uiStage++;
+                break;
+            case 2:
+                if (faderController.isFadeFinished())
+                {
+                    uiStage++;
+                }
+                break;
+            case 3:
+                resumeButton.SetActive(true);
+                exitButton.SetActive(true);
+                uimode++;
+                uiStage = 0;
+                paused = true;
+                pauseTransition = false;
+                
+                break;
+
+        }
+    }
+
+    private void fadeOutPauseMenu()
+    {
+        switch (uiStage)
+        {
+            case 0:
+                pauseTransition = true;
+                resumeButton.SetActive(false);
+                exitButton.SetActive(false);
+                uiStage++;
+                break;
+            case 1:
+                faderController.fadeOut(loadingFadeTime / 2);
+                uiStage++;
+                break;
+            case 2:
+                if (faderController.isFadeFinished())
+                {
+                    uiStage++;
+                }
+                break;
+            case 3:
+                paused = false;
+                pauseTransition = false;
+                resumeGamePlayLogic();
+                uimode = 2;
+                uiStage = 0;
+                break;
+
+        }
+    }
+
+
     private void uiGameplayMode()
     {
         //placeholder
@@ -196,10 +271,12 @@ public partial class LevelManager : MonoBehaviour
                 uiGameplayMode();
                 break;
             case 3:
+                fadeInPauseMenu();
                 break;
             case 4:
                 break;
             case 5:
+                fadeOutPauseMenu();
                 break;
             case 6:
                 exitMode();
