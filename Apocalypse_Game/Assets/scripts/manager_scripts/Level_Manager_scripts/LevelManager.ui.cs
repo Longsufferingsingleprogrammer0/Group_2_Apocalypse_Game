@@ -27,10 +27,12 @@ public partial class LevelManager : MonoBehaviour
     {
         if (!pauseTransition)
         {
+            
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 pauseTransition = true;
                 uiStage = 0;
+              
                 if (paused)
                 {
                     
@@ -38,6 +40,7 @@ public partial class LevelManager : MonoBehaviour
                 }
                 else
                 {
+                   
                     setUiMode(3);
                 }
             }
@@ -46,7 +49,7 @@ public partial class LevelManager : MonoBehaviour
     }
 
 
-    private void resumeClick()
+    public void resumeClick()
     {
         pauseTransition = true;
         uiStage = 0;
@@ -61,7 +64,7 @@ public partial class LevelManager : MonoBehaviour
 
     private void setUiMode(int uiMode)
     {
-        this.uiStage = uiMode;
+        this.uimode = uiMode;
     }
 
     
@@ -129,7 +132,7 @@ public partial class LevelManager : MonoBehaviour
                 }
                 break;
             case 8:
-                
+                pauseTransition = false;
                 mapSetupStage = 0;
                 uimode++;
                 uiStage = 0;
@@ -147,6 +150,7 @@ public partial class LevelManager : MonoBehaviour
 
     private void fadeInPauseMenu()
     {
+        
         switch (uiStage)
         {
             case 0:
@@ -167,7 +171,7 @@ public partial class LevelManager : MonoBehaviour
             case 3:
                 resumeButton.SetActive(true);
                 exitButton.SetActive(true);
-                uimode++;
+                uimode=4;
                 uiStage = 0;
                 paused = true;
                 pauseTransition = false;
@@ -247,6 +251,8 @@ public partial class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void UIStart()
     {
+        pauseTransition = true;
+        paused = false;
         uiStage = 0;
         uimode = 0;
         faderController = fader.GetComponent<transitionFaderScript>();
@@ -254,7 +260,10 @@ public partial class LevelManager : MonoBehaviour
         exitButton.SetActive(false);
     }
 
-
+    public void exitClick()
+    {
+        uimode = 6;
+    }
 
     // Update is called once per frame
     void UIUpdate()
