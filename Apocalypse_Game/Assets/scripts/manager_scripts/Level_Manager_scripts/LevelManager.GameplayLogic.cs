@@ -17,8 +17,30 @@ public partial class LevelManager : MonoBehaviour
     private bool injured;
 
 
+    public void pauseGamePlayLogic()
+    {
+        gameplayEnabled = 0;
+        for(int enemy=0; enemy<Enemies.Count; enemy++)
+        {
+            Enemies[enemy].GetComponent<Enemy_Script>().enabled = false;
+        }
+        GameObject.FindWithTag(playerTag).GetComponent<Player>().enabled=false;
+
+    }
+
+    public void resumeGamePlayLogic()
+    {
+        GameObject.FindWithTag(playerTag).GetComponent<Player>().enabled = true;
+        for (int enemy = 0; enemy < Enemies.Count; enemy++)
+        {
+            Enemies[enemy].GetComponent<Enemy_Script>().enabled = true;
+        }
+        
+        gameplayEnabled = 1;
+    }
 
 
+    
 
     public int getGameplayEnabled()
     {

@@ -3,18 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.Loading;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public partial class LevelManager : MonoBehaviour
 {
     private int uimode;
     private int uiStage;
+    [SerializeField] private GameObject gameManager;
     [SerializeField] private GameObject fader;
+    [SerializeField] private GameObject resumeButton;
+    [SerializeField] private GameObject exitButton;
     private transitionFaderScript faderController;
     [SerializeField] private float loadingFadeTime;
+    [SerializeField] private string menuScene;
+    private bool paused;
+    private bool pauseTransition;
 
     //ui code
 
-    
+    private void PauseHandler()
+    {
+        if (!pauseTransition)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pauseTransition = true;
+                uiStage = 0;
+                if (paused)
+                {
+                    setUiMode(5);
+                }
+                else
+                {
+                    setUiMode(3);
+                }
+            }
+        }
+        
+    }
 
     private void setUIStage(int uiStage)
     {
@@ -26,7 +54,7 @@ public partial class LevelManager : MonoBehaviour
         this.uiStage = uiMode;
     }
 
-
+    
 
     private void uiLoadingMode()
     {
@@ -91,9 +119,10 @@ public partial class LevelManager : MonoBehaviour
                 }
                 break;
             case 8:
-               
+                
                 mapSetupStage = 0;
                 uimode++;
+                uiStage = 0;
                 break;
 
 
@@ -110,12 +139,44 @@ public partial class LevelManager : MonoBehaviour
         //placeholder
     }
 
+    private void exitMode()
+    {
+        switch (uiStage)
+        {
+            case 0:
+                pauseTransition = true;
+                gameManager.GetComponent<Game_Master>().resetAllVariables();
+                resumeButton.GetComponent<Button>().enabled = false;
+                exitButton.GetComponent<Button>().enabled = false;
+                uiStage++;
+                break;
+            case 1:
+                faderController.fadeOut(loadingFadeTime);
+                uiStage++;
+                break;
+            case 2:
+                if (faderController.isFadeFinished())
+                {
+                    uiStage++;
+                }
+                break;
+            case 3:
+                SceneManager.LoadScene("title screen");
+                uiStage++;
+                uiStage = 0;
+                break;
+        }
+    }
+
+
     // Start is called before the first frame update
     void UIStart()
     {
         uiStage = 0;
         uimode = 0;
         faderController = fader.GetComponent<transitionFaderScript>();
+        resumeButton.SetActive(false);
+        exitButton.SetActive(false);
     }
 
 
@@ -136,10 +197,18 @@ public partial class LevelManager : MonoBehaviour
                 break;
             case 3:
                 break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                exitMode();
+                break;
             default:
                 throw new System.Exception("ui mode is set to invalid value of "+uimode.ToString()+" must be within 0 to 2 inclusive");
-               
 
+            
         }
+        PauseHandler();
     }
 }
