@@ -38,9 +38,9 @@ public class Enemy_Script : MonoBehaviour
     //may need later
     private SpriteRenderer spriteRenderer;
     private GameObject GameManager;
-    //private GameObject LevelManager;
-    //private GameObject player;
-    //private Player playerScript;
+    private GameObject LevelManager;
+    private GameObject player;
+    private Player playerScript;
 
     public int ElementIndex
     {
@@ -59,12 +59,12 @@ public class Enemy_Script : MonoBehaviour
     public int getElement() { return element; }
 
 
-    /*
+    
     private bool canSeePlayer()
     {
         return (getPlayerDistance() < playerDetectionDistance);
     }
-    */
+    
 
     public GridIllegalSpawnZone[] getGridSize()
     {
@@ -137,20 +137,20 @@ public class Enemy_Script : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             
-            //LevelManager.GetComponent<LevelManager>().damagePlayer(attack());
+            LevelManager.GetComponent<LevelManager>().damagePlayer(attack());
             
             
             
         }
     }
 
-    /*
+    
     private float getPlayerDistance()
     {
         return Vector2.Distance(getPosition(),playerScript.getPosition());
     }
 
-    */
+    
 
     private void Awake()
     {
@@ -163,27 +163,27 @@ public class Enemy_Script : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         
         GameManager = GameObject.FindWithTag("game_master");
-        //LevelManager = GameObject.FindWithTag("Level_Master");
-        //player = GameObject.FindWithTag("Player");
-        //playerScript = player.GetComponent<Player>();
+        LevelManager = GameObject.FindWithTag("Level_Master");
+        player = GameObject.FindWithTag("Player");
+        playerScript = player.GetComponent<Player>();
 
         if (GameManager == null)
         {
             throw new System.Exception("enemy reference to game manager is null");
         }
-        /* if (LevelManager == null)
+         if (LevelManager == null)
         {
             throw new System.Exception("enemy reference to level manager is null");
         }
         if (player == null)
         {
-            //throw new System.Exception("enemy reference to player is null");
+            throw new System.Exception("enemy reference to player is null");
         }
         if (playerScript == null)
         {
-            //throw new System.Exception("enemy reference to player script is null");
+            throw new System.Exception("enemy reference to player script is null");
         }
-        */
+        
 
 
 

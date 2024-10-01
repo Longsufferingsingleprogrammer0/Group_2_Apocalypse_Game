@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     //enables and disables movement
     private bool movementEnabled;
 
+    private int gamePlayEnabled;
+
     #endregion
 
     #region animationVariables:
@@ -42,9 +44,22 @@ public class Player : MonoBehaviour
     #endregion
     #endregion
 
+    LevelManager levelManager;
 
+    public void pausePlayer()
+    {
+        gamePlayEnabled = 0;
+        spriteRenderer.sprite = idleSprites[direction - 1];
+        spriteAnimator.enabled = false;
+        spriteAnimator.SetInteger(animationControlParamater, 0);
+        footsteps.Stop();
+        playingWalkingSound = false;
+    }
 
-
+    public void resumePlayer()
+    {
+        gamePlayEnabled = 1;
+    }
 
 
     // Start is called before the first frame update
@@ -54,6 +69,24 @@ public class Player : MonoBehaviour
         //int targetFramerate = Application.targetFrameRate;
 
         //get our main components
+
+
+        GameObject tempManager = GameObject.FindWithTag("Level_Master");
+        if (tempManager == null)
+        {
+            throw new System.Exception("player error, player was unable to obtain level manager");
+        }
+        else
+        {
+            levelManager = tempManager.GetComponent<LevelManager>();
+            if (levelManager == null)
+            {
+                throw new System.Exception("player error, player was unable to obtain level manager script");
+            }
+        }
+
+        gamePlayEnabled = levelManager.getGameplayEnabled();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         
         SpritePhysics = GetComponent<Rigidbody2D>();
@@ -69,12 +102,12 @@ public class Player : MonoBehaviour
     }
 
 
-    /*
+    
     public Vector2 getPosition()
     {
         return new Vector2(transform.position.x, transform.position.y);
     }
-    */
+    
 
 
     public void setPlayerMovementEnabled(bool enabled)
@@ -227,7 +260,16 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         //movement handling is functioned out for clairity
-        playerMovementHandler2D();
+        switch (gamePlayEnabled)
+        {
+            case 1:
+                playerMovementHandler2D();
+                break;
+
+            default:
+                break;
+        }
+        
     }
 
 

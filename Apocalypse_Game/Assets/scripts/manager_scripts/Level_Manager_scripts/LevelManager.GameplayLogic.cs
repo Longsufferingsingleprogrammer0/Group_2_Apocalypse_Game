@@ -5,6 +5,8 @@ using UnityEngine;
 public partial class LevelManager : MonoBehaviour
 {
 
+    private int gameplayEnabled=0;
+    [SerializeField] private bool gameplayEnabledAtStart;
 
     [SerializeField] private float startingHealth;
     private float health;
@@ -15,6 +17,10 @@ public partial class LevelManager : MonoBehaviour
     private bool injured;
 
 
+    public int getGameplayEnabled()
+    {
+        return gameplayEnabled;
+    }
 
     private IEnumerator temporaryInvinicibilty()
     {
@@ -22,8 +28,20 @@ public partial class LevelManager : MonoBehaviour
 
         while (elapsed < InvincibilityTime)
         {
-            elapsed += Time.deltaTime;
-            yield return null;
+            switch (gameplayEnabled)
+            {
+                case 1:
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                    break;
+
+                default:
+                    yield return null;
+                    break;
+            }
+
+
+            
         }
         elapsed = 0f;
         invincible = false;
@@ -44,16 +62,32 @@ public partial class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     private void GamePlayLogicStart()
     {
-        
+        if (gameplayEnabledAtStart)
+        {
+            gameplayEnabled = 1;
+        }
+        else
+        {
+            gameplayEnabled = 0;
+        }
     }
 
     // Update is called once per frame
     private void GameplayLogicUpdate()
     {
-        if (injured)
+        switch (gameplayEnabled)
         {
-            injured = false;
-            StartCoroutine(temporaryInvinicibilty());
+            case 1:
+                if (injured)
+                {
+                    injured = false;
+                    StartCoroutine(temporaryInvinicibilty());
+                }
+                break;
+
+            default:
+                break;
         }
+        
     }
 }
