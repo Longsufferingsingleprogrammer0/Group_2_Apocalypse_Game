@@ -17,6 +17,9 @@ public partial class LevelManager : MonoBehaviour
     private bool injured;
 
 
+
+
+
     public int getGameplayEnabled()
     {
         return gameplayEnabled;

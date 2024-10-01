@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     //enables and disables movement
     private bool movementEnabled;
 
-    private int gamePlayEnabled;
+
 
     #endregion
 
@@ -44,22 +44,9 @@ public class Player : MonoBehaviour
     #endregion
     #endregion
 
-    LevelManager levelManager;
 
-    public void pausePlayer()
-    {
-        gamePlayEnabled = 0;
-        spriteRenderer.sprite = idleSprites[direction - 1];
-        spriteAnimator.enabled = false;
-        spriteAnimator.SetInteger(animationControlParamater, 0);
-        footsteps.Stop();
-        playingWalkingSound = false;
-    }
+    [SerializeField] private GameObject knifeAttack;
 
-    public void resumePlayer()
-    {
-        gamePlayEnabled = 1;
-    }
 
 
     // Start is called before the first frame update
@@ -71,21 +58,8 @@ public class Player : MonoBehaviour
         //get our main components
 
 
-        GameObject tempManager = GameObject.FindWithTag("Level_Master");
-        if (tempManager == null)
-        {
-            throw new System.Exception("player error, player was unable to obtain level manager");
-        }
-        else
-        {
-            levelManager = tempManager.GetComponent<LevelManager>();
-            if (levelManager == null)
-            {
-                throw new System.Exception("player error, player was unable to obtain level manager script");
-            }
-        }
+        
 
-        gamePlayEnabled = levelManager.getGameplayEnabled();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         
@@ -260,15 +234,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         //movement handling is functioned out for clairity
-        switch (gamePlayEnabled)
-        {
-            case 1:
-                playerMovementHandler2D();
-                break;
+      
 
-            default:
-                break;
-        }
+                playerMovementHandler2D();
+
+        
         
     }
 

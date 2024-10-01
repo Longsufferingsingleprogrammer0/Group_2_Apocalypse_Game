@@ -41,7 +41,7 @@ public class Enemy_Script : MonoBehaviour
     private GameObject LevelManager;
     private GameObject player;
     private Player playerScript;
-    private int gamePlayEnabled;
+
 
     public int ElementIndex
     {
@@ -99,16 +99,7 @@ public class Enemy_Script : MonoBehaviour
     }
 
 
-    public void pauseEnemy()
-    {
-        gamePlayEnabled = 0;
-        
-    }
-
-    public void resumeEnemy()
-    {
-        gamePlayEnabled = 1;
-    }
+    
 
     public GridVector2 getGridStartingPosition()
     {
@@ -146,17 +137,15 @@ public class Enemy_Script : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (gamePlayEnabled)
+   
+        
+          
+        if (collision.CompareTag("Player"))
         {
-            case 1:
-                if (collision.CompareTag("Player"))
-                {
-                    LevelManager.GetComponent<LevelManager>().damagePlayer(attack());
-                }
-                break;
-            default:
-                break;
+            LevelManager.GetComponent<LevelManager>().damagePlayer(attack());
         }
+
+        
         
     }
 
@@ -200,13 +189,7 @@ public class Enemy_Script : MonoBehaviour
             throw new System.Exception("enemy reference to player script is null");
         }
 
-        LevelManager levelManagerScript = LevelManager.GetComponent<LevelManager>();
-        if (levelManagerScript == null)
-        {
-            throw new System.Exception("enemy error, enemy was unable to obtain level manager script");
-        }
 
-        gamePlayEnabled = levelManagerScript.getGameplayEnabled();
 
         if (randomizedHealth)
         {

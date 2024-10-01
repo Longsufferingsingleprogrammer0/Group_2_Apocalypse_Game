@@ -13,6 +13,9 @@ public partial class LevelManager : MonoBehaviour
     public static LevelManager Instance => instance;
 
 
+    
+
+
     void Awake()
     {
         //startup code for singletons

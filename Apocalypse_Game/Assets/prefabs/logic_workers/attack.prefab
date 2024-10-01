@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2005782091326856680}
   m_Layer: 0
   m_Name: attack
-  m_TagString: Untagged
+  m_TagString: attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ BoxCollider2D:
   m_Offset: {x: 0.5, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 1}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -143,3 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abc235de6842b740888ec587b2a9cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  XCenterOffset: 0
+  YCenterOffset: 0
+  horizontalRotation: 0
+  verticalRotation: 0
+  returnPoint: {x: 0, y: 0}
