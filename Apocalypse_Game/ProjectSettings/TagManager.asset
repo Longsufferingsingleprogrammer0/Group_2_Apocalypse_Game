@@ -13,6 +13,7 @@ TagManager:
   - Level_Master
   - collectable item
   - enemy
+  - attack
   layers:
   - Default
   - TransparentFX

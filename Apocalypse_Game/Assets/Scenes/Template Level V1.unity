@@ -1931,6 +1931,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: gameplayEnabledAtStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: loadingDoneScreenPos.x
       value: -90
       objectReference: {fileID: 0}
