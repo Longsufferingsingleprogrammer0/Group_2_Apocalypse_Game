@@ -16,6 +16,18 @@ public class knifeAttackScript : MonoBehaviour
     [SerializeField] private float attackLeftHorizontalOffset;
     [SerializeField] private float attackRightHorizontalOffset;
     [SerializeField] private Vector2 returnPoint;
+    [SerializeField] private bool randomAttackDamage;
+    [SerializeField] private float attackDamageMin;
+    [SerializeField] private float attackDamageMax;
+    
+    public float generateDamageValue()
+    {
+        if (randomAttackDamage)
+        {
+            return UnityEngine.Random.Range(attackDamageMin, attackDamageMax);
+        }
+        return attackDamageMax;
+    }
 
     public void setPosition(Vector2 position, Quaternion rotation)
     {
@@ -29,7 +41,7 @@ public class knifeAttackScript : MonoBehaviour
             //placeholder
         }
     }    
-        
+    
         
     public void attack(Vector2 playerpos, int PlayerDirection)
     {

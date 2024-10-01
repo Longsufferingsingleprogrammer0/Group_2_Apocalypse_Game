@@ -509,6 +509,7 @@ MonoBehaviour:
   movementSpeed: 4
   movementEnabledAtStartup: 0
   spriteRendererEnabledAtStartup: 0
+  knifeAttack: {fileID: 691079703}
   animationControlParamater: direction
   idleSprites:
   - {fileID: 21300000, guid: d1d299cb078c0b3458ec4fe163f4f149, type: 3}
@@ -516,7 +517,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d75adfaf7001eae45a32d289f19bdff3, type: 3}
   - {fileID: 21300000, guid: 5eea560bd30b6764495ac7710e0fdd3c, type: 3}
   footsteps: {fileID: 560540650}
-  knifeAttack: {fileID: 691079703}
 --- !u!50 &134613956
 Rigidbody2D:
   serializedVersion: 4
@@ -1003,6 +1003,14 @@ PrefabInstance:
     - target: {fileID: 1578398401701661199, guid: 2bcd8f00f8a12d34a9821c7989b74187, type: 3}
       propertyPath: m_TagString
       value: attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005782091326856680, guid: 2bcd8f00f8a12d34a9821c7989b74187, type: 3}
+      propertyPath: returnPoint.x
+      value: -38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005782091326856680, guid: 2bcd8f00f8a12d34a9821c7989b74187, type: 3}
+      propertyPath: returnPoint.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6907681530626770328, guid: 2bcd8f00f8a12d34a9821c7989b74187, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2366,9 +2374,9 @@ SceneRoots:
   - {fileID: 90794444}
   - {fileID: 1933102921}
   - {fileID: 134613954}
+  - {fileID: 691079702}
   - {fileID: 1876556401}
   - {fileID: 1202599515}
   - {fileID: 1942850327}
   - {fileID: 56493657}
   - {fileID: 560540651}
-  - {fileID: 691079702}

@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     private bool movementEnabled;
 
 
-
+    [SerializeField] private GameObject knifeAttack;
     #endregion
 
     #region animationVariables:
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     #endregion
 
 
-    [SerializeField] private GameObject knifeAttack;
+    
 
 
 
