@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -29,15 +31,18 @@ public class Player : MonoBehaviour
     //attack vars
     [SerializeField] private GameObject knifeAttack;
     [SerializeField] private float attackCooldownTime;
-   
+    private float cooldownElapsed;
+    private bool playerAttacking;
+
 
     //anim vars
     [SerializeField] private string animationControlParamater;
     [SerializeField] private Sprite[] idleSprites;
-    private int direction;
+    private int facingDirection;
 
     //audio vars
     [SerializeField] private AudioSource footsteps;
+    [SerializeField] private AudioSource attackSound;
     private bool playingWalkingSound;
 
 
@@ -69,7 +74,7 @@ public class Player : MonoBehaviour
         spriteRenderer.enabled = spriteRendererEnabledAtStartup;
 
         spriteAnimator.enabled = false;
-        direction = 1;
+        facingDirection = 1;
     }
 
 
@@ -87,9 +92,41 @@ public class Player : MonoBehaviour
     }
 
 
+    private void attackCoolDownWorker()
+    {
+
+        
+        
+        if (playerAttacking)
+        {
+
+            if(attackCooldownTime <= cooldownElapsed )
+            {
+                playerAttacking=false;
+                cooldownElapsed=0;
+
+            }
+            else
+            {
+                cooldownElapsed += Time.deltaTime;
+            }
+        }
+
+        
+        
+    }
+
+
     private void playerAttackHandler(int direction)
     {
         //put code here
+        if (!playerAttacking)
+        {
+            
+
+            //remember to trigger the sound effect
+        }
+
     }
 
 
@@ -112,63 +149,83 @@ public class Player : MonoBehaviour
 
     }
 
-    private void playerAnimationHandler(int toMoveX, int toMoveY, bool moving)
+
+
+    private int findDirection(int toMoveX, int toMoveY)
     {
-        if (moving)
+        int newDirection = 0;
+        if (toMoveY == 0)
         {
-            if (!spriteAnimator.enabled)
+            switch (toMoveX + 1)
             {
-                spriteAnimator.enabled = true;
+                case (0):
+                    newDirection = 2;
+                    break;
+                case (2):
+                    newDirection = 4;
+                    break;
+                default:
+                    break;
             }
-            int newDirection = 0;
-            if (toMoveY == 0)
+        }
+        else
+        {
+            switch (toMoveY + 1)
             {
-                switch (toMoveX + 1)
-                {
-                    case (0):
-                        newDirection = 2;
-                        break;
-                    case (2):
-                        newDirection = 4;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                switch (toMoveY + 1)
-                {
-                    case (0):
-                        newDirection = 3;
-                        break;
-                    case (2):
-                        newDirection = 1;
-                        break;
-                    default:
-                        break;
-                }
-                
-                
-            }
-            if (newDirection != direction)
-            {
-                direction = newDirection;
-                spriteRenderer.sprite = idleSprites[direction - 1];
-            }
-            if (spriteAnimator.GetInteger(animationControlParamater) != direction)
-            {
-                spriteAnimator.SetInteger(animationControlParamater, direction);
+                case (0):
+                    newDirection = 3;
+                    break;
+                case (2):
+                    newDirection = 1;
+                    break;
+                default:
+                    break;
             }
 
+
         }
-        else if (spriteAnimator.enabled)
+        return newDirection;
+    }
+
+
+    private void playerAnimationHandler(int currentDirection, bool moving)
+    {
+        if (playerAttacking)
         {
-            spriteRenderer.sprite = idleSprites[direction - 1];
-            spriteAnimator.enabled = false;
-            spriteAnimator.SetInteger(animationControlParamater, 0);
-            
+            //put attack animation code here
         }
+        else
+        {
+            if (moving)
+            {
+                if (!spriteAnimator.enabled)
+                {
+                    spriteAnimator.enabled = true;
+                }
+            
+
+            
+
+                if (currentDirection != facingDirection)
+                {
+                    facingDirection = currentDirection;
+                    spriteRenderer.sprite = idleSprites[facingDirection - 1];
+                }
+                if (spriteAnimator.GetInteger(animationControlParamater) != facingDirection)
+                {
+                    spriteAnimator.SetInteger(animationControlParamater, facingDirection);
+                }
+
+            }
+            else if (spriteAnimator.enabled)
+            {
+                spriteRenderer.sprite = idleSprites[facingDirection - 1];
+                spriteAnimator.enabled = false;
+                spriteAnimator.SetInteger(animationControlParamater, 0);
+            
+            }
+        }
+        
     }
 
 
@@ -206,10 +263,29 @@ public class Player : MonoBehaviour
             }
 
             bool moving = (toMoveX != 0) || (toMoveY != 0);
+            int direction = facingDirection;
+
+
+            if (moving)
+            {
+                if (playerAttacking)
+                {
+                    moving = false;
+                }
+                else
+                {
+                    direction=findDirection(toMoveX, toMoveY);
+
+                }
+                
+
+            }
 
 
 
-            playerAnimationHandler(toMoveX, toMoveY,moving);
+            playerAttackHandler(direction);
+
+            playerAnimationHandler(direction,moving);
             playerAudioHandler(moving);
             //if we need to move
             if (moving)
@@ -242,9 +318,9 @@ public class Player : MonoBehaviour
     {
         //movement handling is functioned out for clairity
       
+        
 
-                playerMovementHandler2D();
-
+        
         
         
     }
@@ -257,7 +333,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-     
+        attackCoolDownWorker();
+        playerMovementHandler2D();
     }
 }
