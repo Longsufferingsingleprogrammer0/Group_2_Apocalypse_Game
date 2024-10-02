@@ -4,45 +4,42 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    #region localVariables:
+
     //the compoents we need
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D SpritePhysics;
     private Animator spriteAnimator;
     //never give serialized values a default value, it breaks things
 
-    #region movementVariables:
+
     //distance moved per second
     [SerializeField] private float movementSpeed;
 
-    #endregion
 
 
-    #region modeVariables:
+
+    //mode vars:
     //enable movement of sprite at startup    
     [SerializeField] private bool movementEnabledAtStartup;
-    
     //whether the sprite is visible at startup
     [SerializeField] private bool spriteRendererEnabledAtStartup;
-    
     //enables and disables movement
     private bool movementEnabled;
 
-
+    //attack vars
     [SerializeField] private GameObject knifeAttack;
-    #endregion
+    [SerializeField] private float attackCooldownTime;
+   
 
-    #region animationVariables:
+    //anim vars
     [SerializeField] private string animationControlParamater;
     [SerializeField] private Sprite[] idleSprites;
-    
     private int direction;
-    #endregion
-    #region audioVariables;
+
+    //audio vars
     [SerializeField] private AudioSource footsteps;
     private bool playingWalkingSound;
-    #endregion
-    #endregion
+
 
 
     
@@ -88,6 +85,13 @@ public class Player : MonoBehaviour
     {
         movementEnabled = enabled;
     }
+
+
+    private void playerAttackHandler()
+    {
+
+    }
+
 
 
     private void playerAudioHandler(bool moving)
@@ -202,6 +206,9 @@ public class Player : MonoBehaviour
             }
 
             bool moving = (toMoveX != 0) || (toMoveY != 0);
+
+
+
             playerAnimationHandler(toMoveX, toMoveY,moving);
             playerAudioHandler(moving);
             //if we need to move

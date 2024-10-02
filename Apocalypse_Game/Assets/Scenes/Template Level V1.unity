@@ -643,6 +643,7 @@ MonoBehaviour:
   movementEnabledAtStartup: 0
   spriteRendererEnabledAtStartup: 0
   knifeAttack: {fileID: 691079703}
+  attackCooldownTime: 0.5
   animationControlParamater: direction
   idleSprites:
   - {fileID: 21300000, guid: d1d299cb078c0b3458ec4fe163f4f149, type: 3}
