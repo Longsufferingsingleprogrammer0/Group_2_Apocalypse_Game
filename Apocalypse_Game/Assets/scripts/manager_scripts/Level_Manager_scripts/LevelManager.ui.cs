@@ -13,6 +13,7 @@ public partial class LevelManager : MonoBehaviour
     private int uiStage;
     private GameObject gameManager;
     [SerializeField] private GameObject fader;
+    [SerializeField] private GameObject fadeOutFader;
     [SerializeField] private GameObject resumeButton;
     [SerializeField] private GameObject exitButton;
     private transitionFaderScript faderController;
@@ -230,11 +231,11 @@ public partial class LevelManager : MonoBehaviour
                 uiStage++;
                 break;
             case 1:
-                faderController.fadeOut(loadingFadeTime);
+                fadeOutFader.GetComponent<transitionFaderScript>().fadeOut(loadingFadeTime);
                 uiStage++;
                 break;
             case 2:
-                if (faderController.isFadeFinished())
+                if (fadeOutFader.GetComponent<transitionFaderScript>().isFadeFinished())
                 {
                     uiStage++;
                 }
