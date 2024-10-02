@@ -87,9 +87,9 @@ public class Player : MonoBehaviour
     }
 
 
-    private void playerAttackHandler()
+    private void playerAttackHandler(int direction)
     {
-
+        //put code here
     }
 
 
