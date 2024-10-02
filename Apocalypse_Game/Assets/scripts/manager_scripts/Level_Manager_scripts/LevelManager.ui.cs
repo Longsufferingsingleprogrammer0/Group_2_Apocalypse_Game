@@ -11,7 +11,7 @@ public partial class LevelManager : MonoBehaviour
 {
     private int uimode;
     private int uiStage;
-    [SerializeField] private GameObject gameManager;
+    private GameObject gameManager;
     [SerializeField] private GameObject fader;
     [SerializeField] private GameObject resumeButton;
     [SerializeField] private GameObject exitButton;
@@ -159,7 +159,7 @@ public partial class LevelManager : MonoBehaviour
                 uiStage++;
                 break;
             case 1:
-                faderController.fadeIn(loadingFadeTime / 2);
+                faderController.fadeOut(loadingFadeTime / 2);
                 uiStage++;
                 break;
             case 2:
@@ -192,7 +192,7 @@ public partial class LevelManager : MonoBehaviour
                 uiStage++;
                 break;
             case 1:
-                faderController.fadeOut(loadingFadeTime / 2);
+                faderController.fadeIn(loadingFadeTime / 2);
                 uiStage++;
                 break;
             case 2:
@@ -240,7 +240,7 @@ public partial class LevelManager : MonoBehaviour
                 }
                 break;
             case 3:
-                SceneManager.LoadScene("title screen");
+                SceneManager.LoadScene(menuScene);
                 uiStage++;
                 uiStage = 0;
                 break;
@@ -255,6 +255,7 @@ public partial class LevelManager : MonoBehaviour
         paused = false;
         uiStage = 0;
         uimode = 0;
+        gameManager=  GameObject.FindWithTag("game_master");
         faderController = fader.GetComponent<transitionFaderScript>();
         resumeButton.SetActive(false);
         exitButton.SetActive(false);

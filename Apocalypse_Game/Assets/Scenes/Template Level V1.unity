@@ -204,7 +204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 44560384}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1769788600}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: exitClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &44560384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,6 +1125,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &562042876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2519426388485147789, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
+  m_PrefabInstance: {fileID: 1470852627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &575006287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1342,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 598156885}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1769788600}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: resumeClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &598156885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2480,6 +2509,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1769788600 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+  m_PrefabInstance: {fileID: 1933102921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a370c7777a078945b1f664bace47932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1876556399
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,9 +2623,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c707490aa4e46f6469d3d43d39b720ad, type: 2}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: menuScene
+      value: logo screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: menuSound
       value: 
       objectReference: {fileID: 56493656}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: exitButton
+      value: 
+      objectReference: {fileID: 44560381}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 562042876}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: musicSource
       value: 
@@ -2595,8 +2647,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: resumeButton
+      value: 
+      objectReference: {fileID: 598156882}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: showTakenTiles
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: startingHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: debugTileObject
@@ -2617,6 +2677,10 @@ PrefabInstance:
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: playerStartPos.y
       value: -22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: InvincibilityTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: loadingScreenPos.x
@@ -2831,7 +2895,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7257260186591509516, guid: 7422af7eaefc7314b93dbc493faf4b6b, type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 1703807927}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7422af7eaefc7314b93dbc493faf4b6b, type: 3}
