@@ -52,7 +52,10 @@ public class Player : MonoBehaviour
 
 
     
-
+    public void resetSprite()
+    {
+        GetComponent<SpriteRenderer>().sprite = idleSprites[0];
+    }
 
 
     // Start is called before the first frame update

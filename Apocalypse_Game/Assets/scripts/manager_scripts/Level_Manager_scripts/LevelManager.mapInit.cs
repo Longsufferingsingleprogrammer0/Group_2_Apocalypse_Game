@@ -16,8 +16,7 @@ public partial class LevelManager : MonoBehaviour
     [SerializeField] private LevelSpawnData mapData;
 
     //position of the loading screens
-    [SerializeField] private Vector2 loadingScreenPos;
-    [SerializeField] private Vector2 loadingDoneScreenPos;
+
 
     //debug variables
     [SerializeField] private GameObject takenTileObject;

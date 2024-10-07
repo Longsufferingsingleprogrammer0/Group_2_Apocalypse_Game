@@ -21,7 +21,13 @@ public partial class LevelManager : MonoBehaviour
     [SerializeField] private string menuScene;
     private bool paused;
     private bool pauseTransition;
+    [SerializeField] private Vector2 loadingScreenPos;
+    [SerializeField] private Vector2 loadingDoneScreenPos;
 
+
+    [SerializeField] private GameObject playerCamera;
+    [SerializeField] private GameObject loadingCamera1;
+    [SerializeField] private GameObject loadingCamera2;
     //ui code
 
     private void PauseHandler()
@@ -75,6 +81,7 @@ public partial class LevelManager : MonoBehaviour
         switch (uiStage)
         {
             case 0:
+                loadingCamera1.SetActive(true);
                 faderController.fadeIn(loadingFadeTime);
                 uiStage++;
                 
@@ -99,8 +106,10 @@ public partial class LevelManager : MonoBehaviour
                 if (faderController.isFadeFinished())
                 {
                     uiStage++;
-                    
-                    playerSprite.GetComponent<Rigidbody2D>().position = loadingDoneScreenPos;
+                    loadingCamera1.SetActive(false);
+                    loadingCamera2.SetActive(true);
+
+                     playerSprite.GetComponent<Rigidbody2D>().position = loadingDoneScreenPos;
                     
                     faderController.fadeIn(loadingFadeTime/2);
                 }
@@ -126,7 +135,10 @@ public partial class LevelManager : MonoBehaviour
                 if (faderController.isFadeTransitionInPause())
                 {
                     uiStage++;
+                    loadingCamera2.SetActive(false);
+                    playerCamera.SetActive(true);
                     playerSprite.GetComponent<Rigidbody2D>().position = calculateGridGlobalPosition(mapData.getPlayerStartPos().getX(), mapData.getPlayerStartPos().getY());
+                    playerSprite.GetComponent<Player>().resetSprite();
                     playerSprite.GetComponent<SpriteRenderer>().enabled = true;
                     startMusic();
                     musicSource.GetComponent<audioFaderScript>().fadeIn(loadingFadeTime);
@@ -252,6 +264,7 @@ public partial class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void UIStart()
     {
+        playerSprite= GameObject.FindWithTag(playerTag);
         pauseTransition = true;
         paused = false;
         uiStage = 0;
@@ -260,6 +273,7 @@ public partial class LevelManager : MonoBehaviour
         faderController = fader.GetComponent<transitionFaderScript>();
         resumeButton.SetActive(false);
         exitButton.SetActive(false);
+        playerSprite.GetComponent<Rigidbody2D>().position = loadingScreenPos;
     }
 
     public void exitClick()

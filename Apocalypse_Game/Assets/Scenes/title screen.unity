@@ -216,7 +216,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &15113251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1659,6 +1659,10 @@ PrefabInstance:
     - target: {fileID: 961791009439496782, guid: 7422af7eaefc7314b93dbc493faf4b6b, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618942023597280824, guid: 7422af7eaefc7314b93dbc493faf4b6b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7257260186591509516, guid: 7422af7eaefc7314b93dbc493faf4b6b, type: 3}
       propertyPath: m_Pivot.x
