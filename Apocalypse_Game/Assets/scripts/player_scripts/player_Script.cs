@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 
     //attack vars
     [SerializeField] private GameObject knifeAttack;
+    private knifeAttackScript knifeController;
     [SerializeField] private float attackCooldownTime;
     private float cooldownElapsed;
     private bool playerAttacking;
@@ -75,6 +76,9 @@ public class Player : MonoBehaviour
         SpritePhysics = GetComponent<Rigidbody2D>();
 
         spriteAnimator = GetComponent<Animator>();
+
+        knifeController = knifeAttack.GetComponent<knifeAttackScript>();
+
         //init movement enableing
         movementEnabled = movementEnabledAtStartup;
         //init render enabling at at startup
@@ -132,7 +136,8 @@ public class Player : MonoBehaviour
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) ){
 
                 playerAttacking = true;
-
+                attackSound.Play();
+                knifeController.attack(getPosition(), lastDirection);
 
             }
 

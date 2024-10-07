@@ -200,6 +200,7 @@ public partial class LevelManager : MonoBehaviour
         {
             case 0:
                 pauseTransition = true;
+                menuSound.Play();
                 resumeButton.SetActive(false);
                 exitButton.SetActive(false);
                 uiStage++;
@@ -236,6 +237,7 @@ public partial class LevelManager : MonoBehaviour
         switch (uiStage)
         {
             case 0:
+                menuSound.Play();
                 pauseTransition = true;
                 gameManager.GetComponent<Game_Master>().resetAllVariables();
                 resumeButton.GetComponent<Button>().enabled = false;

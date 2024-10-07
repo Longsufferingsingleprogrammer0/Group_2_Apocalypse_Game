@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 15113252}
   - component: {fileID: 15113251}
   - component: {fileID: 15113250}
+  - component: {fileID: 15113253}
   m_Layer: 5
   m_Name: exit button
   m_TagString: Untagged
@@ -205,8 +206,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 915721174}
-        m_TargetAssemblyTypeName: Game_Master, Assembly-CSharp
+      - m_Target: {fileID: 15113253}
+        m_TargetAssemblyTypeName: quit_script, Assembly-CSharp
         m_MethodName: quitGame
         m_Mode: 1
         m_Arguments:
@@ -255,6 +256,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15113248}
   m_CullTransparentMesh: 1
+--- !u!114 &15113253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15113248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6926de03dc808142898d0442e3233d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &38884947
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +356,7 @@ Transform:
   m_GameObject: {fileID: 38884947}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38, y: -3.01, z: -10}
+  m_LocalPosition: {x: 38, y: -3.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1193,17 +1206,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701750078}
   m_CullTransparentMesh: 1
---- !u!114 &915721174 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
-  m_PrefabInstance: {fileID: 4197391566688754203}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa47b5847ccc6184dae4a834372abf7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1049925470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,7 +1271,7 @@ Transform:
   m_GameObject: {fileID: 1049925470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38, y: -3.01, z: -10}
+  m_LocalPosition: {x: 38, y: -3.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1639,7 +1641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 1, y: 0.8, z: -10}
+  m_FollowOffset: {x: 1, y: 0.7, z: -10}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
