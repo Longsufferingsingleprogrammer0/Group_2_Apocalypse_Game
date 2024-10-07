@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,8 @@ public class Player : MonoBehaviour
     private bool movementEnabled;
 
     //attack vars
+    [SerializeField] private bool attackEnabledAtStartup;
+    private bool attackEnabled;
     [SerializeField] private GameObject knifeAttack;
     private knifeAttackScript knifeController;
     [SerializeField] private float attackCooldownTime;
@@ -52,7 +55,10 @@ public class Player : MonoBehaviour
 
 
 
-    
+    public void setAttackEnable(bool state)
+    {
+        attackEnabled = state;
+    }
     public void resetSprite()
     {
         GetComponent<SpriteRenderer>().sprite = idleSprites[0];
@@ -67,6 +73,8 @@ public class Player : MonoBehaviour
 
         //get our main components
 
+
+        attackEnabled = attackEnabledAtStartup;
 
         playerAttacking = false;
 
@@ -115,10 +123,11 @@ public class Player : MonoBehaviour
             {
                 playerAttacking=false;
                 cooldownElapsed=0;
-
+           
             }
             else
             {
+            
                 cooldownElapsed += Time.deltaTime;
             }
         }
@@ -131,18 +140,22 @@ public class Player : MonoBehaviour
     private void playerAttackHandler(int direction)
     {
         //put code here
-        if (!playerAttacking)
-        {
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) ){
 
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        {
+
+            if (!playerAttacking)
+            {
+
+                knifeController.attack(getPosition(), lastDirection);
                 playerAttacking = true;
                 attackSound.Play();
-                knifeController.attack(getPosition(), lastDirection);
-
             }
+       
+        }
 
             //remember to trigger the sound effect
-        }
+        
 
     }
 
@@ -319,7 +332,7 @@ public class Player : MonoBehaviour
 
 
 
-            playerAttackHandler(direction);
+            
 
             playerAnimationHandler(direction,moving);
             playerAudioHandler(moving);
@@ -332,7 +345,7 @@ public class Player : MonoBehaviour
                 //my tutor then fixed my code
 
                 //create a vector for our movement and adjust it to make sure its the same distance, even when moving horizontally
-                Vector3 spriteMovement = new Vector3(toMoveX, toMoveY, 0f).normalized * movementSpeed * Time.deltaTime;
+                Vector3 spriteMovement = new Vector3(toMoveX, toMoveY, 0f).normalized * movementSpeed * Time.fixedDeltaTime;
 
                 //TODO: changing the sprite direction and animation 
 
@@ -358,6 +371,7 @@ public class Player : MonoBehaviour
 
         
         
+        playerMovementHandler2D();
         
     }
 
@@ -370,6 +384,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         attackCoolDownWorker();
-        playerMovementHandler2D();
+        if (attackEnabled)
+        {
+            playerAttackHandler(lastDirection);
+        }
+        
     }
 }

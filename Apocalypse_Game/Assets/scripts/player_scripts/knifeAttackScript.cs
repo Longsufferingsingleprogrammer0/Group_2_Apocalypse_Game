@@ -19,7 +19,8 @@ public class knifeAttackScript : MonoBehaviour
     [SerializeField] private bool randomAttackDamage;
     [SerializeField] private float attackDamageMin;
     [SerializeField] private float attackDamageMax;
-    
+
+
     public float generateDamageValue()
     {
         if (randomAttackDamage)
@@ -37,8 +38,9 @@ public class knifeAttackScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("enemy")) 
-        { 
-            //placeholder
+        {
+            collision.gameObject.GetComponent<Enemy_Script>().damage(generateDamageValue());
+          
         }
     }    
     
@@ -51,25 +53,25 @@ public class knifeAttackScript : MonoBehaviour
         
         switch (PlayerDirection)
         {
-            case 1:
+            case 0:
                 x = playerpos.x + XCenterOffset;
                 y = playerpos.y + YCenterOffset + attackUpVerticalOffset;
                 rotation = verticalRotation;                
                 break;
 
-            case 2:
+            case 1:
                 x = playerpos.x + XCenterOffset + attackLeftHorizontalOffset;
                 y = playerpos.y + YCenterOffset;
                 rotation = horizontalRotation;
                 break;
 
-            case 3:
+            case 2:
                 x = playerpos.x + XCenterOffset;
                 y = playerpos.y + YCenterOffset + attackDownVerticalOffset;
                 rotation = verticalRotation;
                 break;
 
-            case 4:
+            case 3:
                 x = playerpos.x + XCenterOffset + attackRightHorizontalOffset;
                 y = playerpos.y + YCenterOffset;
                 rotation = horizontalRotation;
@@ -83,22 +85,28 @@ public class knifeAttackScript : MonoBehaviour
         StartCoroutine(attackWorker());
     }
 
-    private IEnumerator attackWorker()
-    {
-        yield return new WaitForEndOfFrame();
+   private IEnumerator attackWorker()
+   {
+
+        yield return new WaitForFixedUpdate();
         setPosition(returnPoint, new Quaternion(0, 0, 0, 0));
-    }
+   }
 
     void Start()
     {
         setPosition(returnPoint, new Quaternion(0, 0, 0, 0));
     }
 
-
+    private void FixedUpdate()
+    {
+        
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
+        
         
     }
 }

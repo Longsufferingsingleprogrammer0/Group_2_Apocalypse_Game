@@ -19,7 +19,7 @@ public class Enemy_Script : MonoBehaviour
     [SerializeField] private bool randomizedHealth;
     [SerializeField] private float maxhealth;
     [SerializeField] private float minhealth;
-    private float health;
+    [SerializeField] private float health;
 
 
     //speed
@@ -145,7 +145,10 @@ public class Enemy_Script : MonoBehaviour
             LevelManager.GetComponent<LevelManager>().damagePlayer(attack());
         }
 
-        
+        if (collision.CompareTag("attack"))
+        {
+            GameObject.FindWithTag("attack").GetComponent<knifeAttackScript>();
+        }
         
     }
 

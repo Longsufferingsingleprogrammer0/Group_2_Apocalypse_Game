@@ -145,6 +145,13 @@ public partial class LevelManager : MonoBehaviour
                 }
                 break;
             case 8:
+                if (faderController.isFadeFinished())
+                {
+                    uiStage++;
+                }
+                break;
+            case 9:
+                playerSprite.GetComponent<Player>().setAttackEnable(true);
                 pauseTransition = false;
                 mapSetupStage = 0;
                 uimode++;
@@ -169,6 +176,7 @@ public partial class LevelManager : MonoBehaviour
             case 0:
                 pauseTransition = true;
                 pauseGamePlayLogic();
+                playerSprite.GetComponent<Player>().setAttackEnable(false);
                 uiStage++;
                 break;
             case 1:
@@ -218,6 +226,7 @@ public partial class LevelManager : MonoBehaviour
             case 3:
                 paused = false;
                 pauseTransition = false;
+                playerSprite.GetComponent<Player>().setAttackEnable(true);
                 resumeGamePlayLogic();
                 uimode = 2;
                 uiStage = 0;
