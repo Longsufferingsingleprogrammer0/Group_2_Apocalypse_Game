@@ -36,9 +36,13 @@ public class Player : MonoBehaviour
 
 
     //anim vars
-    [SerializeField] private string animationControlParamater;
+  
+    private int lastAnimMode;
+    [SerializeField] private string animationDirectionVarName;
+    [SerializeField] private string walkModeVarName;
+    [SerializeField] private string attackModeVarName;
     [SerializeField] private Sprite[] idleSprites;
-    private int facingDirection;
+    private int lastDirection;
 
     //audio vars
     [SerializeField] private AudioSource footsteps;
@@ -60,9 +64,9 @@ public class Player : MonoBehaviour
         //get our main components
 
 
-        
+        playerAttacking = false;
 
-
+        lastAnimMode = 0;
         spriteRenderer = GetComponent<SpriteRenderer>();
         
         SpritePhysics = GetComponent<Rigidbody2D>();
@@ -74,7 +78,7 @@ public class Player : MonoBehaviour
         spriteRenderer.enabled = spriteRendererEnabledAtStartup;
 
         spriteAnimator.enabled = false;
-        facingDirection = 1;
+        lastDirection = 0;
     }
 
 
@@ -122,7 +126,12 @@ public class Player : MonoBehaviour
         //put code here
         if (!playerAttacking)
         {
-            
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) ){
+
+                playerAttacking = true;
+
+
+            }
 
             //remember to trigger the sound effect
         }
@@ -159,10 +168,10 @@ public class Player : MonoBehaviour
             switch (toMoveX + 1)
             {
                 case (0):
-                    newDirection = 2;
+                    newDirection = 1;
                     break;
                 case (2):
-                    newDirection = 4;
+                    newDirection = 3;
                     break;
                 default:
                     break;
@@ -173,10 +182,10 @@ public class Player : MonoBehaviour
             switch (toMoveY + 1)
             {
                 case (0):
-                    newDirection = 3;
+                    newDirection = 2;
                     break;
                 case (2):
-                    newDirection = 1;
+                    newDirection = 0;
                     break;
                 default:
                     break;
@@ -190,42 +199,61 @@ public class Player : MonoBehaviour
 
     private void playerAnimationHandler(int currentDirection, bool moving)
     {
-        if (playerAttacking)
+        int animMode = 0;
+        if (moving)
         {
-            //put attack animation code here
+            animMode = 1;
+        }else if(playerAttacking)
+        {
+            animMode = 2;
         }
-        else
+
+        if (animMode != lastAnimMode)
         {
-            if (moving)
+            switch (animMode)
             {
-                if (!spriteAnimator.enabled)
-                {
+                case 0:
+         
+                    spriteAnimator.enabled = false;
+
+                    
+                    spriteAnimator.SetBool(walkModeVarName, false);
+                    spriteAnimator.SetBool(attackModeVarName, false);
+                    spriteRenderer.sprite = idleSprites[currentDirection];
+                    break;
+                case 1:
+                  
                     spriteAnimator.enabled = true;
-                }
-            
 
-            
+                    spriteAnimator.SetBool(walkModeVarName, true);
+                    spriteAnimator.SetBool(attackModeVarName, false);
 
-                if (currentDirection != facingDirection)
-                {
-                    facingDirection = currentDirection;
-                    spriteRenderer.sprite = idleSprites[facingDirection - 1];
-                }
-                if (spriteAnimator.GetInteger(animationControlParamater) != facingDirection)
-                {
-                    spriteAnimator.SetInteger(animationControlParamater, facingDirection);
-                }
+                    break;
+                case 2:
+                    spriteAnimator.enabled = true;
+                    spriteAnimator.SetBool(walkModeVarName, false);
+                    spriteAnimator.SetBool(attackModeVarName, true);
+                    
+                    
+                    break;
+                default:
+                    throw new System.Exception("player anim error 1");
 
             }
-            else if (spriteAnimator.enabled)
+            lastAnimMode = animMode;
+        }
+
+        if(currentDirection != lastDirection)
+        {
+            spriteAnimator.SetInteger(animationDirectionVarName, currentDirection);
+            lastDirection = currentDirection;
+            if(animMode>0 && animMode < 3)
             {
-                spriteRenderer.sprite = idleSprites[facingDirection - 1];
-                spriteAnimator.enabled = false;
-                spriteAnimator.SetInteger(animationControlParamater, 0);
-            
+                spriteRenderer.sprite = idleSprites[currentDirection];
             }
         }
-        
+
+
     }
 
 
@@ -263,7 +291,7 @@ public class Player : MonoBehaviour
             }
 
             bool moving = (toMoveX != 0) || (toMoveY != 0);
-            int direction = facingDirection;
+            int direction = lastDirection;
 
 
             if (moving)
