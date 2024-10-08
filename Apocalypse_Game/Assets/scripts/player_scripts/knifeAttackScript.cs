@@ -47,6 +47,8 @@ public class knifeAttackScript : MonoBehaviour
         
     public void attack(Vector2 playerpos, int PlayerDirection)
     {
+
+        Vector2 adjustedPlayerPos = new Vector2(playerpos.x - 0.5f, playerpos.y + 1.2f);
         float x=0;
         float y=0;
         float rotation = 0;
@@ -54,26 +56,26 @@ public class knifeAttackScript : MonoBehaviour
         switch (PlayerDirection)
         {
             case 0:
-                x = playerpos.x + XCenterOffset;
-                y = playerpos.y + YCenterOffset + attackUpVerticalOffset;
+                x = adjustedPlayerPos.x + XCenterOffset;
+                y = adjustedPlayerPos.y + YCenterOffset + attackUpVerticalOffset;
                 rotation = verticalRotation;                
                 break;
 
             case 1:
-                x = playerpos.x + XCenterOffset + attackLeftHorizontalOffset;
-                y = playerpos.y + YCenterOffset;
+                x = adjustedPlayerPos.x + XCenterOffset + attackLeftHorizontalOffset;
+                y = adjustedPlayerPos.y + YCenterOffset;
                 rotation = horizontalRotation;
                 break;
 
             case 2:
-                x = playerpos.x + XCenterOffset;
-                y = playerpos.y + YCenterOffset + attackDownVerticalOffset;
+                x = adjustedPlayerPos.x + XCenterOffset;
+                y = adjustedPlayerPos.y + YCenterOffset + attackDownVerticalOffset;
                 rotation = verticalRotation;
                 break;
 
             case 3:
-                x = playerpos.x + XCenterOffset + attackRightHorizontalOffset;
-                y = playerpos.y + YCenterOffset;
+                x = adjustedPlayerPos.x + XCenterOffset + attackRightHorizontalOffset;
+                y = adjustedPlayerPos.y + YCenterOffset;
                 rotation = horizontalRotation;
                 break;
 

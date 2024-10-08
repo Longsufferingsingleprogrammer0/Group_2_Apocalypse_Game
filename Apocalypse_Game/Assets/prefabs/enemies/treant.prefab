@@ -111,12 +111,18 @@ MonoBehaviour:
     BottomRightCornerGridX: 0
     BottomRightCornerGridY: 1
   randomizedHealth: 1
-  maxhealth: 10
-  minhealth: 8
-  speed: 2
+  maxhealth: 15
+  minhealth: 10
+  health: 0
+  randomSpeed: 0
+  MinSpeed: 0.5
+  MaxSpeed: 2
   randomizedAttackPoints: 1
   maxAttack: 5
   minAttack: 4
+  playerDetectionDistance: 5
+  minDirectionChangeTime: 1
+  maxDirectionChangeTime: 4
 --- !u!70 &4577465431724931155
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

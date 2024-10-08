@@ -24,8 +24,10 @@ public class Enemy_Script : MonoBehaviour
 
 
     //speed
-    [SerializeField] private float speed;
-
+    [SerializeField] private bool randomSpeed;
+    [SerializeField] private float MinSpeed;
+    [SerializeField] private float MaxSpeed;
+    private float speed;
 
     //attack vars
     [SerializeField] private bool randomizedAttackPoints;
@@ -117,39 +119,106 @@ public class Enemy_Script : MonoBehaviour
     
     public void chaseMove()
     {
-        Vector3 chaseDirection = (playerScript.getPosition() - getPosition()).normalized;
-        Vector3 spriteMovement = new Vector3(chaseDirection.x, chaseDirection.y, 0f).normalized * speed * Time.fixedDeltaTime;
-        collisionBody.MovePosition(spriteMovement + transform.position);
+        if (getPlayerDistance() > 1)
+        {
+            Vector3 chaseDirection = (playerScript.getPosition() - getPosition()).normalized;
+            Vector3 spriteMovement = new Vector3(chaseDirection.x, chaseDirection.y, 0f).normalized * speed * Time.deltaTime;
+            collisionBody.MovePosition(spriteMovement + new Vector3(collisionBody.position.x, collisionBody.position.y, 0));
+        }
+
     }
 
     private void wanderMove()
     {
+        int toMoveX = 0;
+        int toMoveY = 0;
+        int distance = 1;
 
+        switch (direction)
+        {
+            case 0:
+                break;
+            case 1:
+                toMoveY += distance;
+                break;
+            case 2:
+                toMoveX -= distance;
+                toMoveY += distance;
+                break;
+            case 3:
+                toMoveX -= distance;
+                break;
+            case 4:
+                toMoveY -= distance;
+                toMoveX-= distance;
+                break;
+            case 5:
+                toMoveY -= distance;
+                break;
+            case 6:
+                toMoveX += distance;
+                toMoveY -= distance;
+                break;
+            case 7:
+                toMoveX += distance;
+                break;
+            case 8:
+                toMoveY += distance;
+                toMoveX += distance;
+                break;
+
+
+
+        }
+
+        bool moving = (toMoveX != 0) || (toMoveY != 0);
+
+        if (moving)
+        {
+            if(getPlayerDistance() >1)
+            {
+                Vector2 currentPos = getPosition();
+                Vector3 spriteMovement = new Vector3(toMoveX, toMoveY, 0f).normalized * speed * Time.deltaTime;
+                collisionBody.MovePosition(spriteMovement + new Vector3(collisionBody.position.x,collisionBody.position.y,0));
+            }
+            
+        }
     }
+
+
     private void movementController2D()
     {
-        if (sawPlayer)
-        {
-            chaseMove();
-        }
-        else
-        {
-
-        }
+   
         if(elaspedDirectionChangeTime>= changeDirectionTimer)
         {
             elaspedDirectionChangeTime = 0;
             changeDirectionTimer = Random.Range(minDirectionChangeTime, maxDirectionChangeTime);
+            if (randomSpeed)
+            {
+                speed=Random.Range(MinSpeed, MaxSpeed);
+            }
+            else
+            {
+                speed = MaxSpeed;
+            }
             sawPlayer = canSeePlayer();
             if (!sawPlayer)
             {
-                direction = Random.Range(0, 10);
+                direction = Random.Range(0, 9);
             }
             
         }
         else
         {
             elaspedDirectionChangeTime += Time.deltaTime;
+        }
+        if (sawPlayer)
+        {
+            chaseMove();
+        }
+        else
+        {
+            wanderMove();
         }
     }
 
@@ -265,13 +334,13 @@ public class Enemy_Script : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movementController2D();
+        
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
+        movementController2D();
     }
 }
