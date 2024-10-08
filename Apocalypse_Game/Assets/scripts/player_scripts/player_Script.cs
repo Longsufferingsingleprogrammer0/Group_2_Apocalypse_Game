@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
     
     public Vector2 getPosition()
     {
-        return new Vector2(transform.position.x, transform.position.y);
+        return new Vector2(transform.position.x+0.5f, transform.position.y-1.2f);
     }
     
 

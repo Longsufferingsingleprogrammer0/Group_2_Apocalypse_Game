@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,12 +32,20 @@ public class Enemy_Script : MonoBehaviour
     [SerializeField] private float maxAttack;
     [SerializeField] private float minAttack;
     [SerializeField] private float playerDetectionDistance;
-    
-    
+
+
+    //movement var
+    [SerializeField] private float minDirectionChangeTime;
+    [SerializeField] private float maxDirectionChangeTime;
+    private float changeDirectionTimer;
+    private float elaspedDirectionChangeTime;
+    private int direction;
+    private bool sawPlayer;
 
 
     //systemVars
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D collisionBody;
     private GameObject GameManager;
     private GameObject LevelManager;
     private GameObject player;
@@ -67,6 +76,12 @@ public class Enemy_Script : MonoBehaviour
     }
     
 
+    private bool randomBool()
+    {
+        return Random.Range(0, 2) == 1;
+    }
+
+
     public GridIllegalSpawnZone[] getGridSize()
     {
         GridIllegalSpawnZone[] copy = new GridIllegalSpawnZone[gridSize.Length];
@@ -85,7 +100,7 @@ public class Enemy_Script : MonoBehaviour
 
     public Vector2 getPosition()
     {
-        return new Vector2(transform.position.x, transform.position.y);
+        return new Vector2(transform.position.x+0.5f, transform.position.y-1.3f);
     }
 
 
@@ -100,6 +115,48 @@ public class Enemy_Script : MonoBehaviour
 
 
     
+    public void chaseMove()
+    {
+        Vector3 chaseDirection = (playerScript.getPosition() - getPosition()).normalized;
+        Vector3 spriteMovement = new Vector3(chaseDirection.x, chaseDirection.y, 0f).normalized * speed * Time.fixedDeltaTime;
+        collisionBody.MovePosition(spriteMovement + transform.position);
+    }
+
+    private void wanderMove()
+    {
+
+    }
+    private void movementController2D()
+    {
+        if (sawPlayer)
+        {
+            chaseMove();
+        }
+        else
+        {
+
+        }
+        if(elaspedDirectionChangeTime>= changeDirectionTimer)
+        {
+            elaspedDirectionChangeTime = 0;
+            changeDirectionTimer = Random.Range(minDirectionChangeTime, maxDirectionChangeTime);
+            sawPlayer = canSeePlayer();
+            if (!sawPlayer)
+            {
+                direction = Random.Range(0, 10);
+            }
+            
+        }
+        else
+        {
+            elaspedDirectionChangeTime += Time.deltaTime;
+        }
+    }
+
+
+
+
+
 
     public GridVector2 getGridStartingPosition()
     {
@@ -169,6 +226,7 @@ public class Enemy_Script : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collisionBody = GetComponent<Rigidbody2D>();
         
         GameManager = GameObject.FindWithTag("game_master");
         LevelManager = GameObject.FindWithTag("Level_Master");
@@ -203,6 +261,13 @@ public class Enemy_Script : MonoBehaviour
             health = maxhealth;
         }
     }
+
+
+    private void FixedUpdate()
+    {
+        movementController2D();
+    }
+
 
     // Update is called once per frame
     void Update()

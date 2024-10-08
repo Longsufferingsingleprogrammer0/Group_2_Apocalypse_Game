@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4843106062107257806}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.4601765, y: -5.4864645, z: 0}
+  m_LocalPosition: {x: -6.992, y: -6.004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -113,10 +113,14 @@ MonoBehaviour:
   randomizedHealth: 1
   maxhealth: 5
   minhealth: 3
+  health: 0
   speed: 4
   randomizedAttackPoints: 1
   maxAttack: 3
   minAttack: 1
+  playerDetectionDistance: 0
+  minDirectionChangeTime: 0
+  maxDirectionChangeTime: 0
 --- !u!70 &3692497401025125255
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
