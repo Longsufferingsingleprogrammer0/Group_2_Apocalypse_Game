@@ -119,7 +119,7 @@ public class Enemy_Script : MonoBehaviour
     
     public void chaseMove()
     {
-        if (getPlayerDistance() > 1)
+        if (getPlayerDistance() > 0.5)
         {
             Vector3 chaseDirection = (playerScript.getPosition() - getPosition()).normalized;
             Vector3 spriteMovement = new Vector3(chaseDirection.x, chaseDirection.y, 0f).normalized * speed * Time.deltaTime;
@@ -175,7 +175,7 @@ public class Enemy_Script : MonoBehaviour
 
         if (moving)
         {
-            if(getPlayerDistance() >1)
+            if(getPlayerDistance() >0.5)
             {
                 Vector2 currentPos = getPosition();
                 Vector3 spriteMovement = new Vector3(toMoveX, toMoveY, 0f).normalized * speed * Time.deltaTime;

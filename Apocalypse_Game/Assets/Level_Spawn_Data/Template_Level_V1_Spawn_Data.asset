@@ -37,6 +37,10 @@ MonoBehaviour:
     TopLeftCornerGridY: 25
     BottomRightCornerGridX: 24
     BottomRightCornerGridY: 29
+  - TopLeftCornerGridX: 11
+    TopLeftCornerGridY: 20
+    BottomRightCornerGridX: 18
+    BottomRightCornerGridY: 24
   setPeiceSpawnList:
   - actorType: cash_register
     ActorPrefabVariants:

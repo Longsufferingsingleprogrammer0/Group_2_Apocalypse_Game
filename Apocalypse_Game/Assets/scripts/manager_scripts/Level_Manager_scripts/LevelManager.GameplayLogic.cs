@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,7 +51,7 @@ public partial class LevelManager : MonoBehaviour
     private IEnumerator temporaryInvinicibilty()
     {
         invincible = true;
-
+        Debug.Log("invincible");
         while (elapsed < InvincibilityTime)
         {
             switch (gameplayEnabled)
@@ -70,6 +71,7 @@ public partial class LevelManager : MonoBehaviour
         }
         elapsed = 0f;
         invincible = false;
+        Debug.Log("vonerable");
     }
 
     public void damagePlayer(float hp)
