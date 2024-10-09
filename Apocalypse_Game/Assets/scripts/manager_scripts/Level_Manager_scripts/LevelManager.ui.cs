@@ -38,6 +38,9 @@ public partial class LevelManager : MonoBehaviour
 
 
     [SerializeField] private GameObject exitFader;
+
+    [SerializeField] private GameObject enemyCount;
+    [SerializeField] private GameObject ItemCount;
     //ui code
 
     private void PauseHandler()
@@ -183,6 +186,8 @@ public partial class LevelManager : MonoBehaviour
             case 9:
                 playerSprite.GetComponent<Player>().setAttackEnable(true);
                 pauseTransition = false;
+                updateEnemyCount();
+                updateItemCount();
                 mapSetupStage = 0;
                 uimode=1;
                 uiStage = 0;
@@ -196,6 +201,17 @@ public partial class LevelManager : MonoBehaviour
     {
         playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
         uimode = 2;
+    }
+
+    public void updateEnemyCount()
+    {
+        enemyCount.GetComponent<TextMeshProUGUI>().SetText("Remaining Enemies: "+Enemies.Count.ToString());
+    }
+
+
+    public void updateItemCount()
+    {
+        ItemCount.GetComponent<TextMeshProUGUI>().SetText("Remaining Items: " + Items.Count.ToString());
     }
 
 

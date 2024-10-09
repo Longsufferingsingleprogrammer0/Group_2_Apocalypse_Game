@@ -43,12 +43,14 @@ public partial class LevelManager : MonoBehaviour
     public void killEnemy(GameObject enemy)
     {
         Enemies.Remove(enemy);
+        updateEnemyCount();
     }
 
 
     public void collectItem(GameObject item)
     {
         Items.Remove(item);
+        updateItemCount();
     }
 
 

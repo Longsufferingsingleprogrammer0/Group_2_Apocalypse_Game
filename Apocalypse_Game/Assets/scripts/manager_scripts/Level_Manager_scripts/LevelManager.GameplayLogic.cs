@@ -48,6 +48,9 @@ public partial class LevelManager : MonoBehaviour
     }
 
 
+
+
+
     // Start is called before the first frame update
     private void GamePlayLogicStart()
     {
@@ -70,7 +73,7 @@ public partial class LevelManager : MonoBehaviour
     {
         if (uimode == 2)
         {
-            if (Enemies.Count <= 0)
+            if ((Enemies.Count <= 0)&&(Items.Count<=0))
             {
                 pauseGamePlayLogic();
                 GameObject.FindWithTag("game_master").GetComponent<Game_Master>().setGameplayMode(false);
