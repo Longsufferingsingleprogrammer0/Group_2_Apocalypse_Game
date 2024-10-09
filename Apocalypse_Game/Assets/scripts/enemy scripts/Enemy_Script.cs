@@ -59,6 +59,12 @@ public class Enemy_Script : MonoBehaviour
     private knifeAttackScript knifeController;
     private Game_Master gameManagerScript;
 
+
+    //damage vars
+    private bool invincible;
+    private float ITimer;
+    private float ITimerElasped;
+
     public int ElementIndex
     {
         get => element;
@@ -111,14 +117,37 @@ public class Enemy_Script : MonoBehaviour
     }
 
 
+    private IEnumerator invinvibilityTimer()
+    {
+        invincible = true;
+        while (invincible)
+        {
+            if(ITimerElasped>= ITimer)
+            {
+                ITimerElasped = 0;
+                invincible = false;
+            }
+            else
+            {
+                yield return new WaitForEndOfFrame();
+                ITimerElasped += Time.deltaTime;
+                
+            }
+        } 
+    }
+
     public void damage(float damage)
     {
-        health-=damage;
-        if(health < 0)
+        if (!invincible)
         {
-            gameManagerScript.enemyKilled(pointValue);
-            LevelManager.GetComponent<LevelManager>().killEnemy(gameObject);
-            Destroy(gameObject);
+            health -= damage;
+            StartCoroutine(invinvibilityTimer());
+            if (health < 0)
+            {
+                gameManagerScript.enemyKilled(pointValue);
+                LevelManager.GetComponent<LevelManager>().killEnemy(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -140,14 +169,29 @@ public class Enemy_Script : MonoBehaviour
             case 0:
                 if (moving)
                 {
-                    if (movement.y > 0)
+                    if (movement.y != 0)
                     {
-                        direction = 0;
+                        if (movement.y > 0)
+                        {
+                            direction = 0;
+                        }
+                        else if (movement.y < 0)
+                        {
+                            direction = 2;
+                        }
                     }
-                    else if (movement.y < 0)
+                    else
                     {
-                        direction = 1;
+                        if (movement.x > 0)
+                        {
+                            direction = 3;
+                        }
+                        else if (movement.x < 0)
+                        {
+                            direction = 1;
+                        }
                     }
+                    
                 }
                 break;
             case 1:
@@ -344,6 +388,7 @@ public class Enemy_Script : MonoBehaviour
 
             direction = Random.Range(0, 2);
         spriteAnimator = GetComponent<Animator>();
+        ITimer = 0.5f;
 
         if (GameManager == null)
         {

@@ -113,8 +113,8 @@ MonoBehaviour:
     BottomRightCornerGridX: 0
     BottomRightCornerGridY: 1
   randomizedHealth: 1
-  maxhealth: 15
-  minhealth: 10
+  maxhealth: 22
+  minhealth: 17
   health: 0
   randomSpeed: 0
   MinSpeed: 0.5
