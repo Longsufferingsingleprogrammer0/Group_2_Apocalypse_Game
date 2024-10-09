@@ -34,6 +34,7 @@ public class title_screen_worker : MonoBehaviour
         state = 0;
         InputEnable = false;
         faderController = fader.GetComponent<transitionFaderScript>();
+        fader.GetComponent<Image>().enabled = true;
         musicController = musicPlayer.GetComponent<audioFaderScript>();
         startButton.GetComponent<Button>().enabled = false;
         faderController.fadeIn(fadeTime);
