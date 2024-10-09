@@ -1,4 +1,5 @@
 
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,9 +46,11 @@ public class Enemy_Script : MonoBehaviour
     private int direction;
     private bool sawPlayer;
 
+    private int animateDirection;
 
     //systemVars
     private SpriteRenderer spriteRenderer;
+    private Animator spriteAnimator;
     private Rigidbody2D collisionBody;
     private GameObject GameManager;
     private GameObject LevelManager;
@@ -120,13 +123,56 @@ public class Enemy_Script : MonoBehaviour
     }
 
 
-    
-    public void chaseMove()
+
+    private void updateAnimation()
+    {
+        if (spriteAnimator.GetInteger("direction") != direction)
+        {
+            spriteAnimator.SetInteger("direction",direction);
+        }
+    }
+
+    //enemy id of 0= zombie, id of 1=treant
+    private void animationControl(Vector3 movement, bool moving)
+    {
+        switch (enemyID)
+        {
+            case 0:
+                if (moving)
+                {
+                    if (movement.y > 0)
+                    {
+                        direction = 0;
+                    }
+                    else if (movement.y < 0)
+                    {
+                        direction = 1;
+                    }
+                }
+                break;
+            case 1:
+                if (moving)
+                {
+                    if (movement.x > 0)
+                    {
+                        direction = 1;
+                    }
+                    else if (movement.x < 0)
+                    {
+                        direction = 0;
+                    }
+                }
+                break;
+        }
+
+    }
+    private void chaseMove()
     {
         if (getPlayerDistance() > 0.5)
         {
             Vector3 chaseDirection = (playerScript.getPosition() - getPosition()).normalized;
             Vector3 spriteMovement = new Vector3(chaseDirection.x, chaseDirection.y, 0f).normalized * speed * Time.deltaTime;
+            animationControl(spriteMovement, true);
             collisionBody.MovePosition(spriteMovement + new Vector3(collisionBody.position.x, collisionBody.position.y, 0));
         }
 
@@ -183,6 +229,7 @@ public class Enemy_Script : MonoBehaviour
             {
                 Vector2 currentPos = getPosition();
                 Vector3 spriteMovement = new Vector3(toMoveX, toMoveY, 0f).normalized * speed * Time.deltaTime;
+                animationControl(spriteMovement, true);
                 collisionBody.MovePosition(spriteMovement + new Vector3(collisionBody.position.x,collisionBody.position.y,0));
             }
             
@@ -295,6 +342,9 @@ public class Enemy_Script : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<Player>();
 
+            direction = Random.Range(0, 2);
+        spriteAnimator = GetComponent<Animator>();
+
         if (GameManager == null)
         {
             throw new System.Exception("enemy reference to game manager is null");
@@ -345,5 +395,6 @@ public class Enemy_Script : MonoBehaviour
     void Update()
     {
         movementController2D();
+        updateAnimation();
     }
 }

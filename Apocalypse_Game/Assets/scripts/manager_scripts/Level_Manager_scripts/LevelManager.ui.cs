@@ -28,6 +28,8 @@ public partial class LevelManager : MonoBehaviour
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private GameObject loadingCamera1;
     [SerializeField] private GameObject loadingCamera2;
+
+    [SerializeField] private GameObject HUDCanvas;
     //ui code
 
     private void PauseHandler()
@@ -137,6 +139,7 @@ public partial class LevelManager : MonoBehaviour
                     uiStage++;
                     loadingCamera2.SetActive(false);
                     playerCamera.SetActive(true);
+                    HUDCanvas.SetActive(true);
                     playerSprite.GetComponent<Rigidbody2D>().position = calculateGridGlobalPosition(mapData.getPlayerStartPos().getX(), mapData.getPlayerStartPos().getY());
                     playerSprite.GetComponent<Player>().resetSprite();
                     playerSprite.GetComponent<SpriteRenderer>().enabled = true;
@@ -275,6 +278,7 @@ public partial class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void UIStart()
     {
+        HUDCanvas.SetActive(false);
         playerSprite= GameObject.FindWithTag(playerTag);
         pauseTransition = true;
         paused = false;
