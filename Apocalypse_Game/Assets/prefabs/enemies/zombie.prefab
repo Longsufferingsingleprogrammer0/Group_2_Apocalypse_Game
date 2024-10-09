@@ -113,12 +113,12 @@ MonoBehaviour:
     BottomRightCornerGridX: 0
     BottomRightCornerGridY: 1
   randomizedHealth: 1
-  maxhealth: 16
+  maxhealth: 14
   minhealth: 10
   health: 0
   randomSpeed: 1
   MinSpeed: 1
-  MaxSpeed: 4
+  MaxSpeed: 3
   randomizedAttackPoints: 1
   maxAttack: 3
   minAttack: 1

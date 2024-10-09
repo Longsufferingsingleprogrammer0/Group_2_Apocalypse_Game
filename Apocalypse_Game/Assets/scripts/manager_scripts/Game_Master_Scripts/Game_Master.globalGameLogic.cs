@@ -27,7 +27,7 @@ public partial class Game_Master : MonoBehaviour
     [SerializeField] private int startingFood;
     [SerializeField] private int startingWater;
 
-    private bool gameplayMode;
+    private bool gameplayMode=false;
 
     public void setGameplayMode(bool mode)
     {
@@ -67,13 +67,33 @@ public partial class Game_Master : MonoBehaviour
       
     }
 
+    public int getDay()
+    {
+        return day;
+    }
+
+    public void setDay(int Newday)
+    {
+        day = Newday;
+        if (gameplayMode)
+        {
+            levelManagerScriptReference.updateDay(day);
+        }
+    }
+
+
     public void damagePlayer(float hp)
     {
         if (!invincible)
         {
             health -= hp;
             injured = true;
-           
+
+            if (gameplayMode)
+            {
+                levelManagerScriptReference.updateHealth(health);
+            }
+
         }
     }
 
@@ -99,6 +119,11 @@ public partial class Game_Master : MonoBehaviour
     private void updateScore(int value)
     {
         score += value;
+ 
+        if (gameplayMode)
+        {
+            levelManagerScriptReference.updateScore(score);
+        }
     }
 
 
@@ -131,9 +156,11 @@ public partial class Game_Master : MonoBehaviour
     // Start is called before the first frame update
     private void StartGlobalGameLogic()
     {
-        day = 0;
+        day = 1;
         resetGlobalGameLogicVariables();
-        gameplayMode = false;
+        levelManagerScriptReference.updateDay(day);
+        levelManagerScriptReference.updateHealth(health);
+        levelManagerScriptReference.updateScore(score);
     }
 
 

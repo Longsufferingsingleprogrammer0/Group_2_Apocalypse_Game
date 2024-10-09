@@ -51,10 +51,11 @@ public partial class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     private void GamePlayLogicStart()
     {
-
+        GameObject.FindWithTag("game_master").GetComponent<Game_Master>().setGameplayMode(true);
         if (gameplayEnabledAtStart)
         {
             gameplayEnabled = 1;
+
         }
         else
         {

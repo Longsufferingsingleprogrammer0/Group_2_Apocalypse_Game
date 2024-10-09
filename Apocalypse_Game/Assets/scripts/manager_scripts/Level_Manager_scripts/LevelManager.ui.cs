@@ -30,6 +30,9 @@ public partial class LevelManager : MonoBehaviour
     [SerializeField] private GameObject loadingCamera2;
 
     [SerializeField] private GameObject HUDCanvas;
+    [SerializeField] private GameObject scoreUI;
+    [SerializeField] private GameObject dayUI;
+    [SerializeField] private GameObject healthUI;
     //ui code
 
     private void PauseHandler()
@@ -55,6 +58,25 @@ public partial class LevelManager : MonoBehaviour
             }
         }
         
+    }
+
+
+
+    public void updateScore(int score)
+    {
+
+        scoreUI.GetComponent<TextMeshProUGUI>().SetText("score: "+score.ToString());
+    }
+
+    public void updateDay(int day)
+    {
+        dayUI.GetComponent<TextMeshProUGUI>().SetText("day: " + day.ToString());
+    }
+
+
+    public void updateHealth(float health)
+    {
+        healthUI.GetComponent<TextMeshProUGUI>().SetText("health: " + health.ToString("F1"));
     }
 
 

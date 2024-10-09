@@ -1743,11 +1743,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2005782091326856680, guid: 2bcd8f00f8a12d34a9821c7989b74187, type: 3}
       propertyPath: attackDamageMax
-      value: 5
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2005782091326856680, guid: 2bcd8f00f8a12d34a9821c7989b74187, type: 3}
       propertyPath: attackDamageMin
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2005782091326856680, guid: 2bcd8f00f8a12d34a9821c7989b74187, type: 3}
       propertyPath: randomAttackDamage
@@ -2072,8 +2072,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -201.20354, y: 121.920746}
-  m_SizeDelta: {x: -402.3972, y: -243.8384}
+  m_AnchoredPosition: {x: -192.30727, y: 122.537346}
+  m_SizeDelta: {x: -384.6046, y: -245.0716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1050728496
 MonoBehaviour:
@@ -2281,8 +2281,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.8894, y: -5.5}
-  m_SizeDelta: {x: 70.244, y: 27.4495}
+  m_AnchoredPosition: {x: -2.8, y: -5.5498}
+  m_SizeDelta: {x: 80.0074, y: 27.5491}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1142786049
 MonoBehaviour:
@@ -2367,7 +2367,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.2232132, y: 0, z: 0.28891778, w: 0}
+  m_margin: {x: 0.2232132, y: 0, z: -9.371162, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3328,7 +3328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.8893, y: 12.9}
+  m_AnchoredPosition: {x: -7.6, y: 12.9}
   m_SizeDelta: {x: 70.244, y: 14.516}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647083837
@@ -3988,6 +3988,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: dayUI
+      value: 
+      objectReference: {fileID: 1647083835}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: fader
       value: 
       objectReference: {fileID: 1948324867}
@@ -3996,9 +4000,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c707490aa4e46f6469d3d43d39b720ad, type: 2}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: scoreUI
+      value: 
+      objectReference: {fileID: 1599820188}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: enemyHit
       value: 
       objectReference: {fileID: 457687739}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: healthUI
+      value: 
+      objectReference: {fileID: 1142786047}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: HUDCanvas
       value: 
