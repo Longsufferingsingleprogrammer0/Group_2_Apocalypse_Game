@@ -50,6 +50,7 @@ public partial class LevelManager : MonoBehaviour
 
     public void playCollectItemSound()
     {
+      
         CollectItem.Play();
     }
 
