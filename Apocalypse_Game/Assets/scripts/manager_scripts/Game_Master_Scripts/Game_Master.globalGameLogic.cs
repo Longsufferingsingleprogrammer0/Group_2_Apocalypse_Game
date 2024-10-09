@@ -84,6 +84,20 @@ public partial class Game_Master : MonoBehaviour
         return health;
     }
 
+    public float getMaxHealth()
+    {
+        return startingHealth;
+    }
+
+    public void heal(float addedHealth)
+    {
+        health += addedHealth;
+        if(health > startingHealth)
+        {
+            health = startingHealth;
+        }
+    }
+
     public void setDay(int Newday)
     {
         day = Newday;

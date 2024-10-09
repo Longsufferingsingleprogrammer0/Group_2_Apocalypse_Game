@@ -55,6 +55,14 @@ public partial class LevelManager : MonoBehaviour
     private void GamePlayLogicStart()
     {
         GameObject.FindWithTag("game_master").GetComponent<Game_Master>().setGameplayMode(true);
+
+        if (GameObject.FindWithTag("game_master").GetComponent<Game_Master>().getHealth() < GameObject.FindWithTag("game_master").GetComponent<Game_Master>().getMaxHealth() - 1)
+        {
+            GameObject.FindWithTag("game_master").GetComponent<Game_Master>().heal(1f);
+        }
+        {
+
+        }
         
         if (gameplayEnabledAtStart)
         {
