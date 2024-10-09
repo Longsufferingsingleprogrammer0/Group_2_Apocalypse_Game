@@ -4707,6 +4707,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 269393879}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: ItemCount
+      value: 
+      objectReference: {fileID: 200058364}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: exitFader
       value: 
       objectReference: {fileID: 1789139351}
@@ -4722,6 +4726,10 @@ PrefabInstance:
       propertyPath: playerHit
       value: 
       objectReference: {fileID: 379044662}
+    - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
+      propertyPath: enemyCount
+      value: 
+      objectReference: {fileID: 812246582}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: exitButton
       value: 
