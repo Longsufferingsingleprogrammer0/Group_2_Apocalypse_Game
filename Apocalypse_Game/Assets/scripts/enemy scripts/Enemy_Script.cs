@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Enemy_Script : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class Enemy_Script : MonoBehaviour
     [SerializeField] private float maxhealth;
     [SerializeField] private float minhealth;
     [SerializeField] private float health;
-
+     private int pointValue;
 
     //speed
     [SerializeField] private bool randomSpeed;
@@ -52,7 +53,8 @@ public class Enemy_Script : MonoBehaviour
     private GameObject LevelManager;
     private GameObject player;
     private Player playerScript;
-
+    private knifeAttackScript knifeController;
+    private Game_Master gameManagerScript;
 
     public int ElementIndex
     {
@@ -111,6 +113,8 @@ public class Enemy_Script : MonoBehaviour
         health-=damage;
         if(health < 0)
         {
+            gameManagerScript.enemyKilled(pointValue);
+            LevelManager.GetComponent<LevelManager>().killEnemy(gameObject);
             Destroy(gameObject);
         }
     }
@@ -261,24 +265,19 @@ public class Enemy_Script : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-   
-        
-          
-        if (collision.CompareTag("Player"))
-        {
-            LevelManager.GetComponent<LevelManager>().damagePlayer(attack());
-        }
+    
 
-        if (collision.CompareTag("attack"))
-        {
-            GameObject.FindWithTag("attack").GetComponent<knifeAttackScript>();
-        }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
         
+        if (collision.gameObject.CompareTag("Player"))
+        {
+
+            gameManagerScript.damagePlayer(attack());
+        }
     }
 
-    
     private float getPlayerDistance()
     {
         return Vector2.Distance(getPosition(),playerScript.getPosition());
@@ -288,15 +287,9 @@ public class Enemy_Script : MonoBehaviour
 
     private void Awake()
     {
-        
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         spriteRenderer = GetComponent<SpriteRenderer>();
         collisionBody = GetComponent<Rigidbody2D>();
-        
+
         GameManager = GameObject.FindWithTag("game_master");
         LevelManager = GameObject.FindWithTag("Level_Master");
         player = GameObject.FindWithTag("Player");
@@ -306,7 +299,7 @@ public class Enemy_Script : MonoBehaviour
         {
             throw new System.Exception("enemy reference to game manager is null");
         }
-         if (LevelManager == null)
+        if (LevelManager == null)
         {
             throw new System.Exception("enemy reference to level manager is null");
         }
@@ -319,7 +312,8 @@ public class Enemy_Script : MonoBehaviour
             throw new System.Exception("enemy reference to player script is null");
         }
 
-
+        gameManagerScript=GameManager.GetComponent<Game_Master>();
+        knifeController = GameObject.FindWithTag("attack").GetComponent<knifeAttackScript>();
 
         if (randomizedHealth)
         {
@@ -329,6 +323,15 @@ public class Enemy_Script : MonoBehaviour
         {
             health = maxhealth;
         }
+        pointValue = Mathf.FloorToInt(health);
+
+        
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
 

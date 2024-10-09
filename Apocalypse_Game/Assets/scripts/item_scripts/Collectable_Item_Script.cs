@@ -94,6 +94,7 @@ public class Collectable_Item_Script : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             GameManager.GetComponent<Game_Master>().collectItem(value, itemID);
+            GameObject.FindWithTag("Level_Master").GetComponent<LevelManager>().collectItem(gameObject);
             Destroy(gameObject);
         }
     }

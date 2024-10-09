@@ -40,6 +40,18 @@ public partial class LevelManager : MonoBehaviour
 
     private List<GameObject> Enemies;
 
+    public void killEnemy(GameObject enemy)
+    {
+        Enemies.Remove(enemy);
+    }
+
+
+    public void collectItem(GameObject item)
+    {
+        Items.Remove(item);
+    }
+
+
     //the grid used to figure out and store what parts of the map are taken or not
     private bool[][] mapGrid;
 
@@ -577,7 +589,7 @@ public partial class LevelManager : MonoBehaviour
 
             
 
-            Items.Add(newPeice);
+            Enemies.Add(newPeice);
             Enemy_Script newPeiceController = newPeice.GetComponent<Enemy_Script>();
 
             if (newPeiceController == null)

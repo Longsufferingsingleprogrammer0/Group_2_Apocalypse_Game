@@ -13,6 +13,12 @@ public partial class Game_Master : MonoBehaviour
     public static Game_Master Instance => instance;
 
 
+
+    //this game was origonally planned for so much more, but due to time constraints, we had to cut most of it all that is left is a shell of its former self
+
+
+
+
     void Awake()
     {
         //startup code for singletons
@@ -30,6 +36,23 @@ public partial class Game_Master : MonoBehaviour
         }
         //starting code goes here?
 
+        awakeAllFiles();
+    }
+
+
+    private void FixedUpdateAllFiles()
+    {
+        fixedUpdateGlobalGameLogic();
+    }
+
+    private void FixedUpdate()
+    {
+        FixedUpdateAllFiles();
+    }
+
+
+    private void awakeAllFiles()
+    {
 
     }
 

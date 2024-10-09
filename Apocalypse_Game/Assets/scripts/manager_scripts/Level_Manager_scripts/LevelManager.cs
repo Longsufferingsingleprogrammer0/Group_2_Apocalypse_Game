@@ -33,9 +33,14 @@ public partial class LevelManager : MonoBehaviour
         }
         //starting code goes here?
 
-
+        awakeAllFiles();
     }
 
+
+    private void awakeAllFiles()
+    {
+        gamePlayLogicAwake();
+    }
 
     private void startAllFiles()
     {
