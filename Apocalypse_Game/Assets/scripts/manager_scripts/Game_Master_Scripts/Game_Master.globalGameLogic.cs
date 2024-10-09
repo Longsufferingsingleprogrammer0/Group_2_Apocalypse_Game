@@ -97,6 +97,7 @@ public partial class Game_Master : MonoBehaviour
 
             if (gameplayMode)
             {
+                levelManagerScriptReference.playPlayerHitSound();
                 if(health <= 0)
                 {
                    

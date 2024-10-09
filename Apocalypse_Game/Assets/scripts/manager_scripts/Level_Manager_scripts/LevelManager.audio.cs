@@ -9,7 +9,8 @@ public partial class LevelManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource menuSound;
     [SerializeField] AudioSource enemyHit;
-
+    [SerializeField] AudioSource playerHit;
+    [SerializeField] AudioSource CollectItem;
     private void audioSourcePresenceCheck()
     {
         if (musicSource == null)
@@ -39,5 +40,18 @@ public partial class LevelManager : MonoBehaviour
     {
         enemyHit.Play();
     }
+
+    public void playPlayerHitSound()
+    {
+        playerHit.Play();
+
+    }
+
+
+    public void playCollectItemSound()
+    {
+        CollectItem.Play();
+    }
+
 
 }
