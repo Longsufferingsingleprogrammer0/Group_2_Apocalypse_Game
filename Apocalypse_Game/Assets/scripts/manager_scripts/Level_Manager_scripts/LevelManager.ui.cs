@@ -267,9 +267,10 @@ public partial class LevelManager : MonoBehaviour
                 }
                 break;
             case 3:
-                SceneManager.LoadScene(menuScene);
+                gameManager.GetComponent<Game_Master>().setGameplayMode(false);
                 uiStage++;
                 uiStage = 0;
+                SceneManager.LoadScene(menuScene);
                 break;
         }
     }

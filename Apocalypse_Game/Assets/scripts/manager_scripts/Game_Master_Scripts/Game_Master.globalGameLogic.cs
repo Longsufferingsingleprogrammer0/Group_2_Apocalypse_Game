@@ -27,7 +27,12 @@ public partial class Game_Master : MonoBehaviour
     [SerializeField] private int startingFood;
     [SerializeField] private int startingWater;
 
+    private bool gameplayMode;
 
+    public void setGameplayMode(bool mode)
+    {
+        gameplayMode = mode;
+    }
 
     public void giveLevelManagerReference(LevelManager reference)
     {
@@ -128,24 +133,29 @@ public partial class Game_Master : MonoBehaviour
     {
         day = 0;
         resetGlobalGameLogicVariables();
+        gameplayMode = false;
     }
 
 
     private void fixedUpdateGlobalGameLogic()
     {
-        switch (levelManagerScriptReference.getGameplayEnabled())
+        if (gameplayMode)
         {
-            case 1:
-                if (injured)
-                {
-                    injured = false;
-                    StartCoroutine(temporaryInvinicibilty());
-                }
-                break;
+            switch (levelManagerScriptReference.getGameplayEnabled())
+            {
+                case 1:
+                    if (injured)
+                    {
+                        injured = false;
+                        StartCoroutine(temporaryInvinicibilty());
+                    }
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+            }
         }
+        
     }
 
     // Update is called once per frame

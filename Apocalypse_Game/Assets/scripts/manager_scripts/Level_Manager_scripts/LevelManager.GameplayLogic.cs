@@ -39,6 +39,7 @@ public partial class LevelManager : MonoBehaviour
     {
         GameObject mastertemp = GameObject.FindGameObjectWithTag("game_master");
         mastertemp.GetComponent<Game_Master>().giveLevelManagerReference(this);
+        mastertemp.GetComponent<Game_Master>().setGameplayMode(true);
     }
 
     public int getGameplayEnabled()
