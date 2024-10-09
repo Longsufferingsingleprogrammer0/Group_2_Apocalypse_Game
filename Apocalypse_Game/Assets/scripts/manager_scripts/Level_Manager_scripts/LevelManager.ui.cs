@@ -300,7 +300,10 @@ public partial class LevelManager : MonoBehaviour
         }
     }
 
-
+    public void externalSetUiMode(int mode)
+    {
+        uimode = mode;
+    }
     private void gameOver()
     {
         switch (uiStage)

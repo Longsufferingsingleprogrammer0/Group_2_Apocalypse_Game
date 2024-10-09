@@ -91,7 +91,17 @@ public partial class Game_Master : MonoBehaviour
 
             if (gameplayMode)
             {
-                levelManagerScriptReference.updateHealth(health);
+                if(health <= 0)
+                {
+                    levelManagerScriptReference.externalSetUiMode(7);
+                    levelManagerScriptReference.updateHealth(0);
+                }
+                else
+                {
+                    levelManagerScriptReference.updateHealth(health);
+                }
+                
+
             }
 
         }
@@ -176,6 +186,7 @@ public partial class Game_Master : MonoBehaviour
                         injured = false;
                         StartCoroutine(temporaryInvinicibilty());
                     }
+
                     break;
 
                 default:
