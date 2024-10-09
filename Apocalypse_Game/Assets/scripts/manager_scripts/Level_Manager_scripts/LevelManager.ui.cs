@@ -19,6 +19,8 @@ public partial class LevelManager : MonoBehaviour
     private transitionFaderScript faderController;
     [SerializeField] private float loadingFadeTime;
     [SerializeField] private string menuScene;
+    [SerializeField] private string gameOverScreenName;
+    [SerializeField] private string levelTransitionScreenName;
     private bool paused;
     private bool pauseTransition;
     [SerializeField] private Vector2 loadingScreenPos;
@@ -299,6 +301,59 @@ public partial class LevelManager : MonoBehaviour
     }
 
 
+    private void gameOver()
+    {
+        switch (uiStage)
+        {
+            case 0:
+                pauseGamePlayLogic();
+                playerSprite.GetComponent<Player>().setAttackEnable(false);
+                playerSprite.GetComponent<Player>().setPlayerMovementEnabled(false);
+                fadeOutFader.GetComponent<transitionFaderScript>().fadeOut(loadingFadeTime);
+                uiStage++;
+                break;
+            case 1:
+                if (fadeOutFader.GetComponent<transitionFaderScript>().isFadeFinished())
+                {
+                    uiStage++;
+                }
+                break;
+            case 3:
+                gameManager.GetComponent<Game_Master>().setGameplayMode(false);
+                uiStage++;
+                uiStage = 0;
+                SceneManager.LoadScene(gameOverScreenName);
+                break;
+        }
+    }
+
+    private void levelComplete()
+    {
+        switch (uiStage)
+        {
+            case 0:
+                pauseGamePlayLogic();
+                playerSprite.GetComponent<Player>().setAttackEnable(false);
+                playerSprite.GetComponent<Player>().setPlayerMovementEnabled(false);
+                fadeOutFader.GetComponent<transitionFaderScript>().fadeOut(loadingFadeTime);
+                uiStage++;
+                break;
+            case 1:
+                if (fadeOutFader.GetComponent<transitionFaderScript>().isFadeFinished())
+                {
+                    uiStage++;
+                }
+                break;
+            case 3:
+                gameManager.GetComponent<Game_Master>().setGameplayMode(false);
+                uiStage++;
+                uiStage = 0;
+                SceneManager.LoadScene(levelTransitionScreenName);
+                break;
+        }
+    }
+
+
     // Start is called before the first frame update
     void UIStart()
     {
@@ -344,6 +399,13 @@ public partial class LevelManager : MonoBehaviour
                 break;
             case 6:
                 exitMode();
+                break;
+            case 7:
+                //gameOverMode
+                gameOver();
+                break;
+            case 8:
+                levelComplete();
                 break;
             default:
                 throw new System.Exception("ui mode is set to invalid value of "+uimode.ToString()+" must be within 0 to 2 inclusive");
