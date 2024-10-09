@@ -386,6 +386,9 @@ public partial class LevelManager : MonoBehaviour
         resumeButton.SetActive(false);
         exitButton.SetActive(false);
         playerSprite.GetComponent<Rigidbody2D>().position = loadingScreenPos;
+        updateDay(gameManager.GetComponent<Game_Master>().getDay());
+        updateHealth(gameManager.GetComponent<Game_Master>().getHealth());
+        updateScore(gameManager.GetComponent<Game_Master>().getScore());
     }
 
     public void exitClick()

@@ -52,6 +52,7 @@ public partial class LevelManager : MonoBehaviour
     private void GamePlayLogicStart()
     {
         GameObject.FindWithTag("game_master").GetComponent<Game_Master>().setGameplayMode(true);
+        
         if (gameplayEnabledAtStart)
         {
             gameplayEnabled = 1;

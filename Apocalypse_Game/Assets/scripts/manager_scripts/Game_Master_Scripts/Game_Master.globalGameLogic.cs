@@ -79,6 +79,11 @@ public partial class Game_Master : MonoBehaviour
         return score;
     }
 
+    public float getHealth()
+    {
+        return health;
+    }
+
     public void setDay(int Newday)
     {
         day = Newday;
@@ -162,7 +167,7 @@ public partial class Game_Master : MonoBehaviour
 
     private void resetGlobalGameLogicVariables()
     {
-        day = 0;
+        day = 1;
         food = 0;
         water = 0;
         health = startingHealth;
