@@ -35,6 +35,9 @@ public partial class LevelManager : MonoBehaviour
     [SerializeField] private GameObject scoreUI;
     [SerializeField] private GameObject dayUI;
     [SerializeField] private GameObject healthUI;
+
+
+    [SerializeField] private GameObject exitFader;
     //ui code
 
     private void PauseHandler()
@@ -293,8 +296,7 @@ public partial class LevelManager : MonoBehaviour
                 break;
             case 3:
                 gameManager.GetComponent<Game_Master>().setGameplayMode(false);
-                uiStage++;
-                uiStage = 0;
+                
                 SceneManager.LoadScene(menuScene);
                 break;
         }
@@ -306,25 +308,32 @@ public partial class LevelManager : MonoBehaviour
     }
     private void gameOver()
     {
+      
+       
         switch (uiStage)
         {
             case 0:
                 pauseGamePlayLogic();
                 playerSprite.GetComponent<Player>().setAttackEnable(false);
                 playerSprite.GetComponent<Player>().setPlayerMovementEnabled(false);
-                fadeOutFader.GetComponent<transitionFaderScript>().fadeOut(loadingFadeTime);
+                
                 uiStage++;
                 break;
             case 1:
-                if (fadeOutFader.GetComponent<transitionFaderScript>().isFadeFinished())
+                exitFader.GetComponent<transitionFaderScript>().fadeOut(loadingFadeTime);
+                uiStage++;
+                break;
+            case 2:
+                
+                if (exitFader.GetComponent<transitionFaderScript>().isFadeFinished())
                 {
                     uiStage++;
                 }
                 break;
             case 3:
+            
                 gameManager.GetComponent<Game_Master>().setGameplayMode(false);
-                uiStage++;
-                uiStage = 0;
+              
                 SceneManager.LoadScene(gameOverScreenName);
                 break;
         }
@@ -338,13 +347,17 @@ public partial class LevelManager : MonoBehaviour
                 pauseGamePlayLogic();
                 playerSprite.GetComponent<Player>().setAttackEnable(false);
                 playerSprite.GetComponent<Player>().setPlayerMovementEnabled(false);
-                fadeOutFader.GetComponent<transitionFaderScript>().fadeOut(loadingFadeTime);
+                exitFader.GetComponent<transitionFaderScript>().fadeOut(loadingFadeTime);
                 
-                gameManager.GetComponent<Game_Master>().setDay(gameManager.GetComponent<Game_Master>().getDay() + 1);
+                
                 uiStage++;
                 break;
             case 1:
-                if (fadeOutFader.GetComponent<transitionFaderScript>().isFadeFinished())
+                gameManager.GetComponent<Game_Master>().setDay(gameManager.GetComponent<Game_Master>().getDay() + 1);
+                uiStage++;
+                break;
+            case 2:
+                if (exitFader.GetComponent<transitionFaderScript>().isFadeFinished())
                 {
                     uiStage++;
                 }
@@ -383,6 +396,7 @@ public partial class LevelManager : MonoBehaviour
     // Update is called once per frame
     void UIUpdate()
     {
+       
         switch (uimode)
         {
             case 0:
@@ -407,6 +421,7 @@ public partial class LevelManager : MonoBehaviour
                 break;
             case 7:
                 //gameOverMode
+
                 gameOver();
                 break;
             case 8:

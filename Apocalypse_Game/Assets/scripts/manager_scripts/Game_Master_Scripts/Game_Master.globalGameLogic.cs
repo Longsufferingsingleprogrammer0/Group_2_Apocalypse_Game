@@ -98,7 +98,7 @@ public partial class Game_Master : MonoBehaviour
             {
                 if(health <= 0)
                 {
-                    levelManagerScriptReference.externalSetUiMode(7);
+                   
                     levelManagerScriptReference.updateHealth(0);
                 }
                 else
@@ -168,6 +168,7 @@ public partial class Game_Master : MonoBehaviour
         elapsed = 0f;
         score = 0;
         gameplayMode = false;
+        singleSet = true;
     }
 
     // Start is called before the first frame update
@@ -207,9 +208,20 @@ public partial class Game_Master : MonoBehaviour
         
     }
 
+
+    private bool  singleSet=true;
     // Update is called once per frame
     private void UpdateGlobalGameLogic()
     {
-        
+        if (gameplayMode && (health <= 0))
+        {
+            if (singleSet)
+            {
+                levelManagerScriptReference.externalSetUiMode(7);
+                levelManagerScriptReference.updateHealth(0);
+                singleSet = false;
+            }
+            
+        }
     }
 }

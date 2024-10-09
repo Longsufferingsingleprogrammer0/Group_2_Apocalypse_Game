@@ -43,7 +43,7 @@ public class gameOverScript : MonoBehaviour
             case 0:
                 break;
             case 1:
-                faderController.fadeOut(fadeTime);
+                faderController.fadeIn(fadeTime);
                 uiStage++;
                 break;
             case 2:
@@ -56,7 +56,7 @@ public class gameOverScript : MonoBehaviour
                 if (Input.anyKeyDown)
                 {
                     menuSoundSource.Play();
-                    faderController.fadeIn(fadeTime);
+                    faderController.fadeOut(fadeTime);
                     uiStage++;
                 }
                 break;

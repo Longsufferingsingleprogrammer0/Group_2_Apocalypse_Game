@@ -64,16 +64,16 @@ public partial class LevelManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    private bool testWinTemp = false;
+
     private void GameplayLogicUpdate()
     {
         if (uimode == 2)
         {
-            if (Enemies.Count <= 0 && (!testWinTemp))
+            if (Enemies.Count <= 0)
             {
                 pauseGamePlayLogic();
                 GameObject.FindWithTag("game_master").GetComponent<Game_Master>().setGameplayMode(false);
-                testWinTemp = true;
+                
                 uimode = 8;
             }
         }
