@@ -874,6 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64be568812f908b4fbef6a5877356030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToGoTo: logo screen
   finalScoreUI: {fileID: 1492390491}
   deathDayUI: {fileID: 557568776}
   menuSoundSource: {fileID: 305278418}

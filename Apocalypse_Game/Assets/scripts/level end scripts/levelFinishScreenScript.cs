@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class gameOverScript : MonoBehaviour
+public class levelFinishScreenScript : MonoBehaviour
 {
 
     private GameObject gameMaster;
@@ -24,11 +24,12 @@ public class gameOverScript : MonoBehaviour
         gameMaster = GameObject.FindWithTag("game_master");
 
         //change the text here for level transitions
-        finalScoreUI.GetComponent<TextMeshProUGUI>().SetText("Final Score: "+gameMaster.GetComponent<Game_Master>().getScore().ToString());
-        deathDayUI.GetComponent<TextMeshProUGUI>().SetText("Days Survived: " + gameMaster.GetComponent<Game_Master>().getDay().ToString());
+        gameMaster.GetComponent<Game_Master>().updateScore(gameMaster.GetComponent<Game_Master>().getDay()*100);
+        finalScoreUI.GetComponent<TextMeshProUGUI>().SetText("Score: "+gameMaster.GetComponent<Game_Master>().getScore().ToString());
+        deathDayUI.GetComponent<TextMeshProUGUI>().SetText("Now Starting Day: " + gameMaster.GetComponent<Game_Master>().getDay().ToString());
         
         //delete this for level transition
-        gameMaster.GetComponent<Game_Master>().resetAllVariables();
+    
         
         
         faderController=fader.GetComponent<transitionFaderScript>();
