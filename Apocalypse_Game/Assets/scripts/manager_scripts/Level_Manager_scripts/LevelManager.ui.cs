@@ -157,7 +157,7 @@ public partial class LevelManager : MonoBehaviour
                 playerSprite.GetComponent<Player>().setAttackEnable(true);
                 pauseTransition = false;
                 mapSetupStage = 0;
-                uimode++;
+                uimode=1;
                 uiStage = 0;
                 break;
 
@@ -168,6 +168,7 @@ public partial class LevelManager : MonoBehaviour
     private void startGamePlayMode()
     {
         playerSprite.GetComponent<Player>().setPlayerMovementEnabled(true);
+        uimode = 2;
     }
 
 

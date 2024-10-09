@@ -141,13 +141,15 @@ public class Enemy_Script : MonoBehaviour
         if (!invincible)
         {
             health -= damage;
-            StartCoroutine(invinvibilityTimer());
+            LevelManager.GetComponent<LevelManager>().playEnemyHitSound();
+            
             if (health < 0)
             {
                 gameManagerScript.enemyKilled(pointValue);
                 LevelManager.GetComponent<LevelManager>().killEnemy(gameObject);
                 Destroy(gameObject);
             }
+            StartCoroutine(invinvibilityTimer());
         }
     }
 
