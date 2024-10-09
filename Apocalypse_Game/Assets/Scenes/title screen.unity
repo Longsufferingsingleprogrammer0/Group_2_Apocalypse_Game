@@ -2016,15 +2016,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
       propertyPath: startingFood
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
       propertyPath: startingWater
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
       propertyPath: foodMultiplyer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
+      propertyPath: startingHealth
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
       propertyPath: waterMultiplyer
@@ -2032,7 +2036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
       propertyPath: InvincibilityTime
-      value: 100
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

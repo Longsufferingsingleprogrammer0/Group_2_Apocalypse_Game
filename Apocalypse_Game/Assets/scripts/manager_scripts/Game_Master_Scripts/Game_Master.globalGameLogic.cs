@@ -11,7 +11,7 @@ public partial class Game_Master : MonoBehaviour
     private int day;
 
     [SerializeField] private float startingHealth;
-    private float health;
+    private float health=1;
     private bool invincible;
 
     [SerializeField] private float InvincibilityTime;
@@ -68,6 +68,7 @@ public partial class Game_Master : MonoBehaviour
       
     }
 
+    
     public int getDay()
     {
         return day;
@@ -189,7 +190,7 @@ public partial class Game_Master : MonoBehaviour
 
 
     
-
+    
     private void fixedUpdateGlobalGameLogic()
     {
         if (gameplayMode)

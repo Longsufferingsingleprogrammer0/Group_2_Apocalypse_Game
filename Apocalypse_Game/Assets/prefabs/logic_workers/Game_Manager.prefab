@@ -98,6 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa47b5847ccc6184dae4a834372abf7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 20
+  InvincibilityTime: 1
+  startingFood: 0
+  startingWater: 0
 --- !u!95 &343833949306527217
 Animator:
   serializedVersion: 5
