@@ -72,6 +72,11 @@ public partial class Game_Master : MonoBehaviour
         return day;
     }
 
+    public int getScore()
+    {
+        return score;
+    }
+
     public void setDay(int Newday)
     {
         day = Newday;
@@ -126,7 +131,7 @@ public partial class Game_Master : MonoBehaviour
         updateScore(collectedWater);
     }
 
-    private void updateScore(int value)
+    public void updateScore(int value)
     {
         score += value;
  
@@ -161,6 +166,8 @@ public partial class Game_Master : MonoBehaviour
         invincible = false;
         injured = false;
         elapsed = 0f;
+        score = 0;
+        gameplayMode = false;
     }
 
     // Start is called before the first frame update
@@ -168,9 +175,13 @@ public partial class Game_Master : MonoBehaviour
     {
         day = 1;
         resetGlobalGameLogicVariables();
-        levelManagerScriptReference.updateDay(day);
-        levelManagerScriptReference.updateHealth(health);
-        levelManagerScriptReference.updateScore(score);
+        if (gameplayMode)
+        {
+
+            levelManagerScriptReference.updateDay(day);
+            levelManagerScriptReference.updateHealth(health);
+            levelManagerScriptReference.updateScore(score);
+        }
     }
 
 

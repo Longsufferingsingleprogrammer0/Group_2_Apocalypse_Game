@@ -198,6 +198,7 @@ public class transitionFaderScript : MonoBehaviour
     private void Awake()
     {
         faderRenderer = GetComponent<Image>();
+        faderRenderer.enabled = true;
     }
     public void skipTransition()
     {

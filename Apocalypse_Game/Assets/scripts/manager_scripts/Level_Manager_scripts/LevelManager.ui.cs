@@ -339,6 +339,8 @@ public partial class LevelManager : MonoBehaviour
                 playerSprite.GetComponent<Player>().setAttackEnable(false);
                 playerSprite.GetComponent<Player>().setPlayerMovementEnabled(false);
                 fadeOutFader.GetComponent<transitionFaderScript>().fadeOut(loadingFadeTime);
+                
+                gameManager.GetComponent<Game_Master>().setDay(gameManager.GetComponent<Game_Master>().getDay() + 1);
                 uiStage++;
                 break;
             case 1:
