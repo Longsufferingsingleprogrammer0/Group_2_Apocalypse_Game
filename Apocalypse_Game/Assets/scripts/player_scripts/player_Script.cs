@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 
@@ -37,8 +38,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float attackCooldownTime;
     private float cooldownElapsed;
     private bool playerAttacking;
+    private bool attackPerformed;
+    private bool finalAttackWait;
 
 
+    
     //anim vars
   
     private int lastAnimMode;
@@ -73,6 +77,8 @@ public class Player : MonoBehaviour
 
         //get our main components
 
+        finalAttackWait = false;
+        attackPerformed = false;
 
         attackEnabled = attackEnabledAtStartup;
 
@@ -119,6 +125,12 @@ public class Player : MonoBehaviour
         if (playerAttacking)
         {
 
+            if (((attackCooldownTime - 0.2) <= cooldownElapsed) && !attackPerformed)
+            {
+                knifeController.attack(getPosition(), lastDirection);
+                attackPerformed = true;
+            }
+
             if(attackCooldownTime <= cooldownElapsed )
             {
                 playerAttacking=false;
@@ -137,20 +149,25 @@ public class Player : MonoBehaviour
     }
 
 
+
+
     private void playerAttackHandler(int direction)
     {
         //put code here
 
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
-
-            if (!playerAttacking)
+            if (!finalAttackWait)
             {
-
-                knifeController.attack(getPosition(), lastDirection);
-                playerAttacking = true;
-                attackSound.Play();
+                if (!playerAttacking)
+                {
+                    finalAttackWait = true;
+                    attackPerformed = false;
+                    playerAttacking = true;
+                    attackSound.Play();
+                }
             }
+            
        
         }
 
@@ -291,25 +308,30 @@ public class Player : MonoBehaviour
             int toMoveY = 0;
             int distance = 1;
             //self explanatory
-            if (Input.GetKey(KeyCode.W))
-            {
-                toMoveY += distance;
-            }
 
-            if (Input.GetKey(KeyCode.S))
+            if (!playerAttacking)
             {
-                toMoveY -= distance;
-            }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    toMoveY += distance;
+                }
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                toMoveX -= distance;
-            }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    toMoveY -= distance;
+                }
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                toMoveX += distance;
+                if (Input.GetKey(KeyCode.A))
+                {
+                    toMoveX -= distance;
+                }
+
+                if (Input.GetKey(KeyCode.D))
+                {
+                    toMoveX += distance;
+                }
             }
+            
 
             bool moving = (toMoveX != 0) || (toMoveY != 0);
             int direction = lastDirection;
@@ -388,6 +410,9 @@ public class Player : MonoBehaviour
         {
             playerAttackHandler(lastDirection);
         }
-        
+        if (finalAttackWait)
+        {
+            finalAttackWait=false;
+        }
     }
 }
