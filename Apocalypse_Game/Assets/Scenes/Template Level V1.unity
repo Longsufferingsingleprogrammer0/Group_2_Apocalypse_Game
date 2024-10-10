@@ -3355,7 +3355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
       propertyPath: startingHealth
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
       propertyPath: InvincibilityTime
@@ -4828,11 +4828,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: levelLoadHealthRegenMax
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: levelLoadHealthRegenMin
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4365870673988011404, guid: 078aeb3b5cd4b7b41be38cbf8ada8740, type: 3}
       propertyPath: levelTransitionScreenName

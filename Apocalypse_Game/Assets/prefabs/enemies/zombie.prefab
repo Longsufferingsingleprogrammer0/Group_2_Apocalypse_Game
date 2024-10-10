@@ -118,11 +118,11 @@ MonoBehaviour:
   health: 0
   randomSpeed: 1
   MinSpeed: 1
-  MaxSpeed: 3
+  MaxSpeed: 4
   randomizedAttackPoints: 1
   maxAttack: 3
   minAttack: 1
-  playerDetectionDistance: 3
+  playerDetectionDistance: 4
   minDirectionChangeTime: 0.2
   maxDirectionChangeTime: 3
 --- !u!70 &3692497401025125255

@@ -116,15 +116,15 @@ MonoBehaviour:
   maxhealth: 33
   minhealth: 17
   health: 0
-  randomSpeed: 0
+  randomSpeed: 1
   MinSpeed: 0.5
-  MaxSpeed: 1.5
+  MaxSpeed: 2.5
   randomizedAttackPoints: 1
-  maxAttack: 5
+  maxAttack: 6
   minAttack: 4
-  playerDetectionDistance: 5
+  playerDetectionDistance: 6
   minDirectionChangeTime: 1
-  maxDirectionChangeTime: 4
+  maxDirectionChangeTime: 5
 --- !u!70 &4577465431724931155
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
