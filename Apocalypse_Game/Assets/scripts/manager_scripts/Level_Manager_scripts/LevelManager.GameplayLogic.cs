@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +9,10 @@ public partial class LevelManager : MonoBehaviour
     private int gameplayEnabled=0;
     [SerializeField] private bool gameplayEnabledAtStart;
 
-    
+    [SerializeField] private bool levelLoadHealthRegenRandom;
+    [SerializeField] private float levelLoadHealthRegenMax;
+    [SerializeField] private float levelLoadHealthRegenMin;
+
 
 
     public void pauseGamePlayLogic()
@@ -56,10 +59,22 @@ public partial class LevelManager : MonoBehaviour
     {
         GameObject.FindWithTag("game_master").GetComponent<Game_Master>().setGameplayMode(true);
 
-        if (GameObject.FindWithTag("game_master").GetComponent<Game_Master>().getHealth() < GameObject.FindWithTag("game_master").GetComponent<Game_Master>().getMaxHealth() - 1)
+        float loadRegen;
+
+        if (levelLoadHealthRegenRandom)
         {
-            GameObject.FindWithTag("game_master").GetComponent<Game_Master>().heal(1f);
+            loadRegen = Random.Range(levelLoadHealthRegenMin, levelLoadHealthRegenMax);
         }
+        else
+        {
+            loadRegen = levelLoadHealthRegenMax;
+        }
+
+
+        
+        
+        GameObject.FindWithTag("game_master").GetComponent<Game_Master>().heal(loadRegen);
+        
         {
 
         }

@@ -671,7 +671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
       propertyPath: startingHealth
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4522790411686281202, guid: d34c8d755089a8d44a6b349f8ac8ce36, type: 3}
       propertyPath: InvincibilityTime
