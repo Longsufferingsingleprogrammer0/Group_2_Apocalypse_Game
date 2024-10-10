@@ -74,7 +74,9 @@ public partial class LevelManager : MonoBehaviour
         
         
         GameObject.FindWithTag("game_master").GetComponent<Game_Master>().heal(loadRegen);
-        
+
+        updateHealth(GameObject.FindWithTag("game_master").GetComponent<Game_Master>().getHealth());
+
         {
 
         }
