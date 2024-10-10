@@ -411,11 +411,11 @@ MonoBehaviour:
   m_AssetsPPU: 32
   m_RefResolutionX: 288
   m_RefResolutionY: 148
-  m_UpscaleRT: 0
+  m_UpscaleRT: 1
   m_PixelSnapping: 0
   m_CropFrameX: 0
   m_CropFrameY: 0
-  m_StretchFill: 0
+  m_StretchFill: 1
 --- !u!1 &125581307
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,8 +907,7 @@ Transform:
   m_LocalPosition: {x: 37, y: -3.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2097792254}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &506989029
@@ -1863,12 +1862,13 @@ GameObject:
   - component: {fileID: 2097792254}
   - component: {fileID: 2097792256}
   - component: {fileID: 2097792255}
+  - component: {fileID: 2097792257}
   m_Layer: 0
   m_Name: Game Title1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2097792254
 Transform:
@@ -1879,11 +1879,11 @@ Transform:
   m_GameObject: {fileID: 2097792253}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.44, y: 3.14, z: 0}
+  m_LocalPosition: {x: 37.95, y: -0.66999984, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 506989028}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2097792255
 Animator:
@@ -1946,7 +1946,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: b98459c7708e9ec489eb4d380207b494, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1958,6 +1958,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2097792257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097792253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18b7739f32b25a4d8de5d0a3b886095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadY: -0.5
+  startPositionX: 6
+  loopPosiotionX: 39
+  movementSpeed: 6
 --- !u!1001 &4197391566688754203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2052,6 +2068,7 @@ SceneRoots:
   - {fileID: 569301474}
   - {fileID: 4197391566688754203}
   - {fileID: 506989028}
+  - {fileID: 2097792254}
   - {fileID: 2017296053}
   - {fileID: 1494453534}
   - {fileID: 1169740834}
